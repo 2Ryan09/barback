@@ -3,8 +3,8 @@
     <img src="/img/dhgc.png" height="200" width="200" style="width:100px;height:100px;">
   </div>
 
-  <div class="navbar-brand">
-    {{ env('CLUB_NAME') }} {{ env('APP_NAME', 'BarBack') }}
+  <div class="navbar-text" style="color: #000000">
+    {{ env('CLUB_NAME') }}
   </div>
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -17,17 +17,17 @@
         <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
       </li>
 
-      <li class="nav-item">
+      <li class="nav-item hidden">
         <a class="nav-link" href="/about">About</a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="/welcome">Inventory</a>
+        <a class="nav-link disabled" href="/welcome">Inventory (Coming Soon!)</a>
       </li>
 
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Reporting
+        <a class="nav-link dropdown-toggle disabled" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Reporting (Coming Soon!)
         </a>
 
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
