@@ -11,12 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('pages.dashboard');
-});
+Route::get('/', 'PageController@dashboard');
 
-Route::get('/about', function () {
-    return view('pages.about');
-});
+Route::get('/about', 'PageController@about');
 
 Auth::routes();
