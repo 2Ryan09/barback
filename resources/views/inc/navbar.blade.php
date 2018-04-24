@@ -46,6 +46,8 @@
   </div>
 
   <div class="top-right text" id="welcome-user">
+    @auth
     <a class="nav-text">Welcome, {{ Auth::user()->name }}.</a>
+    @endauth
   </div>
 </nav>
