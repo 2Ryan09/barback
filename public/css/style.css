@@ -5,11 +5,7 @@
 }
 
 #main-nav {
-    width: 100%;
-}
-
-.nopadding {
-   padding: 0 !important;
+  width: 100%;
 }
 
 .navbar-brand {
@@ -22,16 +18,5 @@
 .navbar-text {
   font-family: 'Bellefair', serif;
   font-size: 18pt;
-  font-color: #000000;
   padding-right: 10px;
-}
-
-.navbar-nav li a {
-  line-height: 120px;
-  height: 120px;
-  padding-top: 0;
-}
-
-.container{
-   width:100%;
 }

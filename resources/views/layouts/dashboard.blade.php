@@ -16,10 +16,10 @@
 
     </head>
     <body>
-    <div class="container nopadding" width=device-width>
+    <div class="container-fluid">
 
         <header class="row">
-            @include('inc.navbar')
+           @include('inc.navbar')
         </header>
 
         <div id="main" class="row">
