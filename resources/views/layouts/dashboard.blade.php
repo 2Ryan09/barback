@@ -28,9 +28,11 @@
 
         </div>
 
-        <footer class="row">
-            @include('inc.footer')
-        </footer>
+        <div class="row" style="padding-top: 50px;"></div>
+
+        <div class="row" style="background-color: #DCDCDC; text-align: center;">
+          A RAW Project
+        </div>
 
     </div>
 
