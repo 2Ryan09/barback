@@ -28,9 +28,9 @@
 
         </div>
 
-        <footer class="row">
+        <div class="row" style="padding-top: 50px; text-align: center; width: 100%; position: fixed;">
             @include('inc.footer')
-        </footer>
+        </div>
 
     </div>
 

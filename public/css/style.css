@@ -4,8 +4,8 @@
     }
 }
 
-#footer {
-    margin: 2px auto 0 auto;
+.card-img-top {
+  height=249px;
 }
 
 #main-nav {
