@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light" id="main-nav">
+<nav class="navbar navbar-expand-lg navbar-light" id="main-nav" style="background-color:  #F0F0F0">
   <div class="container-fluid">
     <div class="navbar-brand">
       <img src="/img/dhgc.png" href="/" style="width:100px;height:100px;">
@@ -37,20 +37,27 @@
             <a class="dropdown-item" href="#">Something else here</a>
           </div>
         </li>
-
-        @auth @else
-          <li class="nav-item">
-            <a class="nav-link" href="{{ route('login') }}">Login</a>
-          </li>
-        @endauth
       </ul>
     </div>
 
-    <div class="top-right text" id="welcome-user">
+    <ul class="nav navbar-nav navbar-right">
       @auth
-        <a class="nav-text">Welcome, {{ Auth::user()->name }}.</a>
+
+      <li>
+        <a class="navbar-text" style="font-size: 12pt;"> Welcome, {{ Auth::user()->name }}! </a>
+      </li>
+
+      <li>
+        <a class="navbar-link" href="{{ Auth::logout() }}"> Logout</a>
+      </li>
+
+      @else
+
+      <li>
+        <a class="navbar-link" href="{{ route('login') }}">Login</a>
+      </li>
 
       @endauth
-    </div>
+    </ul>
   </div>
 </nav>
