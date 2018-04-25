@@ -6,11 +6,13 @@ use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
-    public function dashboard() {
+    public function dashboard()
+    {
         return view('pages.dashboard');
     }
 
-    public function about() {
-    	return view('pages.about');
+    public function about()
+    {
+        return view('pages.about');
     }
 }
