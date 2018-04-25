@@ -28,8 +28,10 @@
 
         </div>
 
-        <div class="row" style="padding-top: 50px; text-align: center; width: 100%; position: fixed;">
-            @include('inc.footer')
+        <div class="row" style="padding-top: 50px;"></div>
+
+        <div class="row" style="background-color: #DCDCDC; text-align: center;">
+          A RAW Project
         </div>
 
     </div>
