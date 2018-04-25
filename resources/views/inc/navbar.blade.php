@@ -37,6 +37,13 @@
             <a class="dropdown-item" href="#">Something else here</a>
           </div>
         </li>
+
+        @can('see admin page')
+          <li class="nav-item">
+            <a class="nav-link" href="/admin">Admin</a>
+          </li>
+        @endcan
+
       </ul>
     </div>
 
