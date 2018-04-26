@@ -22,9 +22,9 @@
           <a class="nav-link" href="/about">About</a>
         </li>
 
-        @can('see admin page')
+        @can('view dashboard')
           <li class="nav-item">
-            <a class="nav-link" href="/admin">Admin</a>
+            <a class="nav-link" href="/dashboard">Dashboard</a>
           </li>
         @endcan
 

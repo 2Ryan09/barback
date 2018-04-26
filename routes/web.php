@@ -11,8 +11,12 @@
 |
 */
 
-Route::get('/', 'PageController@dashboard');
+Route::get('/', 'PageController@welcome');
 
 Route::get('/about', 'PageController@about');
+
+Route::get('/welcome', 'PageController@welcome');
+
+Route::get('/dashboard', 'PageController@dashboard');
 
 Auth::routes();

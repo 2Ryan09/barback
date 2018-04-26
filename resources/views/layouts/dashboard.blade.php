@@ -16,22 +16,20 @@
 
     </head>
     <body>
-    <div class="container-fluid">
 
-        <header class="row">
-           @include('inc.navbar')
-        </header>
+    <header class="row">
+      @include('inc.navbar')
+    </header>
 
+    <div class="container">
         <div id="main" class="row">
-
             @yield('content')
-
         </div>
 
         <div class="row" style="padding-top: 50px;"></div>
     </div>
 
-    @include('inc.footer')
+      @include('inc.footer')
 
     </body>
 </html>
