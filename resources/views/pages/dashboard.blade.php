@@ -12,7 +12,7 @@
     <div class="col-sm-6">
       @component('../inc/card', ['imgpath'    => '/img/winebottles.jpg',
                                  'cardtitle'  => 'Inventory', 
-                                 'cardtext'   => 'Keep track of the current stock.', 
+                                 'cardtext'   => 'Keep track of what's here.', 
                                  'buttonname' => 'Go!'])
 
       @endcomponent
@@ -21,7 +21,7 @@
     <div class="col-sm-6">
       @component('../inc/card', ['imgpath'    => '/img/chartsandgraphs.jpg',
                                  'cardtitle'  => 'Reporting', 
-                                 'cardtext'   => 'View trends and statistics about the inventory.', 
+                                 'cardtext'   => 'Keep track of what was.', 
                                  'buttonname' => 'Go!'])
 
       @endcomponent
