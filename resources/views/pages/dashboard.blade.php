@@ -13,7 +13,7 @@
       @component('../inc/card', ['imgpath'    => '/img/winebottles.jpg',
                                  'cardtitle'  => 'Inventory', 
                                  'cardtext'   => "Keep track of what's here.", 
-                                 'buttonname' => 'Go!'
+                                 'buttonname' => 'Go!',
                                  'cardlink'   => '/inventory'])
 
       @endcomponent
@@ -23,7 +23,7 @@
       @component('../inc/card', ['imgpath'    => '/img/chartsandgraphs.jpg',
                                  'cardtitle'  => 'Reporting', 
                                  'cardtext'   => 'Keep track of what was.', 
-                                 'buttonname' => 'Go!'
+                                 'buttonname' => 'Go!',
                                  'cardlink'   => '#'])
 
       @endcomponent
