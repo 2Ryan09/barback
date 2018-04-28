@@ -16,11 +16,6 @@ class PageController extends Controller
         return view('pages.about');
     }
 
-    public function welcome()
-    {
-        return view('pages.welcome');
-    }
-
     public function inventory()
     {
         return view('pages.inventory');
