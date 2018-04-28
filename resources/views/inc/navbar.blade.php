@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light" id="main-nav" style="background-color:  #F0F0F0">
+<nav class="navbar navbar-expand-lg navbar-light" id="main-nav" style="background-color:  #F0F0F0; opacity: 0.9;">
   <div class="container-fluid">
     <div class="navbar-brand">
       <img src="/img/dhgc.png" href="/" style="width:100px;height:100px;">
