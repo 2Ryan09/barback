@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', 'PageController@dashboard');
+Route::get('/', 'PageController@welcome');
 
 Route::get('/about', 'PageController@about');
 
@@ -22,3 +22,5 @@ Route::get('/inventory', 'PageController@inventory');
 Route::get('/api/32656', 'LCBOController@getProductInfo');
 
 Auth::routes();
+
+Route::get('/dashboard', 'PageController@dashboard');
