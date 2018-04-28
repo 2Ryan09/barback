@@ -28,6 +28,8 @@
 
         <div class="row" style="padding-top: 50px;"></div>
     </div>
+    
+    <script src="{{ asset('js/app.js') }}"></script>
 
       @include('inc.footer')
 
