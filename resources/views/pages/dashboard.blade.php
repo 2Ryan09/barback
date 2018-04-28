@@ -12,7 +12,7 @@
     <div class="col-sm-6">
       @component('../inc/card', ['imgpath'    => '/img/winebottles.jpg',
                                  'cardtitle'  => 'Inventory', 
-                                 'cardtext'   => 'Keep track of what's here.', 
+                                 'cardtext'   => "Keep track of what's here.", 
                                  'buttonname' => 'Go!'])
 
       @endcomponent
