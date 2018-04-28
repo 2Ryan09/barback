@@ -4,9 +4,9 @@
   <div class="card-body">
     <h5 class="card-title">{{ $cardtitle }}</h5>
 
-    <p class="card-text">{{{ $cardtext}}}</p>
+    <p class="card-text">{{ $cardtext}}</p>
 
-    <a href="#" class="btn btn-outline-secondary">{{ $buttonname }}</a>
+    <a href="{{ $cardlink }}" class="btn btn-outline-secondary">{{ $buttonname }}</a>
 
   </div>
 </div>
