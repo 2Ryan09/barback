@@ -29,7 +29,7 @@
 
       </main>
 
-      <footer class="mastfoot mt-auto">
+      <footer class="mastfoot mt-auto" style="background-color: #F0F0F0; opacity: 0.9;">
 		@include('inc.footer')
       </footer>
     </div>
