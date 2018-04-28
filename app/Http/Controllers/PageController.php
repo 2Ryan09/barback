@@ -6,9 +6,9 @@ use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
-    public function dashboard()
+    public function welcome()
     {
-        return view('pages.dashboard');
+        return view('pages.welcome');
     }
 
     public function about()
@@ -24,5 +24,10 @@ class PageController extends Controller
     public function inventory()
     {
     	return view('pages.inventory');
+    }
+  
+    public function dashboard() 
+    {
+    	return view('pages.dashboard');
     }
 }

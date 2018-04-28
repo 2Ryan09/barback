@@ -1,25 +1,15 @@
-<!doctype html>
-<html lang="{{ app()->getLocale() }}">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
-        <script>window.Laravel = { csrfToken: '{{ csrf_token() }}' }</script>
+@extends('layouts.dashboard')
 
-        <title>Laravel</title>
+@section('content')
+<div class="container">
+  <h1 style="font-family: 'Bellefair', serif; font-size: light; text-align: center">
+    Welcome to {{ env('CLUB_NAME') }} {{ env('APP_NAME', 'Barback') }}.
+  </h1>
+    <p style="font-family: 'Cormorant Garamond', serif;">
+      Barback is your place to look beyond the bar.
+    </p>
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
-    </head>
-
-    <body>
-      <div id="app">
-        <div class="container">
-            <articles></articles>
-        </div>
-      </div>
-
-      <script src="{{ asset('js/app.js') }}"></script>
-    </body>
-</html>
+    <a href="#" class="btn btn-lg btn-outline-secondary">Enter.</a>
+  </p>
+</div>
+@endsection

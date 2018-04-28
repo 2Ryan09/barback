@@ -16,25 +16,22 @@
 
     </head>
     <body>
-    <div class="container-fluid">
 
-        <header class="row">
-           @include('inc.navbar')
-        </header>
+    <header class="row">
+      @include('inc.navbar')
+    </header>
 
+    <div class="container">
         <div id="main" class="row">
-
             @yield('content')
-
         </div>
 
-        <footer class="row">
-            @include('inc.footer')
-        </footer>
-
+        <div class="row" style="padding-top: 50px;"></div>
     </div>
     
     <script src="{{ asset('js/app.js') }}"></script>
+
+      @include('inc.footer')
 
     </body>
 </html>
