@@ -7,8 +7,8 @@ use GuzzleHttp\Client;
 
 class LCBOController extends Controller
 {
-	public function __construct()
-	{
+    public function __construct()
+    {
         $this->client = new Client([
             'base_uri' => 'http://lcboapi.com/products/',
         ]);
@@ -20,5 +20,5 @@ class LCBOController extends Controller
     public function getProductInfo($productID)
     {
         $response = $this->client->request('GET', $productID, ['headers' => $this->headers]);
-     }
+    }
 }

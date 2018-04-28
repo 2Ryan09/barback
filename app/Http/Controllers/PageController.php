@@ -18,16 +18,16 @@ class PageController extends Controller
 
     public function welcome()
     {
-    	return view('pages.welcome');
+        return view('pages.welcome');
     }
 
     public function inventory()
     {
-    	return view('pages.inventory');
+        return view('pages.inventory');
     }
   
-    public function dashboard() 
+    public function dashboard()
     {
-    	return view('pages.dashboard');
+        return view('pages.dashboard');
     }
 }
