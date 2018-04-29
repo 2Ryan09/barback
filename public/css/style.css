@@ -4,8 +4,25 @@
     }
 }
 
+body, html {
+    height: 100%;
+}
+
+body { 
+    background: url('/img/hangingglasses.jpg');
+    background-size: cover;
+}
+
 .card-img-top {
   height=249px;
+}
+
+.cover-heading {
+  font-family: 'Bellefair', serif; 
+  color: white; 
+  -webkit-text-stroke: 1px #006600; 
+  font-size: 72pt; 
+  text-shadow: 3px 3px black;
 }
 
 #main-nav {

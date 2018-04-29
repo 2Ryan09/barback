@@ -1,15 +1,46 @@
-@extends('layouts.dashboard')
 
-@section('content')
-<div class="container">
-  <h1 style="font-family: 'Bellefair', serif; font-size: light; text-align: center">
-    Welcome to {{ env('CLUB_NAME') }} {{ env('APP_NAME', 'Barback') }}.
-  </h1>
-    <p style="font-family: 'Cormorant Garamond', serif;">
-      Barback is your place to look beyond the bar.
-    </p>
+<!doctype html>
+<html lang="en">
+  <head>
+  	@include('inc.head')
+  </head>
 
-    <a href="#" class="btn btn-lg btn-outline-secondary">Enter.</a>
-  </p>
-</div>
-@endsection
+  <body class="text-center">
+
+    <div class="cover-container d-flex h-100 mx-auto flex-column">
+      <header class="masthead mb-auto">
+      	@include('inc.navbar')
+      </header>
+
+      <main role="main" class="inner cover">
+        <h1 class="cover-heading">
+          Welcome to {{ env('CLUB_NAME') }} {{ env('APP_NAME', 'Barback') }}.
+        </h1>
+
+        <p class="lead" style="font-family: 'Bellefair', serif; color: white; text-shadow: 2px 2px black;">
+          Peek beyond the bar.
+        </p>
+
+        <p class="lead">
+          <a href="#" class="btn btn-lg btn-secondary" style="font-family: 'Bellefair', serif; color: #006600; background-color: white;">
+            Enter.
+          </a>
+        </p>
+
+      </main>
+
+      <footer class="mastfoot mt-auto" style="background-color: #F0F0F0; opacity: 0.9;">
+		@include('inc.footer')
+      </footer>
+    </div>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../../../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+    <script src="../../../../assets/js/vendor/popper.min.js"></script>
+    <script src="../../../../dist/js/bootstrap.min.js"></script>
+  </body>
+</html>
