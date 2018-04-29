@@ -10,9 +10,9 @@ class LCBOController extends Controller
 {
     public function __construct()
     {
-        $this->base_url = 'https://lcboapi.com/products'; 
-        $this->headers = ['Content-Type' => 'application/json', 
-                       'Accept' =>  'application/json', 
+        $this->base_url = 'https://lcboapi.com/products';
+        $this->headers = ['Content-Type' => 'application/json',
+                       'Accept' =>  'application/json',
                        'Authorization' => 'Token MDowZWI0NTNmNC00NGJjLTExZTgtYjY4OS04ZmZmYjQyODM5NmU6M2tKTGFEOU1YR05mbkN5QXd2Z3FQQVo3anVsaHNPamtvbXhQ'
         ];
 
