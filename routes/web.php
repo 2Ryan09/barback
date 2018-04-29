@@ -26,5 +26,3 @@ Route::post('/inventory/bws', 'LCBOController@getQueried')->name('queryReturn');
 Auth::routes();
 
 Route::get('/dashboard', 'PageController@dashboard');
-
-Route::post('/test', 'LCBOController@getQueried');
