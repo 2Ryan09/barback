@@ -21,7 +21,7 @@ Route::get('/inventory', 'PageController@inventory');
 
 Route::get('/inventory/bws', 'PageController@bws');
 
-Route::get('/api/32656', 'LCBOController@getProductInfo');
+Route::post('/inventory/bws', 'LCBOController@getQueried')->name('queryReturn');
 
 Auth::routes();
 
