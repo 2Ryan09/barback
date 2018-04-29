@@ -22,16 +22,12 @@ class LCBOController extends Controller
                             ]);
     }
     
-    public function getProductInfo($productID)
-    {
-    }
-
     public function getQueried(Request $request)
     {
         $search = str_replace(" ", "+", $request->input('query'));
 
         $response = $this->client->request('GET', $this->base_url . "?q=" . $search);
 
-        return view('/inventory/bws', ['result' => json_decode($response->getBody())->result]);
+        return \View::make("pages.bws")->with(array('items'=>json_decode($response->getBody())->result));
     }
 }

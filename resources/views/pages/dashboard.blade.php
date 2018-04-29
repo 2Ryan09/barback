@@ -10,7 +10,7 @@
 
   <div class="row">
     <div class="col-sm-6">
-      @component('../inc/card', ['imgpath'    => '/img/winebottles.jpg',
+      @component('inc.card', ['imgpath'    => '/img/winebottles.jpg',
                                  'cardtitle'  => 'Inventory', 
                                  'cardtext'   => "Keep track of what's here.", 
                                  'buttonname' => 'Go!',
@@ -20,7 +20,7 @@
     </div>
 
     <div class="col-sm-6">
-      @component('../inc/card', ['imgpath'    => '/img/chartsandgraphs.jpg',
+      @component('inc.card', ['imgpath'    => '/img/chartsandgraphs.jpg',
                                  'cardtitle'  => 'Reporting', 
                                  'cardtext'   => 'Keep track of what was.', 
                                  'buttonname' => 'Go!',
