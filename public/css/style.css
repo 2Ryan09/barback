@@ -8,11 +8,6 @@ body, html {
     height: 100%;
 }
 
-body { 
-    background: url('/img/hangingglasses.jpg');
-    background-size: cover;
-}
-
 .card-img-top {
   height=249px;
 }

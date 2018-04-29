@@ -1,11 +1,10 @@
-
 <!doctype html>
 <html lang="en">
   <head>
   	@include('inc.head')
   </head>
 
-  <body class="text-center">
+  <body class="text-center" style="background: url('/img/hangingglasses.jpg'); background-size: cover;">
 
     <div class="cover-container d-flex h-100 mx-auto flex-column">
       <header class="masthead mb-auto">
