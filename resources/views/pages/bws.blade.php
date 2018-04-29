@@ -2,10 +2,7 @@
 
 @section('content')
 <nav id="sidenav" style="padding-top: 150px;">
-  <form action="{{ route('queryReturn') }}" method="post">
-
-  	 {{ csrf_field() }}
-
+  <form action="{{ action('LCBOController@getQueried') }}" method="post">
     Keywords: <input type="text" name="query"><br>
     <input type="submit">
   </form>
