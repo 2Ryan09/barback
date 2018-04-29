@@ -13,15 +13,15 @@
         <!-- Styles -->
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <link href="{{ asset('css/style.css') }}" rel="stylesheet"/>
-
     </head>
+    
     <body>
 
     <header class="row">
       @include('inc.navbar')
     </header>
 
-    <div class="container">
+    <div class="container-fluid">
         <div id="main" class="row">
             @yield('content')
         </div>
