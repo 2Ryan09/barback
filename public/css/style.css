@@ -4,12 +4,14 @@
     }
 }
 
-#footer {
-    margin: 2px auto 0 auto;
+.card-img-top {
+  height=249px;
 }
 
 #main-nav {
   width: 100%;
+  position: fixed;
+  z-index: 500;
 }
 
 .navbar-brand {
@@ -27,5 +29,36 @@
 }
 
 .navbar-toggle {
-    z-index:3;
+  z-index:3;
+}
+
+.sidenav {
+  width: 200px;
+  font-family: 'Bellefair', serif;
+  z-index: 1;
+  top: 20px;
+  left: 10px;
+  background: #F0F0F0;
+  overflow-x: hidden;
+  padding: 8px 0;
+}
+
+.sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 18px;
+  color: #2196F3;
+  display: block;
+}
+
+.sidenav a:hover {
+  color: #064579;
+}
+
+.main {
+  padding-top: 150px;
+}
+
+.sidebar-search {
+  width: 200px; !important
 }

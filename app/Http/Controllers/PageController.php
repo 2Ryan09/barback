@@ -15,4 +15,14 @@ class PageController extends Controller
     {
         return view('pages.about');
     }
+
+    public function inventory()
+    {
+    	return view('pages.inventory');
+    }
+
+    public function bws()
+    {
+    	return view('pages.bws');
+    }
 }
