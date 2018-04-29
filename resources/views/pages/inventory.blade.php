@@ -3,20 +3,17 @@
 @section('content')
   <div class="sidenav">
     <div class="container" style="padding-top: 150px; position: fixed;">
-      <div class="col-xs-2">
-        <form class="form-inline">
-          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="sidebar-search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          External
+        </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item" href="/inventory/bws">BWS Library</a>
+        <a class="dropdown-item" href="#">Another action</a>
+        <a class="dropdown-item" href="#">Something else here</a>
       </div>
 
-      <a href="#about">About</a>
-
-      <a href="#services">Services</a>
-
-      <a href="#clients">Clients</a>
-
-      <a href="#contact">Contact</a>
+      </div>
 
     </div>
   </div>

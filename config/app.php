@@ -168,6 +168,7 @@ return [
          * Package Service Providers...
          */
         Spatie\Permission\PermissionServiceProvider::class,
+        GuzzleHttp\Client::class,
 
         /*
          * Application Service Providers...

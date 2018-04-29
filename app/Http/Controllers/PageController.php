@@ -25,4 +25,9 @@ class PageController extends Controller
     {
         return view('pages.dashboard');
     }
+
+    public function bws()
+    {
+        return view('pages.bws');
+    }
 }
