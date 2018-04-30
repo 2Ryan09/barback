@@ -1,37 +1,18 @@
-ircleCI 2.0 configuration file
-#
-# Check https://circleci.com/docs/2.0/language-php/ for more details
-#
 version: 2
 jobs:
   build:
     docker:
-      # specify the version you desire here
-      - image: circleci/php:7.1.5-browsers
-      
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
-      # - image: circleci/mysql:9.4
+      - image: circleci/node:7.10
 
-    working_directory: ~/repo
+    working_directory: ~/master
 
     steps:
       - checkout
-
-      # Download and cache dependencies
-      - restore_cache:
-          keys:
-          - v1-dependencies-{{ checksum "composer.json" }}
-          # fallback to using the latest cache if no exact match is found
-          - v1-dependencies-
-
-      - run: composer install -n --prefer-dist
-
-      - save_cache:
-          paths:
-            - ./vendor
-          key: v1-dependencies-{{ checksum "composer.json" }}
-        
-      # run tests!
-      - run: phpunit
+      - run: git config --global user.name "$GIT_USERNAME" && git config --global user.email "$GIT_EMAIL"
+      - run: cd .. && git clone "$CIRCLE_REPOSITORY_URL" gh-pages && cd gh-pages && git checkout gh-pages && rm -r *
+      - run: sudo npm install apidoc -g
+      - run: cd .. && apidoc -i master -o gh-pages
+      - run: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+            cd ../gh-pages && git add -A && git commit -m "Update API documentation" || true && git push https://$GH_TOKEN@github.com/RoboJackets/apiary gh-pages || true
+            fi
