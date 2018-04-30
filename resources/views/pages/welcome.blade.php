@@ -4,14 +4,14 @@
   	@include('inc.head')
   </head>
 
-  <body class="text-center" style="background: url('/img/hangingglasses.jpg'); background-size: cover; height: 100%;">
+  <body class="text-center" style="background: url('/img/hangingglasses.jpg'); background-size: cover; height: 100%;>
 
     <div class="cover-container d-flex h-100 mx-auto flex-column">
       <header class="masthead mb-auto">
       	@include('inc.navbar')
       </header>
 
-      <main role="main" class="inner cover">
+      <main role="main" class="inner cover" style="padding-top: 150px;">
         <h1 class="cover-heading">
           Welcome to {{ env('CLUB_NAME') }} {{ env('APP_NAME', 'Barback') }}.
         </h1>
@@ -29,7 +29,7 @@
       </main>
 
       <footer class="mastfoot mt-auto" style="background-color: #F0F0F0; opacity: 0.9;">
-		@include('inc.footer')
+		    @include('inc.footer')
       </footer>
     </div>
 
