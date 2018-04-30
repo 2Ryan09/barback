@@ -54,6 +54,21 @@ return [
             'engine' => null,
         ],
 
+        'mysql2' => [
+            'driver' => 'mysql',
+            'host' => env('BWS_DB_HOST', '127.0.0.1'),
+            'port' => env('BWS_DB_PORT', '3306'),
+            'database' => env('BWS_DB_DATABASE', 'forge'),
+            'username' => env('BWS_DB_USERNAME', 'forge'),
+            'password' => env('BWS_DB_PASSWORD', ''),
+            'unix_socket' => env('BWS_DB_SOCKET', ''),
+            'charset' => 'utf8mb4',
+            'collation' => 'utf8mb4_unicode_ci',
+            'prefix' => '',
+            'strict' => true,
+            'engine' => null,
+        ],
+
         'pgsql' => [
             'driver' => 'pgsql',
             'host' => env('DB_HOST', '127.0.0.1'),
