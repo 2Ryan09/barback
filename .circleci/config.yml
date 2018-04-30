@@ -8,6 +8,7 @@ jobs:
     working_directory: ~/laravel
     steps:
       - checkout
+      - run: sudo apt-get update
       - run: sudo apt install -y mysql-client
       - run: sudo composer self-update
       - restore_cache:
