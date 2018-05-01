@@ -31,7 +31,7 @@ class Wine extends Model
     protected $dates = ['deleted_at'];
 
     /**
-     * Create new Wine entry
+     * Create new wine entry
      *
      * @param Request $request
      * @return Response
