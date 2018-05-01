@@ -13,6 +13,9 @@
         <!-- Styles -->
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <link href="{{ asset('css/style.css') }}" rel="stylesheet"/>
+
+        <title>{{ env('APP_NAME', 'Barback') }} Inventory</title>
+        
     </head>
     
     <body>

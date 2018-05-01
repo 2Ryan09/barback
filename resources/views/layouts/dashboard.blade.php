@@ -15,6 +15,9 @@
         <link href="{{ asset('css/style.css') }}" rel="stylesheet"/>
 
     </head>
+
+    <title>@yield('title')</title>
+
     <body>
 
     <header class="row">
