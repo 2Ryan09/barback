@@ -30,4 +30,11 @@ class LCBOController extends Controller
 
         return \View::make("pages.bws")->with(array('items'=>json_decode($response->getBody())->result));
     }
+
+    public function addItem(Request $request)
+    {
+        $item = $request->input('item');
+
+        dd($item);
+    }
 }

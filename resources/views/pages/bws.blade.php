@@ -25,7 +25,10 @@
 				  <div class="card-body">
 				    <p>{{ $items[$i]->name }}</p>
 
-				    <a href="#" class="btn btn-outline-secondary">Add!</a>
+				    <form action="{{ route('addItem', ['item' => $item[$i] ]) }}" method="post">
+				    	<input type="submit">
+				    </form>
+
 				  </div>
 				</div>
 		    </div>
