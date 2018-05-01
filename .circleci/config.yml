@@ -12,7 +12,6 @@ jobs:
       - run: sudo apt install -y mysql-client
       - run: sudo composer self-update
       - run: sudo composer update
-      - run: sudo npm update
       - run: php artisan migrate --env=testing --database='mysql2' --force
       - run: ./vendor/bin/codecept build
       - run: ./vendor/bin/codecept run
