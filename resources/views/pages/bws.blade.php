@@ -2,15 +2,19 @@
 
 @section('content')
 
-<nav id="sidenav" style="padding-top: 150px;">
-  <form action="{{ action('LCBOController@getQueried') }}" method="post">
+<div class="sidenav">
+  <div class="container" style="padding-top: 150px; position: fixed;">
+    <form action="{{ action('LCBOController@getQueried') }}" method="post">
 
-  	 {{ csrf_field() }}
+  	  {{ csrf_field() }}
 
-    Keywords: <input type="text" name="query"><br>
-    <input type="submit">
-  </form>
-</nav>
+      Keywords: <input type="text" name="query" style="width: 40%"><br>
+      <input type="submit">
+    </form>
+  </div>
+</div>
+
+
 
 <div class="container-fluid" style="padding-top: 150px; float: right; width: 80%;">
   <div class="card-group">
@@ -46,12 +50,12 @@
 
 								    <div class="form-group">
 								      {!! Form::label('name', 'Name') !!}
-								      {!! Form::text('name', '', ['class' => 'form-control']) !!}
+								      {!! Form::text('name', $items[$i]->name, ['class' => 'form-control']) !!}
 								    </div>
 
 								    <div class="form-group">
 								      {!! Form::label('origin', 'Origin') !!}
-								      {!! Form::text('origin', '', ['class' => 'form-control']) !!}
+								      {!! Form::text('origin', $items[$i]->origin, ['class' => 'form-control']) !!}
 								    </div>
 					        </div>
 					    </div>
