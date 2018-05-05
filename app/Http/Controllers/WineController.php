@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class WineController extends Controller
 {
-        /**
+    /**
      * Create new wine entry
      *
      * @param Request $request
