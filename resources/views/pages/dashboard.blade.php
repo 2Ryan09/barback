@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-<div class="container" id="app">
+<div class="container" id="app" style="padding-top: 150px;">
   <div class="row">
     <div class="col-12">
       <h1 class="my-4">Dashboard</h1>
