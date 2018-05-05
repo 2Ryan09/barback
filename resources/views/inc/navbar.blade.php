@@ -31,7 +31,7 @@
       </ul>
     </div>
 
-    <ul class="nav navbar-nav navbar-right">
+    <ul class="nav navbar-nav navbar-right" style="text-align: center;">
       @auth
 
       <li>

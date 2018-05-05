@@ -1,5 +1,9 @@
 @extends('layouts.dashboard')
 
+@section('title')
+  {{ env('APP_NAME', 'Barback') }}
+@endsection
+
 @section('content')
 <div class="container" id="app">
   <div class="row">
