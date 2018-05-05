@@ -2,6 +2,9 @@
 <html lang="en">
   <head>
   	@include('inc.head')
+
+    <title>{{ env('APP_NAME', 'Barback') }}</title>
+    
   </head>
 
   <body class="text-center" style="background: url('/img/hangingglasses.jpg'); background-size: cover; height: 100%;>
