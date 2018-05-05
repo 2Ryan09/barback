@@ -6,14 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Beer extends Model
 {
-	use SoftDeletes;
+    use SoftDeletes;
 
-	/**
-	 * The table associated with the model
-	 *
-	 * @var string
-	 */
-	protected $table = 'Extraneous';
+    /**
+     * The table associated with the model
+     *
+     * @var string
+     */
+    protected $table = 'Extraneous';
     /**
      * Change primary id
      *

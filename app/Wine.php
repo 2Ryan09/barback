@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Wine extends Model
 {
-	use SoftDeletes;
+    use SoftDeletes;
 
     /**
      * Change primary id
