@@ -16,7 +16,7 @@
 
       <main role="main" class="inner cover" style="padding-top: 150px;">
         <h1 class="cover-heading">
-          Welcome to {{ env('CLUB_NAME') }} {{ env('APP_NAME', 'Barback') }}.
+          Welcome to {{ env('CLUB_NAME_SHORT') }} {{ env('APP_NAME', 'Barback') }}.
         </h1>
 
         <p class="lead" style="font-family: 'Bellefair', serif; color: white; text-shadow: 2px 2px black;">

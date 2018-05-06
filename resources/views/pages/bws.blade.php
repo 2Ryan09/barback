@@ -4,11 +4,11 @@
 
 <div class="sidenav">
   <div class="container" style="padding-top: 150px; position: fixed;">
-    <form action="{{ action('LCBOController@getQueried') }}" method="post">
+    <form action="{{ action('LCBOController@getQueried') }}" method="post" style="width: 50%;">
 
   	  {{ csrf_field() }}
 
-      Keywords: <input type="text" name="query" style="width: 40%"><br>
+      <input type="text" name="query" placeholder="New Item"style="width: 40%">
       <input type="submit">
     </form>
   </div>
