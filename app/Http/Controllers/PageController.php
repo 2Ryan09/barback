@@ -18,16 +18,16 @@ class PageController extends Controller
 
     public function inventory()
     {
-        return view('pages.inventory');
+        return view('pages.inventory.inventory');
     }
   
     public function dashboard()
     {
-        return view('pages.dashboard');
+        return view('pages.dashboard.dashboard');
     }
 
     public function bws()
     {
-        return view('pages.bws');
+        return view('pages.inventory.bws');
     }
 }

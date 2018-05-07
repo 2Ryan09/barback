@@ -24,7 +24,7 @@
               @include('inc.navbar')
             </header>
 
-            <div class="container">
+            <div class="container-fluid">
                 <div id="main" class="row">
                     @yield('content')
                 </div>

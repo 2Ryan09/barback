@@ -3,7 +3,7 @@
 @section('content')
 <div class="sidenav">
   <div class="col-lg-6" style="padding-top: 150px; position: fixed;">
-    <form class="form-inline" method="GET" action="{{ action('InventoryController@search') }}" accept-charset="UTF-8">
+    <form class="form-inline" method="GET" action="#" accept-charset="UTF-8">
       <div class="form-group">
         <div class="input-group">
           <input type="text" class="form-control" placeholder="Search">
