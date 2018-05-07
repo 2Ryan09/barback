@@ -3,9 +3,40 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests;
+use App\Wine;
+use App\Http\Resources\WineCollection;
 
 class WineController extends Controller
 {
+    /**
+     * Display a listing of the resource
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        // Get wines
+        $wines = Wine::paginate(20 );
+
+        // Return collection of wines as a resource
+        return WineCollection::collection($wines);
+    }
+    /**
+     * Display the specified resource
+     *
+     * @param int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        // Get a single wine
+        $wine = Wine::findOrFail($id);
+
+        // Return the single wine as a resource
+        return new WineCollection($wine);
+    }
+
     /**
      * Create new wine entry
      *

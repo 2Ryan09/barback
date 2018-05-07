@@ -17,6 +17,14 @@ class Wine extends Model
     protected $primaryKey = 'bbid';
 
     /**
+     * Set to use barback_bws database
+     *
+     * @var barback_bws database
+     **/
+    protected $connection = 'mysql2';
+    protected $table = 'Wines';
+
+    /**
      * The attributes that aren't mass assignable
      *
      * @var array of attributes

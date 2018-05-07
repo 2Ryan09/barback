@@ -16,3 +16,14 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+// List wines
+Route::get('wines', 'WineController@index');
+// List single wine
+Route::get('wine/{id}', 'WineController@show');
+// Create new wine
+Route::post('wine', 'WineController@store');
+// Update wine
+Route::put('wine', 'WineController@store');
+// Delete wine
+Route::delete('wines', 'WineController@destroy'); 
