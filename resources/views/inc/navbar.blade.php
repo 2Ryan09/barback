@@ -8,12 +8,8 @@
       {{ env('CLUB_NAME') }}
     </div>
 
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="navbar-nav">
+      <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
           <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
         </li>
@@ -27,28 +23,31 @@
             <a class="nav-link" href="/dashboard">Dashboard</a>
           </li>
         @endcan
+      </ul>
 
+      <ul class="nav navbar-nav navbar-right" style="text-align: center;">
+        @auth
+
+        <li>
+          <a class="navbar-text" style="font-size: 12pt;"> Welcome, {{ Auth::user()->name }}! </a>
+        </li>
+
+        <li>
+          <a class="navbar-link" href="{{ Auth::logout() }}"> Logout</a>
+        </li>
+
+        @else
+
+        <li>
+          <a class="navbar-link" href="{{ route('login') }}">Login</a>
+        </li>
+
+        @endauth
       </ul>
     </div>
 
-    <ul class="nav navbar-nav navbar-right" style="text-align: center;">
-      @auth
-
-      <li>
-        <a class="navbar-text" style="font-size: 12pt;"> Welcome, {{ Auth::user()->name }}! </a>
-      </li>
-
-      <li>
-        <a class="navbar-link" href="{{ Auth::logout() }}"> Logout</a>
-      </li>
-
-      @else
-
-      <li>
-        <a class="navbar-link" href="{{ route('login') }}">Login</a>
-      </li>
-
-      @endauth
-    </ul>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
   </div>
 </nav>

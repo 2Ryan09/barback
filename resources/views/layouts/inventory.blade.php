@@ -8,13 +8,11 @@
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+        <title>{{ config('app.name', 'Barback') }} Inventory</title>
 
         <!-- Styles -->
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <link href="{{ asset('css/style.css') }}" rel="stylesheet"/>
-
-        <title>{{ env('APP_NAME', 'Barback') }} Inventory</title>
         
     </head>
     
@@ -32,9 +30,18 @@
         <div class="row" style="padding-top: 50px;"></div>
     </div>
     
-    <script src="{{ asset('js/app.js') }}"></script>
+      <footer class="mastfoot mt-auto" style="background-color: #F0F0F0; opacity: 0.9; position: fixed; bottom: 0; width: 100%; text-align: center;">
+            @include('inc.footer')
+      </footer>
+    </div>
 
-      @include('inc.footer')
 
-    </body>
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../../../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+    <script src="../../../../assets/js/vendor/popper.min.js"></script>
+    <script src="../../../../dist/js/bootstrap.min.js"></script>
+  </body>
 </html>

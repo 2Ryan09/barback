@@ -1,10 +1,10 @@
-@extends('layouts.inventory')
+@extends('layouts.app')
 
 @section('content')
 
 <div class="sidenav">
   <div class="container" style="padding-top: 150px; position: fixed;">
-    <form action="{{ action('LCBOController@getQueried') }}" method="post" style="width: 50%;">
+    <form action="{{ action('LCBOController@getQueried') }}" method="get" style="width: 50%;">
 
   	  {{ csrf_field() }}
 
