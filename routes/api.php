@@ -16,3 +16,16 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::group(['prefix' => 'bws/'], function() {
+	 // List bottles
+	 Route::get('bottles', 'BottleController@index');
+     // List single bottle	  
+	 Route::get('bottle/{id}', 'BottleController@show');
+     // Create new bottle
+	 Route::post('bottle', 'BottleController@store');
+	 // Update bottle
+	 Route::put('bottle', 'BottleController@store');
+	 // Delete bottle
+	 Route::delete('bottles', 'BottleController@destroy');
+});
