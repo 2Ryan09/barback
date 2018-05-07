@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
-class WineCollection extends ResourceCollection
+class BottleCollection extends ResourceCollection
 {
     /**
      * Transform the resource collection into an array.

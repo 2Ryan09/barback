@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Wine extends Model
+class Bottle extends Model
 {
     use SoftDeletes;
 
@@ -17,12 +17,18 @@ class Wine extends Model
     protected $primaryKey = 'bbid';
 
     /**
+     * Change table to be modeled
+     *
+     * @var table name
+     **/
+    protected $table = 'Bottles';
+
+    /**
      * Set to use barback_bws database
      *
      * @var barback_bws database
      **/
     protected $connection = 'mysql2';
-    protected $table = 'Wines';
 
     /**
      * The attributes that aren't mass assignable
