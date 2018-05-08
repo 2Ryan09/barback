@@ -63,15 +63,13 @@ Route::group(['prefix' => 'v1.0/'], function() {
 	 Route::delete('orders', 'OrderController@destroy');
 });
 
-Route::group(['prefix' => 'bws/'], function() {
-	 // List bottles
-	 Route::get('bottles', 'BottleController@index');
-     // List single bottle	  
-	 Route::get('bottle/{id}', 'BottleController@show');
-     // Create new bottle
-	 Route::post('bottle', 'BottleController@store');
-	 // Update bottle
-	 Route::put('bottle', 'BottleController@update');
-	 // Delete bottle
-	 Route::delete('bottles', 'BottleController@destroy');
-});
+ // List bottles
+ Route::get('bottles', 'BottleController@index');
+ // List single bottle	  
+ Route::get('bottle/{id}', 'BottleController@show');
+ // Create new bottle
+ Route::post('bottle', 'BottleController@store');
+ // Update bottle
+ Route::put('bottle', 'BottleController@update');
+ // Delete bottle
+ Route::delete('bottles', 'BottleController@destroy');

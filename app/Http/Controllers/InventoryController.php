@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Inventory;
 use Illuminate\Http\Request;
 use App\Http\Requests;
-use App\Http\Resources\InventoryCollection;
+use App\Http\Resources\Inventory as InventoryResource;
 
 class InventoryController extends Controller
 {
@@ -20,7 +20,7 @@ class InventoryController extends Controller
         $inventory = Inventory::paginate(20);
 
         // Return the inventory as a resource
-        return InventoryCollection::collection($inventory);
+        return InventoryResource::collection($inventory);
     }
 
     /**

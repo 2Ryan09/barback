@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateNonAlcoholicsTable extends Migration
+class CreateInventoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateNonAlcoholicsTable extends Migration
      */
     public function up()
     {
-        Schema::create('non-_alcoholics', function (Blueprint $table) {
+        Schema::create('inventories', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
         });
@@ -26,6 +26,6 @@ class CreateNonAlcoholicsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('non-_alcoholics');
+        Schema::dropIfExists('inventories');
     }
 }
