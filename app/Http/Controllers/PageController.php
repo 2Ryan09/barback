@@ -30,4 +30,9 @@ class PageController extends Controller
     {
         return view('pages.inventory.bws');
     }
+
+    public function test()
+    {
+        return view('pages.test');
+    }
 }

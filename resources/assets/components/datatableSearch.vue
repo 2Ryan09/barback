@@ -1,17 +1,17 @@
-  <template>
-    <div class="filter-bar ui basic segment grid">
-      <div class="ui form">
-        <div class="inline field">
+<template>
+    <div class="filter-bar">
+      <form class="form-inline">
+        <div class="form-group">
           <label>Search for:</label>
-          <input type="text" v-model="filterText" class="three wide column" @keyup.enter="doFilter" placeholder="name, nickname, or email">
-          <button class="ui primary button" @click="doFilter">Go</button>
-          <button class="ui button" @click="resetFilter">Reset</button>
+          <input type="text" v-model="filterText" class="form-control" @keyup.enter="doFilter" placeholder="name, nickname, or email">
+          <button class="btn btn-primary" @click.prevent="doFilter">Go</button>
+          <button class="btn" @click.prevent="resetFilter">Reset</button>
         </div>
-      </div>
+      </form>
     </div>
-  </template>
+</template>
 
-  <script>
+<script>
   export default {
     data () {
       return {
@@ -23,9 +23,14 @@
         this.$events.fire('filter-set', this.filterText)
       },
       resetFilter () {
-        this.filterText = ''  // clear the text in text input
+        this.filterText = ''
         this.$events.fire('filter-reset')
       }
     }
   }
 </script>
+<style>
+.filter-bar {
+  padding: 10px;
+}
+</style>
