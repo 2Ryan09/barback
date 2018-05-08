@@ -1,25 +1,26 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="sidenav">
+<div class="sidenav" style="float: left;">
   <div class="col-lg-6" style="padding-top: 150px; position: fixed;">
-    <form class="form-inline" method="GET" action="#" accept-charset="UTF-8">
-      <div class="form-group">
-        <div class="input-group">
-          <input type="text" class="form-control" placeholder="Search">
-          <span class="input-group-btn">
-            <button class="btn btn-default" type="button">Go!</button>
-          </span>
-        </div>
-      </div>
-    </form>
+    Hello.
   </div>
 </div>
 
-<div class="col-sm-6">
-  <div class="main">
-    <h1 style="font-family: 'Bellefair', serif;">Inventory</h1>
-
-  </div>    
+<div style="padding: 10px; padding-top: 150px; overflow: auto;">
+  <h1 style="font-family: 'Bellefair', serif; font-weight: normal;">Inventory</h1>
+    <filter-bar></filter-bar>
+    <vuetable ref="vuetable"
+    api-url="https://vuetable.ratiw.net/api/users"
+    :fields="['name', 'email', 'birthdate', 'address.line1', 'address.line2', 'address.zipcode']"
+    ></vuetable>
 </div>
+@endsection
+
+@section('scripts')
+// vuetable-2 dependencies
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.2.6/vue.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.16.1/axios.min.js"></script>
+// vuetable-2
+<script src="https://unpkg.com/vuetable-2@1.6.0"></script>
 @endsection

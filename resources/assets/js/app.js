@@ -7,7 +7,14 @@
 
 require('./bootstrap');
 
-window.Vue = require('vue');
+var Vue = require('vue');
+var VueResource = require('vue-resource');
+Vue.use(VueResource);
+import VueEvents from 'vue-events'
+Vue.use(VueEvents)
+
+import Vuetable from 'vuetable-2/src/components/Vuetable.vue';
+import VuetablePagination from 'vuetable-2/src/components/VuetablePagination.vue';
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -15,7 +22,9 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
- Vue.component('articles', require('./components/articles.vue'));
+Vue.component('vuetable', Vuetable);
+Vue.component('vuetable-pagination', VuetablePagination);
+Vue.component('filter-bar', require('../components/datatableSearch.vue'));
 
 const app = new Vue({
     el: '#app'
