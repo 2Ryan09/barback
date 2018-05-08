@@ -39,7 +39,7 @@ return [
             'prefix' => '',
         ],
 
-        'mysql' => [
+        'inv' => [
             'driver' => 'mysql',
             'host' => env('DB_HOST', '127.0.0.1'),
             'port' => env('DB_PORT', '3306'),
@@ -54,7 +54,7 @@ return [
             'engine' => null,
         ],
 
-        'mysql2' => [
+        'bws' => [
             'driver' => 'mysql',
             'host' => env('BWS_DB_HOST', '127.0.0.1'),
             'port' => env('BWS_DB_PORT', '3306'),

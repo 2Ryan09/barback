@@ -28,7 +28,7 @@ class Inventory extends Model
      *
      * @var barback_bws database
      **/
-    protected $connection = 'mysql';
+    protected $connection = 'inv';
 
     /**
      * The attributes that aren't mass assignable

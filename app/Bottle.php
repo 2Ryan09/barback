@@ -28,7 +28,7 @@ class Bottle extends Model
      *
      * @var barback_bws database
      **/
-    protected $connection = 'mysql2';
+    protected $connection = 'bws';
 
     /**
      * The attributes that aren't mass assignable
