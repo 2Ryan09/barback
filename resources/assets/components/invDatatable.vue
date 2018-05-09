@@ -67,15 +67,20 @@ export default {
           sortField: 'name',
         },
         {
+          title: 'Year',
+          name: 'release_date',
+          sortField: 'release_date',
+          titleClass: 'text-center',
+          dataClass: 'text-center',
+          callback: 'formatDate|YYYY'
+        },
+        {
           name: 'origin',
           sortField: 'origin'
         },
         {
-          name: 'Release Date',
-          sortField: 'release_date',
-          titleClass: 'text-center',
-          dataClass: 'text-center',
-          callback: 'formatDate|DD-MM-YYYY'
+          name: 'varietal',
+          sortField: 'varietal'
         },
         {
           name: '__component:custom-actions',
@@ -120,18 +125,13 @@ export default {
     allcap (value) {
       return value.toUpperCase()
     },
-    genderLabel (value) {
-      return value === 'M'
-        ? '<span class="label label-success"><i class="glyphicon glyphicon-star"></i> Male</span>'
-        : '<span class="label label-danger"><i class="glyphicon glyphicon-heart"></i> Female</span>'
-    },
     formatNumber (value) {
       return accounting.formatNumber(value, 2)
     },
-    formatDate (value, fmt = 'D MMM YYYY') {
+    formatDate (value, fmt = 'YYYY') {
       return (value == null)
         ? ''
-        : moment(value, 'YYYY-MM-DD').format(fmt)
+        : moment(value, 'YYYY').format(fmt)
     },
     onPaginationData (paginationData) {
       this.$refs.pagination.setPaginationData(paginationData)
