@@ -65373,6 +65373,12 @@ __WEBPACK_IMPORTED_MODULE_5_vue___default.a.component('filter-bar', __WEBPACK_IM
     VuetablePagination: __WEBPACK_IMPORTED_MODULE_3_vuetable_2_src_components_VuetablePagination___default.a,
     VuetablePaginationInfo: __WEBPACK_IMPORTED_MODULE_4_vuetable_2_src_components_VuetablePaginationInfo___default.a
   },
+  props: {
+    apiUrl: {
+      type: String,
+      required: true
+    }
+  },
   data: function data() {
     return {
       fields: [{
@@ -71075,7 +71081,7 @@ var render = function() {
       _c("vuetable", {
         ref: "vuetable",
         attrs: {
-          "api-url": "/api/bottles",
+          "api-url": _vm.apiUrl,
           "data-path": "data",
           fields: _vm.fields,
           "pagination-path": "",

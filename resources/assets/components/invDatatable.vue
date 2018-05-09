@@ -2,7 +2,7 @@
   <div>
     <filter-bar></filter-bar>
     <vuetable ref="vuetable"
-      api-url="/api/bottles"
+      :api-url="apiUrl"
       data-path="data"
       :fields="fields"
       pagination-path=""
@@ -46,6 +46,12 @@ export default {
     Vuetable,
     VuetablePagination,
     VuetablePaginationInfo,
+  },
+  props: {
+    apiUrl: {
+      type: String,
+      required: true
+    }
   },
   data () {
     return {
