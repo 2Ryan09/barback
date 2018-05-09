@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Bottle;
-use App\Http\Resources\BottleCollection;
+use App\Http\Resources\Bottle as BottleResource;
+use Illuminate\Support\Facades\DB;
+
 
 class BottleController extends Controller
 {
@@ -16,12 +18,10 @@ class BottleController extends Controller
      */
     public function index()
     {
-        // Get bottles
-        $bottles = Bottle::paginate(20);
-
-        // Return collection of bottles as a resource
-        return BottleCollection::collection($bottles);
+        // Get articles
+        return Bottle::paginate(15);
     }
+
     /**
      * Display the specified resource
      *
