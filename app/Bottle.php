@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Bottle extends Model
 {
-    use SoftDeletes;
 
     /**
      * Change primary id

@@ -19,10 +19,7 @@ class BottleController extends Controller
     public function index()
     {
         // Get articles
-        $bottles = Bottle::paginate(15);
-
-        // Return collection of articles as a resource
-        return BottleResource::collection($bottles);
+        return Bottle::paginate(15);
     }
 
     /**

@@ -17,7 +17,7 @@ class InventoryController extends Controller
     public function index()
     {
         // Get the inventory
-        $inventory = Inventory::paginate(20);
+        $inventory = Inventory::all();
 
         // Return the inventory as a resource
         return InventoryResource::collection($inventory);

@@ -14,8 +14,9 @@ class CreateBottlesTable extends Migration
     public function up()
     {
         Schema::create('bottles', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('bbid');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

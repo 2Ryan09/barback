@@ -2,7 +2,8 @@
   <div>
     <filter-bar></filter-bar>
     <vuetable ref="vuetable"
-      api-url="http://vuetable.ratiw.net/api/users"
+      api-url="/api/bottles"
+      data-path="data"
       :fields="fields"
       pagination-path=""
       :css="css.table"
@@ -50,49 +51,25 @@ export default {
     return {
       fields: [
         {
-          name: '__sequence',
+          name: 'bbid',
           title: '#',
           titleClass: 'text-right',
           dataClass: 'text-right'
-        },
-        {
-          name: '__checkbox',
-          titleClass: 'text-center',
-          dataClass: 'text-center',
         },
         {
           name: 'name',
           sortField: 'name',
         },
         {
-          name: 'email',
-          sortField: 'email'
+          name: 'origin',
+          sortField: 'origin'
         },
         {
-          name: 'birthdate',
-          sortField: 'birthdate',
+          name: 'Release Date',
+          sortField: 'release_date',
           titleClass: 'text-center',
           dataClass: 'text-center',
           callback: 'formatDate|DD-MM-YYYY'
-        },
-        {
-          name: 'nickname',
-          sortField: 'nickname',
-          callback: 'allcap'
-        },
-        {
-          name: 'gender',
-          sortField: 'gender',
-          titleClass: 'text-center',
-          dataClass: 'text-center',
-          callback: 'genderLabel'
-        },
-        {
-          name: 'salary',
-          sortField: 'salary',
-          titleClass: 'text-center',
-          dataClass: 'text-right',
-          callback: 'formatNumber'
         },
         {
           name: '__component:custom-actions',
