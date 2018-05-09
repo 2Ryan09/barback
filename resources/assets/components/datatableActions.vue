@@ -3,11 +3,11 @@
       <button class="btn btn-sm" @click="$modal.show('edit')">
         <i class="fa fa-pencil-square-o"></i>
       </button>
-        <modal name="edit">
-          Hello!
-        </modal>
+      <modal name="edit">
+        Hello!
+      </modal>
       </button>
-      <button class="btn btn-sm" @click="$modal.show('delete')">
+      <button class="btn btn-sm" @click="deleteRow(rowData)">
         <i class="fa fa-trash-o"></i>
       </button>
     </div>
@@ -26,14 +26,38 @@
       }
     },
     methods: {
-      fullView (data, index) {
-        swal("Good job!", "You are viewing the bottle!", "success")
-      },
-      editBottle (data, index) {
-        swal("Good job!", "You are editing the bottle!", "success")
-      },
-      deleteBottle (data, index) {
-        swal("Good job!", "You are deleting the bottle!", "success")
+      deleteRow (data, index) {
+        swal({
+          title: 'Are you sure?',
+          text: "You won't be able to revert this!",
+          type: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Yes, delete it!',
+          cancelButtonText: 'No, cancel!',
+          confirmButtonClass: 'btn btn-success',
+          cancelButtonClass: 'btn btn-danger',
+          buttonsStyling: false,
+          reverseButtons: true
+        }).then((result) => {
+          if (result.value) {
+            // TODO put in delete function of bottle
+            swal(
+              'Deleted!',
+              'Your file has been deleted.',
+              'success'
+            )
+          } else if (
+            result.dismiss === swal.DismissReason.cancel
+          ) {
+            swal(
+              'Cancelled',
+              'This bottle still lives.',
+              'error'
+            )
+          }
+        })
       }
     }
   }
