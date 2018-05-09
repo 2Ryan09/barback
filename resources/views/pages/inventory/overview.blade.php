@@ -3,7 +3,7 @@
 @section('content')
 <div class="sidenav" style="float: left;">
   <div class="col-lg-6" style="padding-top: 150px; position: fixed;">
-    Hello.
+    :D
   </div>
 </div>
 
