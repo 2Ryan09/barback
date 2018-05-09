@@ -41,6 +41,7 @@
 }
 
 .sidenav {
+  background: #F0F0F0;
   width: 15%;
   font-family: 'Bellefair', serif;
   z-index: 1;

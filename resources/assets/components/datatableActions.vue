@@ -1,12 +1,13 @@
   <template>
     <div class="custom-actions">
-      <button class="btn btn-sm" @click="fullView(rowData, rowIndex)">
-        <i class="fa fa-eye"></i>
-      </button>
-      <button class="btn btn-sm" @click="editBottle('edit-item', rowData, rowIndex)">
+      <button class="btn btn-sm" @click="$modal.show('edit')">
         <i class="fa fa-pencil-square-o"></i>
       </button>
-      <button class="btn btn-sm" @click="deleteBottle('delete-item', rowData, rowIndex)">
+        <modal name="edit">
+          Hello!
+        </modal>
+      </button>
+      <button class="btn btn-sm" @click="$modal.show('delete')">
         <i class="fa fa-trash-o"></i>
       </button>
     </div>
