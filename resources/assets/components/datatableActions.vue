@@ -14,6 +14,7 @@
   </template>
 
   <script>
+  import swal from 'sweetalert2'
   export default {
     props: {
       rowData: {
@@ -25,8 +26,14 @@
       }
     },
     methods: {
-      itemAction (action, data, index) {
-        console.log('custom-actions: ' + action, data.name, index)
+      fullView (data, index) {
+        swal("Good job!", "You are viewing the bottle!", "success")
+      },
+      editBottle (data, index) {
+        swal("Good job!", "You are editing the bottle!", "success")
+      },
+      deleteBottle (data, index) {
+        swal("Good job!", "You are deleting the bottle!", "success")
       }
     }
   }
