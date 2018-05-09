@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Bottle extends Model
 {
-    use SoftDeletes;
 
     /**
      * Change primary id
@@ -15,20 +14,13 @@ class Bottle extends Model
      * @var barback id
      */
     protected $primaryKey = 'bbid';
-
-    /**
-     * Change table to be modeled
-     *
-     * @var table name
-     **/
-    protected $table = 'Bottles';
-
+    
     /**
      * Set to use barback_bws database
      *
      * @var barback_bws database
      **/
-    protected $connection = 'mysql2';
+    protected $connection = 'bws';
 
     /**
      * The attributes that aren't mass assignable

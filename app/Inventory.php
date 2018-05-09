@@ -17,18 +17,18 @@ class Inventory extends Model
     protected $primaryKey = 'bbid';
 
     /**
+     * Set to use barback_bws database
+     *
+     * @var barback_bws database
+     **/
+    protected $connection = 'inv';
+
+    /**
      * Change table to be modeled
      *
      * @var table name
      **/
     protected $table = 'inventory';
-
-    /**
-     * Set to use barback_bws database
-     *
-     * @var barback_bws database
-     **/
-    protected $connection = 'mysql';
 
     /**
      * The attributes that aren't mass assignable

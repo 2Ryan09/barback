@@ -26,9 +26,9 @@ class PageController extends Controller
         return view('pages.dashboard.dashboard');
     }
 
-    public function bws()
+    public function overview()
     {
-        return view('pages.inventory.bws');
+        return view('pages.inventory.overview');
     }
 
     public function test()
