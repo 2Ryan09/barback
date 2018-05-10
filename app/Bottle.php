@@ -8,14 +8,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Bottle extends Model
 {
     /**
-     * Set to use barback_bws database
-     *
-     * @var barback_bws database
-     **/
-    protected $connection = 'bws';
-    public $incrementing = true;
-
-    /**
      * The attributes that aren't mass assignable
      *
      * @var array of attributes

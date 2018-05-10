@@ -106,29 +106,45 @@ export default {
   data() {
 	return {
 		bottle: {
-	      name     : '',
-	      origin   : '',
-	      unit_type: '',
-	      unit_volume: '',
-	      alcohol_content: '',
-	      sugar_content: '',
-	      producer_name: '',
-	      release_date: '',
-	      is_seasonal: '',
-	      is_kosher: '',
-	      description: '',
-	      pairing: '',
-	      img_url: '',
-	      varietal: '',
-	      style: '',
-	      upc: ''
+	      name     			: '',
+	      origin   			: '',
+	      unit_type			: '',
+	      unit_volume		: '',
+	      alcohol_content	: '',
+	      sugar_content		: '',
+	      producer_name		: '',
+	      release_date		: '',
+	      is_seasonal		: '',
+	      is_kosher			: '',
+	      Description       : '',
+	      pairing           : '',
+	      img_url           : '',
+	      varietal          : '',	
+	      style             : '',
+	      upc               : ''
 	  }
 	}
   },
 
   methods: {
   	submitBottle() {
-		axios.post('/api/bottle', this.bottle);
+		axios.post('/api/bottle', this.bottle)
+			.then(function (response) {
+				swal(
+  					'Good job!',
+  					'You clicked the button!',
+  					'success'
+				)
+    			console.log(response);
+  			})
+  			.catch(function (error) {
+  				swal({
+  					type: 'error',
+  					title: 'Oops...',
+  					text: 'Something went wrong!',
+				})
+    			console.log(error);
+  			});
 	}
   }
 }
