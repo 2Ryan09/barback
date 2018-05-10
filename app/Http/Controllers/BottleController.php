@@ -55,33 +55,7 @@ class BottleController extends Controller
      */
     public function store(Request $request)
     {
-        // Validate request
-
-        // Create new bottle instance
-        $bottle = new Bottle;
-
-        // Assign all attributes
-        $bottle->name = $request->name;
-        $bottle->origin = $request->origin;
-        $bottle->package = $request->package;
-        $bottle->unit_type = $request->unit_type;
-        $bottle->volume = $request->unit_volume;
-        $bottle->alcohol_content = $request->alcohol_content;
-        $bottle->sugar_content = $request->sugar_content;
-        $bottle->producer = $request->producer_name;
-        $bottle->release_date = $request->request_date;
-        $bottle->is_seasonal = $request->is_seasonal;
-        $bottle->is_kosher = $request->is_kosher;
-        $bottle->description = $request->description;
-        $bottle->pairing = $request->pairing;
-        $bottle->tasting_notes = $request->tasting_notes;
-        $bottle->img_url = $request->img_url;
-        $bottle->varietal = $request->varietal;
-        $bottle->style = $request->style;
-        $bottle->sku = $request->sku;
-
-        // Save bottle to database
-        $bottle->save();
+        return Bottle::create($request->all());
     }
 
     /**
