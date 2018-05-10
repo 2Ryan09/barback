@@ -4,7 +4,7 @@
         <i class="fa fa-pencil-square-o"></i>
       </button>
       <modal name="edit">
-        Hello!
+        Edit Row Form :D
       </modal>
       </button>
       <button class="btn btn-sm" @click="deleteRow(rowData)">
@@ -29,7 +29,7 @@
       deleteRow (data, index) {
         swal({
           title: 'Are you sure?',
-          text: "You won't be able to revert this!",
+          text: "A black hole will consume this bottle!",
           type: 'warning',
           showCancelButton: true,
           confirmButtonColor: '#3085d6',
@@ -45,7 +45,7 @@
             // TODO put in delete function of bottle
             swal(
               'Deleted!',
-              'Your file has been deleted.',
+              'Your bottle has been deleted.',
               'success'
             )
           } else if (
