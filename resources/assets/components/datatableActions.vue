@@ -14,7 +14,6 @@
   </template>
 
   <script>
-  import swal from 'sweetalert2'
   export default {
     props: {
       rowData: {
@@ -26,7 +25,7 @@
       }
     },
     methods: {
-      deleteRow (data, index) {
+      deleteRow (data) {
         swal({
           title: 'Are you sure?',
           text: "A black hole will consume this bottle!",
@@ -42,7 +41,9 @@
           reverseButtons: true
         }).then((result) => {
           if (result.value) {
-            // TODO put in delete function of bottle
+            axios.delete('/api/bottles', {
+                data: { id: data.id }
+            })
             swal(
               'Deleted!',
               'Your bottle has been deleted.',

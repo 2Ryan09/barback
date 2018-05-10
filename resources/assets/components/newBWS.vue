@@ -27,7 +27,7 @@
 		<div class="form-group row">
 		  <label class="col-sm-2 col-form-label">Alcohol Content (x100)</label>
 		  <div class="col-sm-10">
-		    <input class="form-control" v-model="bottle.alcohol_content" placeholder="1400">
+		    <input class="form-control" v-model="bottle.alcohol_content" placeholder="YYYY-MM-DD">
 		  </div>
 		</div>    
 		<div class="form-group row">
@@ -116,7 +116,7 @@ export default {
 	      release_date		: '',
 	      is_seasonal		: '',
 	      is_kosher			: '',
-	      Description       : '',
+	      description       : '',
 	      pairing           : '',
 	      img_url           : '',
 	      varietal          : '',	
@@ -129,22 +129,23 @@ export default {
   methods: {
   	submitBottle() {
 		axios.post('/api/bottle', this.bottle)
-			.then(function (response) {
-				swal(
-  					'Good job!',
-  					'You clicked the button!',
-  					'success'
-				)
-    			console.log(response);
-  			})
-  			.catch(function (error) {
-  				swal({
-  					type: 'error',
-  					title: 'Oops...',
-  					text: 'Something went wrong!',
-				})
-    			console.log(error);
-  			});
+		  .then(function (response) {
+		  	swal(
+  				'Good job!',
+  				'You clicked the button!',
+  				'success'
+			)
+		    console.log(response);
+		  })
+		  .catch(function (error) {
+		  	swal({
+  				type: 'error',
+  				title: 'Oops...',
+  				text: 'Something went wrong!',
+  				footer: '<a href>Why do I have this issue?</a>',
+			})
+		    console.log(error);
+		  });
 	}
   }
 }

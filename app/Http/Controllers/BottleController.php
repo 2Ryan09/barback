@@ -87,8 +87,10 @@ class BottleController extends Controller
      * @param  \App\Activity  $activity
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Activity $activity)
+    public function destroy(Request $request)
     {
-        //
+        $id = $request->get('id');
+        $bottle = Bottle::find($id);
+        return $bottle->delete();
     }
 }

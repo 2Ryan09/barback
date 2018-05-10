@@ -9,6 +9,8 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
+import swal from 'sweetalert2'
+window.swal = swal;
 import vmodal from 'vue-js-modal'
 Vue.use(vmodal)
 
