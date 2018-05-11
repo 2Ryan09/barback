@@ -14,7 +14,7 @@
 Route::get('/', 'PageController@welcome');
 
 Route::get('/test', function () {
-	 return view('pages.test');
+    return view('pages.test');
 });
 
 Route::get('/about', 'PageController@about');
