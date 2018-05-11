@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'bws'),
+    'default' => env('DB_CONNECTION', 'mysql'),
 
     /*
     |--------------------------------------------------------------------------
@@ -39,29 +39,14 @@ return [
             'prefix' => '',
         ],
 
-        'inv' => [
+        'mysql' => [
             'driver' => 'mysql',
             'host' => env('DB_HOST', '127.0.0.1'),
             'port' => env('DB_PORT', '3306'),
-            'database' => env('DB_DATABASE', 'barback_bws'),
-            'username' => env('DB_USERNAME', 'ryan'),
+            'database' => env('DB_DATABASE', 'barback_inv'),
+            'username' => env('DB_USERNAME', 'root'),
             'password' => env('DB_PASSWORD', ''),
             'unix_socket' => env('DB_SOCKET', ''),
-            'charset' => 'utf8mb4',
-            'collation' => 'utf8mb4_unicode_ci',
-            'prefix' => '',
-            'strict' => true,
-            'engine' => null,
-        ],
-
-        'bws' => [
-            'driver' => 'mysql',
-            'host' => env('BWS_DB_HOST', '127.0.0.1'),
-            'port' => env('BWS_DB_PORT', '3306'),
-            'database' => env('BWS_DB_DATABASE', 'forge'),
-            'username' => env('BWS_DB_USERNAME', 'forge'),
-            'password' => env('BWS_DB_PASSWORD', ''),
-            'unix_socket' => env('BWS_DB_SOCKET', ''),
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',
             'prefix' => '',

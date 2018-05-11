@@ -1,9 +1,9 @@
 <template>
-	<form style="padding: 20px; padding-bottom: 50px;" v-on:submit="submitBottle" novalidate>
+	<form style="padding: 20px; padding-bottom: 50px;" v-on:submit="submitBottle">
 		<div class="form-group row">
 		  <label class="col-sm-2 col-form-label">Name</label>
 		  <div class="col-sm-10">
-		    <input class="form-control" v-model="bottle.name" value="Mark" placeholder="Wakefield Promised Land Shiraz" required>
+		    <input class="form-control" v-model="bottle.name" placeholder="Wakefield Promised Land Shiraz">
 		  </div>
 		</div>
 		<div class="form-group row">
@@ -142,15 +142,13 @@ export default {
 	      img_url           : '',
 	      varietal          : '',	
 	      style             : '',
-	      upc               : '',
-	      category          : ''
+	      upc               : ''
 	  }
 	}
   },
 
   methods: {
   	submitBottle() {
-  		preventDefault();
 		axios.post('/api/bottle', this.bottle)
 		  .then(function (response) {
 		  	swal(

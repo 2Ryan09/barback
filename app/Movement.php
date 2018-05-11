@@ -17,13 +17,6 @@ class Movement extends Model
     protected $table = 'movements';
 
     /**
-     * Set to use barback_bws database
-     *
-     * @var barback_bws database
-     **/
-    protected $connection = 'inv';
-
-    /**
      * The attributes that aren't mass assignable
      *
      * @var array of attributes
