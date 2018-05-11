@@ -22,6 +22,7 @@ Vue.use(vmodal)
 
 Vue.component('inv-vuetable', require("../components/invDatatable.vue"));
 Vue.component('new-bws-form', require("../components/newBWS.vue"));
+Vue.component('edit-bws-form', require("../components/editBWS.vue"));
 
 const app = new Vue({
     el: '#app'
