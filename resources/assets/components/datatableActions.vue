@@ -3,8 +3,8 @@
       <button class="btn btn-sm" @click="$modal.show('edit')">
         <i class="fa fa-pencil-square-o"></i>
       </button>
-      <modal name="edit">
-        Hello!
+      <modal name="edit" height="auto" :scrollable="true" style="padding: 50px;">
+        <new-bws-form></new-bws-form>
       </modal>
       </button>
       <button class="btn btn-sm" @click="deleteRow(rowData)">
@@ -14,7 +14,6 @@
   </template>
 
   <script>
-  import swal from 'sweetalert2'
   export default {
     props: {
       rowData: {
@@ -26,10 +25,10 @@
       }
     },
     methods: {
-      deleteRow (data, index) {
+      deleteRow (data) {
         swal({
           title: 'Are you sure?',
-          text: "You won't be able to revert this!",
+          text: "A black hole will consume this bottle!",
           type: 'warning',
           showCancelButton: true,
           confirmButtonColor: '#3085d6',
@@ -42,10 +41,12 @@
           reverseButtons: true
         }).then((result) => {
           if (result.value) {
-            // TODO put in delete function of bottle
+            axios.delete('/api/bottles', {
+                data: { id: data.id }
+            })
             swal(
               'Deleted!',
-              'Your file has been deleted.',
+              'Your bottle has been deleted.',
               'success'
             )
           } else if (

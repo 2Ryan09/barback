@@ -5,7 +5,7 @@
     </div>
 
     <div class="navbar-text" style="color: #000000">
-      {{ env('CLUB_NAME') }}
+      {{ env('CLUB_NAME') }} {{ env('APP_NAME') }}
     </div>
 
     <div class="collapse navbar-collapse" id="navbarNavDropdown">

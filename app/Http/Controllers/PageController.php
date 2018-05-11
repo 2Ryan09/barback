@@ -31,6 +31,11 @@ class PageController extends Controller
         return view('pages.inventory.overview');
     }
 
+    public function bwscreate()
+    {
+        return view('pages.inventory.create');
+    }
+
     public function test()
     {
         return view('pages.test');

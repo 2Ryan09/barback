@@ -9,6 +9,8 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
+import swal from 'sweetalert2'
+window.swal = swal;
 import vmodal from 'vue-js-modal'
 Vue.use(vmodal)
 
@@ -19,6 +21,7 @@ Vue.use(vmodal)
  */
 
 Vue.component('inv-vuetable', require("../components/invDatatable.vue"));
+Vue.component('new-bws-form', require("../components/newBWS.vue"));
 
 const app = new Vue({
     el: '#app'
