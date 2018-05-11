@@ -8,7 +8,6 @@ use App\Bottle;
 use App\Http\Resources\Bottle as BottleResource;
 use Illuminate\Support\Facades\DB;
 
-
 class BottleController extends Controller
 {
     /**
