@@ -1,6 +1,6 @@
 <div class="sidenav" style="float: left;">
   <div class="col-lg-6" style="padding-top: 150px; position: fixed;">
-    <ul class="list-unstyled components">
+    <ul class="list-unstyled components" style="width: 150px;">
         <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">BWS</a>
         <ul class="collapse list-unstyled" id="homeSubmenu">
             <li><a href="/inventory/bws/overview">Overview</a></li>
