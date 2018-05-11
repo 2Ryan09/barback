@@ -1,9 +1,9 @@
 <template>
-	<form style="padding-bottom: 50px;" v-on:submit="submitBottle">
+	<form style="padding: 20px; padding-bottom: 50px;" v-on:submit="submitBottle" novalidate>
 		<div class="form-group row">
 		  <label class="col-sm-2 col-form-label">Name</label>
 		  <div class="col-sm-10">
-		    <input class="form-control" v-model="bottle.name" placeholder="Wakefield Promised Land Shiraz">
+		    <input class="form-control" v-model="bottle.name" value="Mark" placeholder="Wakefield Promised Land Shiraz" required>
 		  </div>
 		</div>
 		<div class="form-group row">
@@ -96,7 +96,28 @@
             <input type="checkbox" v-model="bottle.is_seasonal">
           </div>
         </div>
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">Category</label>
+          <div class="col-sm-10 col-form-label">
+          	<input type="radio" id="one" value="beer" v-model="bottle.category" required>
+			<label for="one">Beer</label>
+			<br>
+			<input type="radio" id="two" value="wine" v-model="bottle.category" required>
+			<label for="two">Wine</label>
+			<br>
+          	<input type="radio" id="one" value="spirit" v-model="bottle.category" required>
+			<label for="one">Spirit</label>
+			<br>
+			<input type="radio" id="two" value="nonAlcoholic" v-model="bottle.category" required>
+			<label for="two">Non-Alcholic</label>
+			<br>
+			<input type="radio" id="two" value="extraneous" v-model="bottle.category" required>
+			<label for="two">Extraneous</label>
+			<br>
+		  </div>
+	    </div>
 	    <button class="btn btn-primary" type="submit">Create Bottle!</button>
+	    <p>{{ bottle }}</p>
 	</form>
 </div>
 </template>
@@ -121,13 +142,15 @@ export default {
 	      img_url           : '',
 	      varietal          : '',	
 	      style             : '',
-	      upc               : ''
+	      upc               : '',
+	      category          : ''
 	  }
 	}
   },
 
   methods: {
   	submitBottle() {
+  		preventDefault();
 		axios.post('/api/bottle', this.bottle)
 		  .then(function (response) {
 		  	swal(

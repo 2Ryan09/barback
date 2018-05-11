@@ -18,6 +18,10 @@
   left: 0;
 }
 
+.transparent-style{
+    background-color: #ffffff;
+}
+
 .right {
   right: 0;
 }

@@ -3,8 +3,8 @@
       <button class="btn btn-sm" @click="$modal.show('edit')">
         <i class="fa fa-pencil-square-o"></i>
       </button>
-      <modal name="edit">
-        Edit Row Form :D
+      <modal name="edit" height="auto" :scrollable="true" style="padding: 50px;">
+        <new-bws-form></new-bws-form>
       </modal>
       </button>
       <button class="btn btn-sm" @click="deleteRow(rowData)">

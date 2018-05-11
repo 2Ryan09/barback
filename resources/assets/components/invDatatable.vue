@@ -57,7 +57,7 @@ export default {
     return {
       fields: [
         {
-          name: 'bbid',
+          name: 'id',
           title: '#',
           titleClass: 'text-right',
           dataClass: 'text-right'
