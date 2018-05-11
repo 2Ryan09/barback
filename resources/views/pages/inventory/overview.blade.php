@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-	{{ env('APP_NAME') }} Inventory
+	{{ env('APP_NAME') }} BWS
 @endsection
 
 @section('content')
@@ -10,7 +10,7 @@
 
 <div style="padding: 10px; padding-top: 150px; overflow: auto;">
     <inv-vuetable
-    	api-url="/api/v1.0/inventory"
+    	api-url="/api/bottles"
     ></inv-vuetable>
 </div>
 @endsection
