@@ -13,8 +13,6 @@
 
 Route::get('/', 'PageController@welcome');
 
-Route::get('/test', 'PageController@test');
-
 Route::get('/about', 'PageController@about');
 
 Route::get('/welcome', 'PageController@welcome');
