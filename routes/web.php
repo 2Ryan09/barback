@@ -13,6 +13,10 @@
 
 Route::get('/', 'PageController@welcome');
 
+Route::get('/test', function () {
+    return view('pages.test');
+});
+
 Route::get('/about', 'PageController@about');
 
 Route::get('/welcome', 'PageController@welcome');
