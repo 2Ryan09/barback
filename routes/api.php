@@ -68,7 +68,7 @@ Route::get('bottles', 'BottleController@index');
 // List single bottle
 Route::get('bottle/{id}', 'BottleController@show');
 // Create new bottle
-Route::post('bottle', 'BottleController@store')->name('bottle.store');
+Route::post('bottle', 'BottleController@store');
 // Update bottle
 Route::put('bottle', 'BottleController@update');
 // Delete bottle
