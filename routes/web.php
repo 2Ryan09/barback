@@ -23,7 +23,8 @@ Route::get('/welcome', 'PageController@welcome');
 
 Route::get('/inventory', 'PageController@inventory');
 
-Route::get('/inventory/bws', 'PageController@bws');
+Route::get('/inventory/bws/overview', 'PageController@overview');
+Route::get('/inventory/bws/create', 'PageController@bwscreate');
 
 Auth::routes();
 

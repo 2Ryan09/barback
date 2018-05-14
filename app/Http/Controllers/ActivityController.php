@@ -2,59 +2,51 @@
 
 namespace App\Http\Controllers;
 
+use App\Activity;
 use Illuminate\Http\Request;
 use App\Http\Requests;
-use App\Bottle;
-use App\Http\Resources\Bottle as BottleResource;
-use Illuminate\Support\Facades\DB;
+use App\Http\Resources\ActivityCollection;
 
-class BottleController extends Controller
+class ActivityController extends Controller
 {
     /**
-     * Display a listing of the resource
+     * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        // Get articles
-        return Bottle::paginate(15);
+        // Get activities
+        $activities = Activity::paginate(20);
+
+        // Return collection of activities as a resource
+        return ActivityCollection::collection($activities);
     }
 
     /**
-     * Display the specified resource
+     * Store a newly created resource in storage.
      *
-     * @param int $id
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        // Get a single bottle
-        $bottle = Bottle::findOrFail($id);
-
-        // Return the single bottle as a resource
-        return new BottleCollection($bottle);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function store(Request $request)
     {
         //
     }
 
     /**
-     * Create new bottle entry
+     * Display the specified resource.
      *
-     * @param Request $request
-     * @return Response
+     * @param  \App\Activity  $activity
+     * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function show($id)
     {
-        return Bottle::create($request->all());
+        // Get an activity
+        $activity = Activity::findOrFail($id);
+
+        // Return the single bottle as a resource
+        return new ActivityCollection($activity);
     }
 
     /**
@@ -86,10 +78,8 @@ class BottleController extends Controller
      * @param  \App\Activity  $activity
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request)
+    public function destroy(Activity $activity)
     {
-        $id = $request->get('id');
-        $bottle = Bottle::find($id);
-        return $bottle->delete();
+        //
     }
 }

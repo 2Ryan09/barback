@@ -9,13 +9,19 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
+import swal from 'sweetalert2'
+window.swal = swal;
+import vmodal from 'vue-js-modal'
+Vue.use(vmodal)
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
- Vue.component('articles', require('./components/articles.vue'));
+Vue.component('inv-vuetable', require("../components/invDatatable.vue"));
+Vue.component('new-bws-form', require("../components/newBWS.vue"));
 
 const app = new Vue({
     el: '#app'
