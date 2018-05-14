@@ -16,6 +16,7 @@ class CreateBottlesTable extends Migration
         Schema::create('bottles', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name', 256);
+            $table->string('category', 128);
             $table->string('origin', 256)->nullable();
             $table->string('unit_type', 128)->nullable();
             $table->mediumInteger('unit_volume')->nullable();

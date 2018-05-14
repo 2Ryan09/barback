@@ -48,7 +48,11 @@
               'Deleted!',
               'Your bottle has been deleted.',
               'success'
-            )
+            ).then((result) => {
+              if(result.value) {
+                location.reload();
+              }
+            })
           } else if (
             result.dismiss === swal.DismissReason.cancel
           ) {

@@ -1,5 +1,5 @@
 <template>
-	<form style="padding: 20px; padding-bottom: 50px;" v-on:submit="submitBottle">
+	<form style="padding: 20px; padding-bottom: 50px;" v-on:submit.prevent="submitBottle">
 		<div class="form-group row">
 		  <label class="col-sm-2 col-form-label">Name</label>
 		  <div class="col-sm-10">
@@ -153,17 +153,20 @@ export default {
 		  .then(function (response) {
 		  	swal(
   				'Good job!',
-  				'You clicked the button!',
+  				'Bottle added successfully!',
   				'success'
-			)
-		    console.log(response);
+			).then((result) => {
+				if(result.value) {
+					location.reload();
+				}
+			})
 		  })
 		  .catch(function (error) {
 		  	swal({
   				type: 'error',
   				title: 'Oops...',
   				text: 'Something went wrong!',
-  				footer: '<a href>Why do I have this issue?</a>',
+  				footer: 'Did you fill out all the required fields?'
 			})
 		    console.log(error);
 		  });
