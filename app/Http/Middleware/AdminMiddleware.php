@@ -19,8 +19,7 @@ class AdminMiddleware
     {
         $user = User::all()->count();
         if (!($user == 1)) {
-            if (!Auth::user()->hasRole('owner'))
-            {
+            if (!Auth::user()->hasRole('owner')) {
                 abort('403');
             }
         }
