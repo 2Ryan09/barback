@@ -17,13 +17,6 @@ class Activity extends Model
     protected $table = 'activities';
 
     /**
-     * Set to use barback_bws database
-     *
-     * @var barback_bws database
-     **/
-    protected $connection = 'inv';
-
-    /**
      * The attributes that aren't mass assignable
      *
      * @var array of attributes

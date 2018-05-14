@@ -11,6 +11,13 @@ use Illuminate\Support\Facades\DB;
 class BottleController extends Controller
 {
     /**
+     * Verifies if user can create bottle
+     **/
+    //public function __construct() {
+    //    $this->middleware(['auth', 'checkAdmin']);
+    //}
+
+    /**
      * Display a listing of the resource
      *
      * @return \Illuminate\Http\Response
