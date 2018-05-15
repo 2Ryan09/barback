@@ -23,6 +23,12 @@
             <a class="nav-link" href="/dashboard">Dashboard</a>
           </li>
         @endcan
+
+        @can('view admin')
+          <li class="nav-item">
+            <a class="nav-link" href="/admin">Admin</a>
+          </li>
+        @endcan
       </ul>
 
       <ul class="nav navbar-nav navbar-right" style="text-align: center;">

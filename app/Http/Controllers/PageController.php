@@ -16,6 +16,11 @@ class PageController extends Controller
         return view('pages.about');
     }
 
+    public function admin()
+    {
+        return view('pages.admin');
+    }
+
     public function inventory()
     {
         return view('pages.inventory.inventory');

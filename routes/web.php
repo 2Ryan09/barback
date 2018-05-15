@@ -19,6 +19,8 @@ Route::get('/test', function () {
 
 Route::get('/about', 'PageController@about');
 
+Route::get('/admin', 'PageController@admin');
+
 Route::get('/welcome', 'PageController@welcome');
 
 Route::get('/inventory', 'PageController@inventory');
