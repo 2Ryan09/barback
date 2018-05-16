@@ -15,8 +15,8 @@ class CreateBottlesTable extends Migration
     {
         Schema::create('bottles', function (Blueprint $table) {
             $table->increments('id');
-            $table->int('bbid');
-            $table->int('loc_id');
+            $table->int('offering_id');
+            $table->int('location_id');
             $table->float('amount', 2, 1);
             $table->timestamps();
             $table->softDeletes();
