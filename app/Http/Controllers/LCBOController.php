@@ -28,6 +28,6 @@ class LCBOController extends Controller
 
         $response = $this->client->request('GET', $this->base_url . "?q=" . $search);
 
-        return \View::make("pages.bws")->with(array('items'=>json_decode($response->getBody())->result));
+        return json_decode($response->getBody())->result);
     }
 }
