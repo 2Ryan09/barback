@@ -2,10 +2,18 @@
 	<form style="padding: 20px; padding-bottom: 50px;" v-on:submit.prevent="submitBottle">
 		<div class="form-group row">
 		  <label class="col-sm-2 col-form-label">Name</label>
-		  <div class="col-sm-10">
+		  <div class="col-sm-8">
 		    <input class="form-control" v-model="bottle.name" placeholder="Wakefield Promised Land Shiraz">
 		  </div>
-		</div>
+		  <div class="col-sm-2">
+		    <button type="button" class="btn btn-primary" v-on:click="queryLCBO">Autofill</button>
+		    <modal name="autofill" height="auto" :scrollable="true">
+		    	<lcbo-search
+		    	name=bottle.name
+		    	></lcbo-search>
+            </modal>
+		  </div>
+		  </div>
 		<div class="form-group row">
 		  <label class="col-sm-2 col-form-label">Origin</label>
 		  <div class="col-sm-10">
@@ -118,6 +126,7 @@
 	    </div>
 	    <button class="btn btn-primary" type="submit">Create Bottle!</button>
 	    <p>{{ bottle }}</p>
+	    <p>{{ result }}</p>
 	</form>
 </div>
 </template>
@@ -143,10 +152,10 @@ export default {
 	      varietal          : '',	
 	      style             : '',
 	      upc               : ''
-	  }
+	    },
+	    result: {}
 	}
   },
-
   methods: {
   	submitBottle() {
 		axios.post('/api/bottle', this.bottle)
@@ -170,6 +179,21 @@ export default {
 			})
 		    console.log(error);
 		  });
+	},
+	queryLCBO() {
+        let config = {
+  			headers: {
+    			Accept: 'application/json',
+    			Authorization: 'Token MDowZWI0NTNmNC00NGJjLTExZTgtYjY4OS04ZmZmYjQyODM5NmU6M2tKTGFEOU1YR05mbkN5QXd2Z3FQQVo3anVsaHNPamtvbXhQ'
+  			}
+		}
+
+		axios.get("'https://lcboapi.com/products?q=' + {{ bottle.name }}", config)
+		    .then(response => {
+      			result = response
+    		})
+
+    	this.$modal.show('autofill');
 	}
   }
 }
