@@ -22,4 +22,12 @@ class Product extends Model
      * @var array of attributes
      */
     protected $dates = ['created_at', 'updated_at', 'deleted_at'];
+
+    /**
+     * Get the offering associated with this product
+     **/
+    public function offering()
+    {
+        return $this->hasOne('App\Offering');
+    }
 }

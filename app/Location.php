@@ -21,4 +21,12 @@ class Location extends Model
      * @var array of attributes
      */
     protected $dates = ['created_at', 'updated_at', 'deleted_at'];
+
+    /**
+     * Get the bottles associated with this location
+     **/
+    public function bottles()
+    {
+        return $this->hasMany('App\Bottle');
+    }
 }

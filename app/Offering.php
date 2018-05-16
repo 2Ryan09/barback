@@ -21,4 +21,20 @@ class Offering extends Model
      * @var array of attributes
      */
     protected $dates = ['created_at', 'updated_at', 'deleted_at'];
+
+    /**
+     * Get the product associated with this offering
+     **/
+    public function product()
+    {
+        return $this->belongsTo('App\Product');
+    }
+
+    /**
+     * Get the bottles associated with this offering
+     **/
+    public function bottles()
+    {
+        return $this->hasMany('App\Bottle');
+    }
 }

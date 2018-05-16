@@ -21,4 +21,20 @@ class Bottle extends Model
      * @var array of attributes
      */
     protected $dates = ['created_at', 'updated_at', 'deleted_at'];
+
+    /**
+     * Get the offering associated with this bottle
+     **/
+    public function offering()
+    {
+        return $this->belongsTo('App\Offering');
+    }
+
+    /**
+     * Get the location associated with this bottle
+     **/
+    public function location()
+    {
+        return $this->belongsTo('App\Location');
+    }
 }
