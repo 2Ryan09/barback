@@ -41,14 +41,26 @@
           reverseButtons: true
         }).then((result) => {
           if (result.value) {
-            axios.delete('/api/bottles', {
-                data: { id: data.id }
+            axios.delete('/api/products/' + String(data.id))
+            .then(function (response) {
+              swal(
+                'Good job!',
+                'Product deleted successfully!',
+                'success'
+            ).then((result) => {
+              if(result.value) {
+                location.reload();
+              }
             })
-            swal(
-              'Deleted!',
-              'Your bottle has been deleted.',
-              'success'
-            )
+            })
+            .catch(function (error) {
+              swal({
+                type: 'error',
+                title: 'Oops...',
+                text: 'Something went wrong!',
+            })
+              console.log(error);
+            });
           } else if (
             result.dismiss === swal.DismissReason.cancel
           ) {
