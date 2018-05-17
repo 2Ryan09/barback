@@ -30,7 +30,7 @@ return [
     'channels' => [
         'stack' => [
             'driver' => 'stack',
-            'channels' => ['single', 'slack'],
+            'channels' => ['single', 'slack', 'bws', 'offering', 'bottle', 'user'],
         ],
         'single' => [
             'driver' => 'single',
@@ -40,6 +40,26 @@ return [
         'activity' => [
             'driver' => 'single',
             'path' => storage_path('logs/activity.log'),
+            'level' => 'info',
+        ],
+        'bws' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/bws.log'),
+            'level' => 'info',
+        ],
+        'offering' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/offering.log'),
+            'level' => 'info',
+        ],
+        'bottle' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/bottle.log'),
+            'level' => 'info',
+        ],
+        'user' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/uer.log'),
             'level' => 'info',
         ],
         'daily' => [
