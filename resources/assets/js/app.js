@@ -13,6 +13,8 @@ import swal from 'sweetalert2'
 window.swal = swal;
 import vmodal from 'vue-js-modal'
 Vue.use(vmodal)
+import VueEvents from 'vue-events'
+Vue.use(VueEvents)
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -20,7 +22,9 @@ Vue.use(vmodal)
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+Vue.component('datatable', require('../components/Datatable/Datatable.vue'));
 Vue.component('inv-vuetable', require("../components/invDatatable.vue"));
+Vue.component('bws-vuetable', require("../components/bwsDatatable.vue"));
 Vue.component('new-bws-form', require("../components/newBWS.vue"));
 
 const app = new Vue({

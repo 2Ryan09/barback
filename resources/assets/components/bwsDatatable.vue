@@ -1,7 +1,7 @@
 <template>
   <div>
     <datatable
-      api-url="/api/bottles"
+      api-url="/api/products"
       :fields="fields"
     ></datatable>
   </div>
@@ -31,13 +31,12 @@ export default {
           callback: 'formatDate|YYYY'
         },
         {
-          name: 'location_id',
-          title: 'Location',
-          sortField: 'location_id'
+          name: 'origin',
+          sortField: 'origin'
         },
         {
-          name: 'amount',
-          sortField: 'amount'
+          name: 'varietal',
+          sortField: 'varietal'
         },
         {
           name: '__component:custom-actions',
