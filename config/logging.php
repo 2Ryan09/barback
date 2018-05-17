@@ -12,7 +12,7 @@ return [
     | one of the channels defined in the "channels" configuration array.
     |
     */
-    'default' => env('LOG_CHANNEL', 'stack'),
+    'default' => env('LOG_CHANNEL', 'single'),
     /*
     |--------------------------------------------------------------------------
     | Log Channels
@@ -28,10 +28,6 @@ return [
     |
     */
     'channels' => [
-        'stack' => [
-            'driver' => 'stack',
-            'channels' => ['single', 'slack', 'bws', 'offering', 'bottle', 'user'],
-        ],
         'single' => [
             'driver' => 'single',
             'path' => storage_path('logs/laravel.log'),
@@ -59,7 +55,12 @@ return [
         ],
         'user' => [
             'driver' => 'single',
-            'path' => storage_path('logs/uer.log'),
+            'path' => storage_path('logs/user.log'),
+            'level' => 'info',
+        ],
+        'location' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/location.log'),
             'level' => 'info',
         ],
         'daily' => [

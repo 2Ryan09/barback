@@ -17,6 +17,8 @@ class BottleController extends Controller
      */
     public function index()
     {
+        Log::channel('bottle')->info('Bottles shown.', ['user' => Auth::user()]);
+
         // Get articles
         return Bottle::paginate(15);
     }
@@ -29,6 +31,8 @@ class BottleController extends Controller
      */
     public function show($id)
     {
+        Log::channel('bottle')->info('Bottles shown.', ['user' => Auth::user()]);
+
         // Get a single bottle
         $bottle = Bottle::findOrFail($id);
 
@@ -54,6 +58,11 @@ class BottleController extends Controller
      */
     public function store(Request $request)
     {
+        Log::channel('bottle')->info('Bottle created.', [
+            'bottle' => $request->all(),
+            'user' => Auth::user()
+        ]);
+
         return Bottle::create($request->all());
     }
 
@@ -92,6 +101,11 @@ class BottleController extends Controller
         $deleted = $bottle->delete();
 
         if ($deleted) {
+            Log::channel('bottle')->info('Bottle deleted.', [
+                'bottle' => $bottle,
+                'user' => Auth::user()
+            ]);
+
             return response()->json(['status' => 'success', 'message' => 'bottle_deleted']);
         } else {
             return response()->json(['status' => 'error', 'message' => 'bottle_not_found', ], 422);
