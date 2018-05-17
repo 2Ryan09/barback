@@ -27,6 +27,6 @@ class Supplier extends Model
      **/
     public function offerings()
     {
-    	return $this->hasMany('App\Offering');
+        return $this->hasMany('App\Offering');
     }
 }
