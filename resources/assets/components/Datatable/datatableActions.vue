@@ -44,7 +44,7 @@
             axios.delete('/api/products/' + String(data.id))
             .then(function (response) {
               swal(
-                'Good job!',
+                'Deleted!',
                 'Product deleted successfully!',
                 'success'
             ).then((result) => {
