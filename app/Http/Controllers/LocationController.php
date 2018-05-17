@@ -59,7 +59,7 @@ class LocationController extends Controller
     public function store(Request $request)
     {
         Log::channel('location')->info('Location created.', [
-            'location' => $request->all(), 
+            'location' => $request->all(),
             'user' => Auth::user()
         ]);
 
@@ -102,7 +102,7 @@ class LocationController extends Controller
 
         if ($deleted) {
             Log::channel('location')->info('Location deleted.', [
-                'location' => $location, 
+                'location' => $location,
                 'user' => Auth::user()
             ]);
 

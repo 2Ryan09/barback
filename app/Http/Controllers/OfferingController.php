@@ -59,7 +59,7 @@ class OfferingController extends Controller
     public function store(Request $request)
     {
         Log::channel('offering')->info('Offering created.', [
-            'offering' => $request->all(), 
+            'offering' => $request->all(),
             'user' => Auth::user()
         ]);
 
@@ -102,7 +102,7 @@ class OfferingController extends Controller
 
         if ($deleted) {
             Log::channel('offering')->info('Offering deleted.', [
-                'offering' => $offering, 
+                'offering' => $offering,
                 'user' => Auth::user()
             ]);
 

@@ -59,7 +59,7 @@ class BottleController extends Controller
     public function store(Request $request)
     {
         Log::channel('bottle')->info('Bottle created.', [
-            'bottle' => $request->all(), 
+            'bottle' => $request->all(),
             'user' => Auth::user()
         ]);
 
@@ -102,7 +102,7 @@ class BottleController extends Controller
 
         if ($deleted) {
             Log::channel('bottle')->info('Bottle deleted.', [
-                'bottle' => $bottle, 
+                'bottle' => $bottle,
                 'user' => Auth::user()
             ]);
 

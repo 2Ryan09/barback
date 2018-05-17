@@ -61,7 +61,7 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         Log::channel('bws')->info('Product created.', [
-            'product' => $request->all(), 
+            'product' => $request->all(),
             'user' => Auth::user()
         ]);
 
@@ -104,7 +104,7 @@ class ProductController extends Controller
 
         if ($deleted) {
             Log::channel('bws')->info('Product deleted.', [
-                'product' => $product, 
+                'product' => $product,
                 'user' => Auth::user()
             ]);
 
