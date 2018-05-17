@@ -99,4 +99,3 @@ class OfferingController extends Controller
         }
     }
 }
-}
