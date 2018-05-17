@@ -28,12 +28,12 @@ class PageController extends Controller
 
     public function overview()
     {
-        return view('pages.inventory.overview');
+        return view('pages.bws.overview');
     }
 
     public function bwscreate()
     {
-        return view('pages.inventory.create');
+        return view('pages.bws.create');
     }
 
     public function test()

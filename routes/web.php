@@ -21,13 +21,12 @@ Route::get('/about', 'PageController@about');
 
 Route::get('/welcome', 'PageController@welcome');
 
-Route::get('/inventory', 'PageController@inventory');
+Route::get('/inventory', 'PageController@inventory')->name('inventory.home');
+Route::get('/inventory/offerings', 'PageController@offerings')->name('inventory.offerings');
 
-Route::get('/inventory/bws/overview', 'PageController@overview');
-Route::get('/inventory/bws/create', 'PageController@bwscreate');
+Route::get('/bws/overview', 'PageController@overview')->name('bws.overview');
+Route::get('/bws/create', 'PageController@bwscreate')->name('bws.create');
 
 Auth::routes();
 
 Route::get('/dashboard', 'PageController@dashboard');
-
-Route::get('inventory/bws', 'LCBOController@getQueried');
