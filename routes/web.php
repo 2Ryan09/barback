@@ -31,5 +31,3 @@ Auth::routes();
 Route::get('/dashboard', 'PageController@dashboard');
 
 Route::get('inventory/bws', 'LCBOController@getQueried');
-
-Route::get('inventory/bws', 'WineController@getTable)')->name('wine.data');

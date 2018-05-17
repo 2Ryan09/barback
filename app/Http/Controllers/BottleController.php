@@ -4,11 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests;
-use App\Product;
-use App\Http\Resources\Product as ProductResource;
+use App\Bottle;
+use App\Http\Resources\Bottle as BottleResource;
 use Illuminate\Support\Facades\DB;
 
-class ProductController extends Controller
+class BottleController extends Controller
 {
     /**
      * Display a listing of the resource
@@ -18,7 +18,7 @@ class ProductController extends Controller
     public function index()
     {
         // Get articles
-        return Product::paginate(15);
+        return Bottle::paginate(15);
     }
 
     /**
@@ -29,11 +29,11 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        // Get a single product
-        $product = Product::findOrFail($id);
+        // Get a single bottle
+        $bottle = Bottle::findOrFail($id);
 
-        // Return the single product as a resource
-        return new ProductCollection($product);
+        // Return the single bottle as a resource
+        return new BottleCollection($bottle);
     }
 
     /**
@@ -43,18 +43,18 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return Product::create($request->all());
+        return Bottle::create($request->all());
     }
 
     /**
-     * Create new product entry
+     * Create new bottle entry
      *
      * @param Request $request
      * @return Response
      */
     public function store(Request $request)
     {
-        return Product::create($request->all());
+        return Bottle::create($request->all());
     }
 
     /**
@@ -88,14 +88,13 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        $product = Product::find($id);
-        $deleted = $product->delete();
+        $bottle = bottle::find($id);
+        $deleted = $bottle->delete();
 
         if ($deleted) {
-            return response()->json(['status' => 'success', 'message' => 'product_deleted']);
+            return response()->json(['status' => 'success', 'message' => 'bottle_deleted']);
         } else {
-            return response()->json(['status' => 'error',
-                'message' => 'product_not_found', ], 422);
+            return response()->json(['status' => 'error', 'message' => 'bottle_not_found', ], 422);
         }
     }
 }

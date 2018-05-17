@@ -4,11 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests;
-use App\Product;
-use App\Http\Resources\Product as ProductResource;
+use App\Location;
+use App\Http\Resources\Location as LocationResource;
 use Illuminate\Support\Facades\DB;
 
-class ProductController extends Controller
+class LocationController extends Controller
 {
     /**
      * Display a listing of the resource
@@ -18,7 +18,7 @@ class ProductController extends Controller
     public function index()
     {
         // Get articles
-        return Product::paginate(15);
+        return Location::paginate(15);
     }
 
     /**
@@ -29,11 +29,11 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        // Get a single product
-        $product = Product::findOrFail($id);
+        // Get a single location
+        $location = Location::findOrFail($id);
 
-        // Return the single product as a resource
-        return new ProductCollection($product);
+        // Return the single location as a resource
+        return new LocationCollection($location);
     }
 
     /**
@@ -43,18 +43,18 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return Product::create($request->all());
+        return Location::create($request->all());
     }
 
     /**
-     * Create new product entry
+     * Create new location entry
      *
      * @param Request $request
      * @return Response
      */
     public function store(Request $request)
     {
-        return Product::create($request->all());
+        return Location::create($request->all());
     }
 
     /**
@@ -88,14 +88,13 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        $product = Product::find($id);
-        $deleted = $product->delete();
+        $location = Location::find($id);
+        $deleted = $location->delete();
 
         if ($deleted) {
-            return response()->json(['status' => 'success', 'message' => 'product_deleted']);
+            return response()->json(['status' => 'success', 'message' => 'location_deleted']);
         } else {
-            return response()->json(['status' => 'error',
-                'message' => 'product_not_found', ], 422);
+            return response()->json(['status' => 'error', 'message' => 'location_not_found', ], 422);
         }
     }
 }
