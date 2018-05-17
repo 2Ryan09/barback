@@ -1,39 +1,29 @@
 <template>
 	<form style="padding: 20px; padding-bottom: 50px;" v-on:submit.prevent="submitOffer">
 		<div class="form-group row">
-		  <label class="col-sm-2 col-form-label">Name</label>
+		  <label class="col-sm-2 col-form-label">BWS ID</label>
 		  <div class="col-sm-9">
-		    <input class="form-control" v-model="name" placeholder="hi" required>
+		    <input class="form-control" v-model="offering.product_id" placeholder="12345" required>
 		  </div>
 		  <div class="col-sm-1">
 		    <button type="button" class="btn btn-primary" @click="getBWS">Find</button>
-		    <modal name="getBWSByName" height="auto" :scrollable="true">
-		    	Hi!
-            </modal>
-		  </div>
-		</div>
-		<div class="form-group row">
-		  <label class="col-sm-2 col-form-label">BWS ID</label>
-		  <div class="col-sm-10">
-		    <input class="form-control" v-model="offering.product_id" placeholder="12345" required>
-		  </div>
-		</div>
-		<div class="form-group row">
-		  <label class="col-sm-2 col-form-label">Supplier</label>
-		  <div class="col-sm-9">
-		    <input class="form-control" v-model="supplier" placeholder="Down on the Farm">
-		  </div>
-		  <div class="col-sm-1">
-		    <button type="button" class="btn btn-primary" v-on:click="getSupplier">Find</button>
-		    <modal name="getSupplierByName" height="auto" :scrollable="true">
-		    	Hello!
+		    <modal name="getBWSByName" height="500" width="1000">
+		    	<div style="padding: 20px;">
+		    		<bws-vuetable @clicked="getID"></bws-vuetable>
+		    	</div>
             </modal>
 		  </div>
 		</div>
 		<div class="form-group row">
 		  <label class="col-sm-2 col-form-label">Supplier ID</label>
-		  <div class="col-sm-10">
-		    <input class="form-control" v-model="offering.supplier_id" placeholder="12345">
+		  <div class="col-sm-9">
+		    <input class="form-control" v-model="offering.supplier_id" placeholder="12345" required>
+		  </div>
+		  <div class="col-sm-1">
+		    <button type="button" class="btn btn-primary" @click="getSupplier">Find</button>
+		    <modal name="getSupplierByName" height="500" width="1000">
+		    	😄
+            </modal>
 		  </div>
 		</div>
 		<div class="form-group row">
@@ -131,6 +121,10 @@ export default {
 	saveResult() {
 		this.offering.cost = this.calculator.tmp_cost;
 		this.$modal.hide('BottleCostCalculator');
+	},
+	getID(id) {
+		this.$modal.hide('getBWSByName');
+		this.offering.product_id = id;
 	}
   }
 }

@@ -3,6 +3,7 @@
     <datatable
       api-url="/api/products"
       :fields="fields"
+      @clicked="passOnID"
     ></datatable>
   </div>
 </template>
@@ -44,8 +45,14 @@ export default {
           titleClass: 'text-center',
           dataClass: 'text-center'
         }
-      ]
+      ],
+      desiredID: '',
     }
-  }  
+  },
+  methods: {
+    passOnID(id) {
+      this.$emit('clicked', id);
+    }
+  }
 }
 </script>

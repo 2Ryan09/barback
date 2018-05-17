@@ -6,7 +6,6 @@
       <modal name="edit" height="auto" :scrollable="true" style="padding: 50px;">
         <new-bws-form></new-bws-form>
       </modal>
-      </button>
       <button class="btn btn-sm" @click="deleteRow(rowData)">
         <i class="fa fa-trash-o"></i>
       </button>
