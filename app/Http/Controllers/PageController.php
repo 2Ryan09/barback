@@ -20,6 +20,21 @@ class PageController extends Controller
     {
         return view('pages.inventory.inventory');
     }
+
+    public function invcreate()
+    {
+        return view('pages.inventory.create');
+    }
+
+    public function offerings()
+    {
+        return view('pages.offerings.offerings');
+    }
+
+    public function offcreate()
+    {
+        return view('pages.offerings.create');
+    }
   
     public function dashboard()
     {
