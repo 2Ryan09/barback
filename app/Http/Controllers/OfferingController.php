@@ -17,6 +17,8 @@ class OfferingController extends Controller
      */
     public function index()
     {
+        Log::channel('offering')->info('Offerings shown.', ['user' => Auth::user()]);
+
         // Get articles
         return Offering::paginate(15);
     }
@@ -29,6 +31,8 @@ class OfferingController extends Controller
      */
     public function show($id)
     {
+        Log::channel('offering')->info('Offering shown.', ['user' => Auth::user()]);
+
         // Get a single offering
         $offering = Offering::findOrFail($id);
 
@@ -54,6 +58,11 @@ class OfferingController extends Controller
      */
     public function store(Request $request)
     {
+        Log::channel('offering')->info('Offering created.', [
+            'offering' => $request->all(), 
+            'user' => Auth::user()
+        ]);
+
         return Offering::create($request->all());
     }
 
@@ -92,6 +101,11 @@ class OfferingController extends Controller
         $deleted = $offering->delete();
 
         if ($deleted) {
+            Log::channel('offering')->info('Offering deleted.', [
+                'offering' => $offering, 
+                'user' => Auth::user()
+            ]);
+
             return response()->json(['status' => 'success', 'message' => 'offering_deleted']);
         } else {
             return response()->json(['status' => 'error',

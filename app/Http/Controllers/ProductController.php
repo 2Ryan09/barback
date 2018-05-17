@@ -7,6 +7,8 @@ use App\Http\Requests;
 use App\Product;
 use App\Http\Resources\Product as ProductResource;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
@@ -17,6 +19,8 @@ class ProductController extends Controller
      */
     public function index()
     {
+        Log::channel('bws')->info('Products shown.', ['user' => Auth::user()]);
+
         // Get articles
         return Product::paginate(15);
     }
@@ -29,6 +33,8 @@ class ProductController extends Controller
      */
     public function show($id)
     {
+        Log::channel('bws')->info('Products shown.', ['user' => Auth::user()]);
+
         // Get a single product
         $product = Product::findOrFail($id);
 
@@ -54,6 +60,11 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        Log::channel('bws')->info('Product created.', [
+            'product' => $request->all(), 
+            'user' => Auth::user()
+        ]);
+
         return Product::create($request->all());
     }
 
@@ -92,6 +103,11 @@ class ProductController extends Controller
         $deleted = $product->delete();
 
         if ($deleted) {
+            Log::channel('bws')->info('Product deleted.', [
+                'product' => $product, 
+                'user' => Auth::user()
+            ]);
+
             return response()->json(['status' => 'success', 'message' => 'product_deleted']);
         } else {
             return response()->json(['status' => 'error',
