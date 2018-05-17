@@ -32,6 +32,14 @@ class Offering extends Model
     }
 
     /**
+     * Get the supplier associated with this offering
+     **/
+    public function supplier()
+    {
+        return $this->belongsTo('App\Product');
+    }
+
+    /**
      * Get the bottles associated with this offering
      **/
     public function bottles()
