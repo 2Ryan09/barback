@@ -13,7 +13,7 @@
 		    	></lcbo-search>
             </modal>
 		  </div>
-		  </div>
+		</div>
 		<div class="form-group row">
 		  <label class="col-sm-2 col-form-label">Origin</label>
 		  <div class="col-sm-10">
@@ -153,7 +153,7 @@ export default {
 	      style             : '',
 	      upc               : ''
 	    },
-	    result: {}
+	    result              : {}
 	}
   },
   methods: {
