@@ -34,10 +34,7 @@ class LocationController extends Controller
         Log::channel('location')->info('Locations shown.', ['user' => Auth::user()]);
 
         // Get a single location
-        $location = Location::findOrFail($id);
-
-        // Return the single location as a resource
-        return new LocationCollection($location);
+        return Location::findOrFail($id);
     }
 
     /**
