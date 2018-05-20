@@ -26,7 +26,7 @@ class ProductController extends Controller
     }
 
     /**
-     * Display the specified resource
+     * Display the specified resource by id
      *
      * @param int $id
      * @return \Illuminate\Http\Response
@@ -35,11 +35,19 @@ class ProductController extends Controller
     {
         Log::channel('bws')->info('Products shown.', ['user' => Auth::user()]);
 
-        // Get a single product
-        $product = Product::findOrFail($id);
+        // Return and find single product
+        return Product::findOrFail($id);
+    }
 
-        // Return the single product as a resource
-        return new ProductCollection($product);
+    /**
+     * Get the product by searching name
+     *
+     * @param String $name
+     * @return \Illuminate\Http\Response
+     **/
+    public function search($name)
+    {
+        return Product::where('name', 'LIKE', "%$name%")->orderBy('id')->paginate(1);
     }
 
     /**
