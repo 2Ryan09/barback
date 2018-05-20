@@ -12,6 +12,7 @@
             <li><a href="#">Non Alcoholics</a></li>
             <li><a href="#">Extraneous</a></li>
         </ul>
+        <li><a href="{{ route('supplier.overview') }}">Suppliers</a></li>
         <a href="#createMenu" data-toggle="collapse" aria-expanded="false">New</a>
         <ul class="collapse" id="createMenu">
             <li><a href="{{ route('bws.create') }}">New BWS</a></li>

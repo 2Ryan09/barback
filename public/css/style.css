@@ -31,7 +31,7 @@
 }
 
 .cover-heading {
-  font-family: 'Bellefair', serif; 
+  font-family: 'Muli', serif; 
   color: white; 
   -webkit-text-stroke: 1px #006600; 
   font-size: 72pt; 
@@ -65,7 +65,7 @@
 .sidenav {
   background: #F0F0F0;
   width: 15%;
-  font-family: 'Bellefair', serif;
+  font-family: 'Muli', serif;
   z-index: 1;
   top: 20px;
   left: 10px;

@@ -53,7 +53,7 @@ export default {
       type: Array,
       required: true
     },
-    my-detail-row: {
+    my_detail_row: {
       type: String,
     }
   },

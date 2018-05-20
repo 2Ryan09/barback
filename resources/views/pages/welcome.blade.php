@@ -19,12 +19,12 @@
           Welcome to {{ env('CLUB_NAME_SHORT') }} {{ env('APP_NAME', 'Barback') }}.
         </h1>
 
-        <p class="lead" style="font-family: 'Bellefair', serif; color: white; text-shadow: 2px 2px black;">
+        <p class="lead" style="font-family: 'Muli', serif; color: white; text-shadow: 2px 2px black;">
           Peek beyond the bar.
         </p>
 
         <p class="lead">
-          <a href="#" class="btn btn-lg btn-secondary" style="font-family: 'Bellefair', serif; color: #006600; background-color: white;">
+          <a href="#" class="btn btn-lg btn-secondary" style="font-family: 'Muli', serif; color: #006600; background-color: white;">
             Enter.
           </a>
         </p>
