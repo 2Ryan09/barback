@@ -2,19 +2,44 @@
 
 namespace App\Http\Controllers;
 
-use App\Supplier;
 use Illuminate\Http\Request;
+use App\Http\Requests;
+use App\Supplier;
+use App\Http\Resources\Supplier as SupplierResource;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Auth;
 
 class SupplierController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display a listing of the resource
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        //
+        Log::channel('supplier')->info('Suppliers shown.', ['user' => Auth::user()]);
+
+        // Get articles
+        return Supplier::paginate(15);
+    }
+
+    /**
+     * Display the specified resource
+     *
+     * @param int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        Log::channel('supplier')->info('Suppliers shown.', ['user' => Auth::user()]);
+
+        // Get a single supplier
+        $supplier = Supplier::findOrFail($id);
+
+        // Return the single supplier as a resource
+        return new SupplierCollection($supplier);
     }
 
     /**
@@ -24,38 +49,32 @@ class SupplierController extends Controller
      */
     public function create()
     {
-        //
+        return Supplier::create($request->all());
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Create new suppler entry
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return Response
      */
     public function store(Request $request)
     {
-        //
-    }
+        Log::channel('supplier')->info('Supplier created.', [
+            'suppler' => $request->all(),
+            'user' => Auth::user()
+        ]);
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Supplier  $supplier
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Supplier $supplier)
-    {
-        //
+        return Supplier::create($request->all());
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Supplier  $supplier
+     * @param  \App\Activity  $activity
      * @return \Illuminate\Http\Response
      */
-    public function edit(Supplier $supplier)
+    public function edit(Activity $activity)
     {
         //
     }
@@ -64,10 +83,10 @@ class SupplierController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Supplier  $supplier
+     * @param  \App\Activity  $activity
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Supplier $supplier)
+    public function update(Request $request, Activity $activity)
     {
         //
     }
@@ -75,11 +94,24 @@ class SupplierController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Supplier  $supplier
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Supplier $supplier)
+    public function destroy($id)
     {
-        //
+        $supplier = Supplier::find($id);
+        $deleted = $supplier->delete();
+
+        if ($deleted) {
+            Log::channel('supplier')->info('Supplier deleted.', [
+                'supplier' => $supplier,
+                'user' => Auth::user()
+            ]);
+
+            return response()->json(['status' => 'success', 'message' => 'supplier_deleted']);
+        } else {
+            return response()->json(['status' => 'error',
+                'message' => 'supplier_not_found', ], 422);
+        }
     }
 }

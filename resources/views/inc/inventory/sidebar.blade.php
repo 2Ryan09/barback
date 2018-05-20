@@ -17,6 +17,7 @@
             <li><a href="{{ route('bws.create') }}">New BWS</a></li>
             <li><a href="{{ route('offerings.create') }}">New Offering</a></li>
             <li><a href="{{ route('inventory.create') }}">New Inventory</a></li>
+            <li><a href="{{ route('supplier.create') }}">New Supplier</a></li>
         </ul>
     </ul>
   </div>

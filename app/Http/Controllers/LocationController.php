@@ -7,6 +7,8 @@ use App\Http\Requests;
 use App\Location;
 use App\Http\Resources\Location as LocationResource;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Auth;
 
 class LocationController extends Controller
 {

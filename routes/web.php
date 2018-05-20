@@ -26,9 +26,11 @@ Route::get('/inventory/offerings', 'PageController@offerings')->name('inventory.
 Route::get('/inventory/create', 'PageController@invcreate')->name('inventory.create');
 Route::get('/inventory/offerings/create', 'PageController@offcreate')->name('offerings.create');
 
-
 Route::get('/bws/overview', 'PageController@overview')->name('bws.overview');
 Route::get('/bws/create', 'PageController@bwscreate')->name('bws.create');
+
+Route::get('/supplier', 'PageController@supplier')->name('supplier.overview');
+Route::get('/supplier/create', 'PageController@suppliercreate')->name('supplier.create');
 
 Auth::routes();
 
