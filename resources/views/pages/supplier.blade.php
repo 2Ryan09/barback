@@ -10,7 +10,9 @@
 
 <div style="padding: 10px; padding-top: 150px; overflow: auto;">
 	<h1 style="font-family: 'Bellefair', serif; font-weight: normal;">Suppliers</h1>
-    <supplier-vuetable></supplier-vuetable>
+    <supplier-vuetable
+    my-detail-row=""
+    ></supplier-vuetable>
 </div>
 
 @endsection
