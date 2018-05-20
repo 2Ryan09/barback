@@ -27,4 +27,3 @@ Route::resource('bottles', 'BottleController');
 Route::resource('locations', 'LocationController');
 
 Route::resource('suppliers', 'SupplierController');
-
