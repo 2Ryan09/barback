@@ -2,19 +2,42 @@
 
 namespace App\Http\Controllers;
 
-use App\Location;
 use Illuminate\Http\Request;
+use App\Http\Requests;
+use App\Location;
+use App\Http\Resources\Location as LocationResource;
+use Illuminate\Support\Facades\DB;
 
 class LocationController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display a listing of the resource
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        //
+        Log::channel('location')->info('Locations shown.', ['user' => Auth::user()]);
+
+        // Get articles
+        return Location::paginate(15);
+    }
+
+    /**
+     * Display the specified resource
+     *
+     * @param int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        Log::channel('location')->info('Location shown.', ['user' => Auth::user(), 'id' => $id]);
+
+        // Get a single location
+        $location = Location::findOrFail($id);
+
+        // Return the single location as a resource
+        return new LocationCollection($location);
     }
 
     /**
@@ -24,38 +47,32 @@ class LocationController extends Controller
      */
     public function create()
     {
-        //
+        return Location::create($request->all());
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Create new offering entry
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return Response
      */
     public function store(Request $request)
     {
-        //
-    }
+        Log::channel('location')->info('Location created.', [
+            'location' => $request->all(),
+            'user' => Auth::user()
+        ]);
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Location  $location
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Location $location)
-    {
-        //
+        return Location::create($request->all());
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Location  $location
+     * @param  \App\Activity  $activity
      * @return \Illuminate\Http\Response
      */
-    public function edit(Location $location)
+    public function edit(Activity $activity)
     {
         //
     }
@@ -64,10 +81,10 @@ class LocationController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Location  $location
+     * @param  \App\Activity  $activity
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Location $location)
+    public function update(Request $request, Activity $activity)
     {
         //
     }
@@ -75,11 +92,24 @@ class LocationController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Location  $location
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Location $location)
+    public function destroy($id)
     {
-        //
+        $location = Location::find($id);
+        $deleted = $location->delete();
+
+        if ($deleted) {
+            Log::channel('location')->info('Location deleted.', [
+                'location' => $location,
+                'user' => Auth::user()
+            ]);
+
+            return response()->json(['status' => 'success', 'message' => 'location_deleted']);
+        } else {
+            return response()->json(['status' => 'error',
+                'message' => 'location_not_found', ], 422);
+        }
     }
 }
