@@ -20,7 +20,7 @@
 		    <input class="form-control" v-model="offering.supplier_id" placeholder="12345" required>
 		  </div>
 		  <div class="col-sm-1">
-		    <button type="button" class="btn btn-primary" @click="getSupplier">Find</button>
+		    <button type="button" class="btn btn-primary" @click="getSupplier">Lookup</button>
 		    <modal name="getSupplierByName" height="500" width="1000">
 		    	😄
             </modal>
