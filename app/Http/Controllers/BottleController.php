@@ -50,6 +50,21 @@ class BottleController extends Controller
     }
 
     /**
+     * Get the bottle by searching name
+     *
+     * @param String $name
+     * @return \Illuminate\Http\Response
+     **/
+    public function search($name)
+    {
+        $bottle = Bottle::where('name', 'LIKE', "%$name%")->orderBy('id')->first();
+
+        $offering = $bottle->offering;
+
+        return $bottle;
+    }
+
+    /**
      * Create new bottle entry
      *
      * @param Request $request

@@ -59,7 +59,9 @@
 			  </div>
 			</div>
 			<div class="form-group row">
-			  <label class="col-sm-9 col-form-label"><h3>Cost Per Bottle</h3></label>
+			  <label class="col-sm-9 col-form-label">
+			  	<h3>Cost Per Bottle</h3>
+			  </label>
 			  <div class="col-sm-3">
 				<h3>${{ calculator.tmp_cost = (calculator.total_cost / calculator.numBottles).toFixed(2) }}</h3>
 			  </div>
