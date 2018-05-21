@@ -70,4 +70,14 @@ class PageController extends Controller
     {
         return view('pages.test');
     }
+
+    public function diningKiosk()
+    {
+        return view('pages.kiosks.dining');
+    }
+
+    public function kiosk()
+    {
+        return view('pages.kiosks.kiosk');
+    }
 }

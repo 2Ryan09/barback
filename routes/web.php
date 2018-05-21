@@ -20,7 +20,8 @@ Route::group(['middleware' => 'web'], function () {
 
 	Route::get('/about', 'PageController@about');
 
-	Route::get('/welcome', 'PageController@welcome');
+	Route::get('/kiosk', 'PageController@kiosk');
+	Route::get('/kiosk/dining', 'PageController@diningKiosk');
 
 	Auth::routes();
 	Route::get('auth/logout', 'Auth\LoginController@logout')->name('logout');
@@ -39,4 +40,5 @@ Route::group(['middleware' => 'web'], function () {
 
 		Route::get('/suppliers', 'PageController@supplier')->name('supplier.overview');
 		Route::get('/suppliers/create', 'PageController@suppliercreate')->name('supplier.create');
+	});
 });
