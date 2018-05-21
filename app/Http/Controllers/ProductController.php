@@ -36,10 +36,7 @@ class ProductController extends Controller
         Log::channel('bws')->info('Products shown.', ['user' => Auth::user()]);
 
         // Get a single product
-        $product = Product::findOrFail($id);
-
-        // Return the single product as a resource
-        return new ProductCollection($product);
+        return Product::findOrFail($id);
     }
 
     /**

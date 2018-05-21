@@ -7,6 +7,9 @@ use App\Http\Requests;
 use App\Bottle;
 use App\Http\Resources\Bottle as BottleResource;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Auth;
+
 
 class BottleController extends Controller
 {
