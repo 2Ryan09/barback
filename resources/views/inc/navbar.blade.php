@@ -8,7 +8,7 @@
       {{ env('CLUB_NAME') }} {{ env('APP_NAME') }}
     </div>
 
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <div class="collapse navbar-collapse" id="navbarNavDropdown" style="font-family: 'Muli', serif;">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
           <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>

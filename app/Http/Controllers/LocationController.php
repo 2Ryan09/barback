@@ -4,13 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests;
-use App\Bottle;
-use App\Http\Resources\Bottle as BottleResource;
+use App\Location;
+use App\Http\Resources\Location as LocationResource;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
 
-class BottleController extends Controller
+class LocationController extends Controller
 {
     /**
      * Display a listing of the resource
@@ -19,10 +19,10 @@ class BottleController extends Controller
      */
     public function index()
     {
-        Log::channel('bottle')->info('Bottles shown.', ['user' => Auth::user()]);
+        Log::channel('location')->info('Locations shown.', ['user' => Auth::user()]);
 
         // Get articles
-        return Bottle::paginate(15);
+        return Location::paginate(15);
     }
 
     /**
@@ -33,10 +33,13 @@ class BottleController extends Controller
      */
     public function show($id)
     {
-        Log::channel('bottle')->info('Bottles shown.', ['user' => Auth::user()]);
+        Log::channel('location')->info('Locations shown.', ['user' => Auth::user()]);
 
-        // Get a single bottle
-        return Bottle::findOrFail($id);
+        // Get a single location
+        $location = Location::findOrFail($id);
+
+        // Return the single location as a resource
+        return new LocationCollection($location);
     }
 
     /**
@@ -46,38 +49,23 @@ class BottleController extends Controller
      */
     public function create()
     {
-        return Bottle::create($request->all());
+        return Location::create($request->all());
     }
 
     /**
-     * Get the bottle by searching name
-     *
-     * @param String $name
-     * @return \Illuminate\Http\Response
-     **/
-    public function search($name)
-    {
-        $bottle = Bottle::where('name', 'LIKE', "%$name%")->orderBy('id')->first();
-
-        $offering = $bottle->offering;
-
-        return $bottle;
-    }
-
-    /**
-     * Create new bottle entry
+     * Create new location entry
      *
      * @param Request $request
      * @return Response
      */
     public function store(Request $request)
     {
-        Log::channel('bottle')->info('Bottle created.', [
-            'bottle' => $request->all(),
+        Log::channel('location')->info('Location created.', [
+            'location' => $request->all(),
             'user' => Auth::user()
         ]);
 
-        return Bottle::create($request->all());
+        return Location::create($request->all());
     }
 
     /**
@@ -111,18 +99,18 @@ class BottleController extends Controller
      */
     public function destroy($id)
     {
-        $bottle = bottle::find($id);
-        $deleted = $bottle->delete();
+        $location = Location::find($id);
+        $deleted = $location->delete();
 
         if ($deleted) {
-            Log::channel('bottle')->info('Bottle deleted.', [
-                'bottle' => $bottle,
+            Log::channel('location')->info('Location deleted.', [
+                'location' => $location,
                 'user' => Auth::user()
             ]);
 
-            return response()->json(['status' => 'success', 'message' => 'bottle_deleted']);
+            return response()->json(['status' => 'success', 'message' => 'location_deleted']);
         } else {
-            return response()->json(['status' => 'error', 'message' => 'bottle_not_found', ], 422);
+            return response()->json(['status' => 'error', 'message' => 'location_not_found', ], 422);
         }
     }
 }

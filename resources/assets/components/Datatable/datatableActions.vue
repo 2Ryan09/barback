@@ -6,7 +6,6 @@
       <modal name="edit" height="auto" :scrollable="true" style="padding: 50px;">
         <new-bws-form></new-bws-form>
       </modal>
-      </button>
       <button class="btn btn-sm" @click="deleteRow(rowData)">
         <i class="fa fa-trash-o"></i>
       </button>
@@ -41,14 +40,26 @@
           reverseButtons: true
         }).then((result) => {
           if (result.value) {
-            axios.delete('/api/bottles', {
-                data: { id: data.id }
+            axios.delete('/api/products/' + String(data.id))
+            .then(function (response) {
+              swal(
+                'Deleted!',
+                'Product deleted successfully!',
+                'success'
+            ).then((result) => {
+              if(result.value) {
+                location.reload();
+              }
             })
-            swal(
-              'Deleted!',
-              'Your bottle has been deleted.',
-              'success'
-            )
+            })
+            .catch(function (error) {
+              swal({
+                type: 'error',
+                title: 'Oops...',
+                text: 'Something went wrong!',
+            })
+              console.log(error);
+            });
           } else if (
             result.dismiss === swal.DismissReason.cancel
           ) {

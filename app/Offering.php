@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Bottle extends Model
+class Offering extends Model
 {
     use SoftDeletes;
     
@@ -24,18 +24,26 @@ class Bottle extends Model
     protected $dates = ['created_at', 'updated_at', 'deleted_at'];
 
     /**
-     * Get the offering associated with this bottle
+     * Get the product associated with this offering
      **/
-    public function offering()
+    public function product()
     {
-        return $this->belongsTo('App\Offering');
+        return $this->belongsTo('App\Product');
     }
 
     /**
-     * Get the location associated with this bottle
+     * Get the supplier associated with this offering
      **/
-    public function location()
+    public function supplier()
     {
-        return $this->belongsTo('App\Location');
+        return $this->belongsTo('App\Supplier');
+    }
+
+    /**
+     * Get the bottles associated with this offering
+     **/
+    public function bottles()
+    {
+        return $this->hasMany('App\Bottle');
     }
 }

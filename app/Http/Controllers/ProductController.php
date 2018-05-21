@@ -4,13 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests;
-use App\Bottle;
-use App\Http\Resources\Bottle as BottleResource;
+use App\Product;
+use App\Http\Resources\Product as ProductResource;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
 
-class BottleController extends Controller
+class ProductController extends Controller
 {
     /**
      * Display a listing of the resource
@@ -19,24 +19,35 @@ class BottleController extends Controller
      */
     public function index()
     {
-        Log::channel('bottle')->info('Bottles shown.', ['user' => Auth::user()]);
+        Log::channel('bws')->info('Products shown.', ['user' => Auth::user()]);
 
         // Get articles
-        return Bottle::paginate(15);
+        return Product::paginate(15);
     }
 
     /**
-     * Display the specified resource
+     * Display the specified resource by id
      *
      * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        Log::channel('bottle')->info('Bottles shown.', ['user' => Auth::user()]);
+        Log::channel('bws')->info('Products shown.', ['user' => Auth::user()]);
+      
+        // Return and find single product
+        return Product::findOrFail($id);
+    }
 
-        // Get a single bottle
-        return Bottle::findOrFail($id);
+    /**
+     * Get the product by searching name
+     *
+     * @param String $name
+     * @return \Illuminate\Http\Response
+     **/
+    public function search($name)
+    {
+        return Product::where('name', 'LIKE', "%$name%")->orderBy('id')->first();
     }
 
     /**
@@ -46,38 +57,23 @@ class BottleController extends Controller
      */
     public function create()
     {
-        return Bottle::create($request->all());
+        return Product::create($request->all());
     }
 
     /**
-     * Get the bottle by searching name
-     *
-     * @param String $name
-     * @return \Illuminate\Http\Response
-     **/
-    public function search($name)
-    {
-        $bottle = Bottle::where('name', 'LIKE', "%$name%")->orderBy('id')->first();
-
-        $offering = $bottle->offering;
-
-        return $bottle;
-    }
-
-    /**
-     * Create new bottle entry
+     * Create new product entry
      *
      * @param Request $request
      * @return Response
      */
     public function store(Request $request)
     {
-        Log::channel('bottle')->info('Bottle created.', [
-            'bottle' => $request->all(),
+        Log::channel('bws')->info('Product created.', [
+            'product' => $request->all(),
             'user' => Auth::user()
         ]);
 
-        return Bottle::create($request->all());
+        return Product::create($request->all());
     }
 
     /**
@@ -111,18 +107,19 @@ class BottleController extends Controller
      */
     public function destroy($id)
     {
-        $bottle = bottle::find($id);
-        $deleted = $bottle->delete();
+        $product = Product::find($id);
+        $deleted = $product->delete();
 
         if ($deleted) {
-            Log::channel('bottle')->info('Bottle deleted.', [
-                'bottle' => $bottle,
+            Log::channel('bws')->info('Product deleted.', [
+                'product' => $product,
                 'user' => Auth::user()
             ]);
 
-            return response()->json(['status' => 'success', 'message' => 'bottle_deleted']);
+            return response()->json(['status' => 'success', 'message' => 'product_deleted']);
         } else {
-            return response()->json(['status' => 'error', 'message' => 'bottle_not_found', ], 422);
+            return response()->json(['status' => 'error',
+                'message' => 'product_not_found', ], 422);
         }
     }
 }
