@@ -15,9 +15,10 @@ class CreateLocationsTable extends Migration
     {
         Schema::create('locations', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('location', 128);
+            $table->string('name', 128);
             $table->timestamps();
             $table->softDeletes();
+            $table->nestedSet();
         });
     }
 
