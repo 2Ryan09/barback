@@ -5,7 +5,9 @@
 @endsection
 
 @section('content')
-
-:D
-
+<div class="container" style="padding-top: 150px">
+	<div class="row"> 
+		This will be fun..
+    </div>
+</div>
 @endsection

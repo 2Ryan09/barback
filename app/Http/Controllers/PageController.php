@@ -18,7 +18,12 @@ class PageController extends Controller
 
     public function admin()
     {
-        return view('pages.admin');
+        return view('pages.admin.admin');
+    }
+
+    public function adminLocations()
+    {
+        return view('pages.admin.locations');
     }
 
     public function inventory()
