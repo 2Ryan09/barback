@@ -25,6 +25,7 @@ Vue.use(VueEvents)
 Vue.component('datatable', require('../components/Datatable/Datatable.vue'));
 Vue.component('inv-vuetable', require("../components/invDatatable.vue"));
 Vue.component('bws-vuetable', require("../components/bwsDatatable.vue"));
+Vue.component('offerings-vuetable', require("../components/offDatatable.vue"));
 Vue.component('supplier-vuetable', require("../components/supplierDatatable.vue"));
 Vue.component('new-bws-form', require("../components/newBWS.vue"));
 Vue.component('new-offer-form', require("../components/newOff.vue"));

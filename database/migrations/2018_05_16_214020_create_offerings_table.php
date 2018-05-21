@@ -18,7 +18,7 @@ class CreateOfferingsTable extends Migration
             $table->integer('product_id');
             $table->decimal('price', 12, 3);
             $table->decimal('cost', 12, 3);
-            $table->string('supplier', 128);
+            $table->integer('supplier_id');
             $table->timestamps();
             $table->softDeletes();
         });
