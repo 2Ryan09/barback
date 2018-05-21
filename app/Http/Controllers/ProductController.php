@@ -47,7 +47,7 @@ class ProductController extends Controller
      **/
     public function search($name)
     {
-        return Product::where('name', 'LIKE', "%$name%")->orderBy('id')->paginate(1);
+        return Product::where('name', 'LIKE', "%$name%")->orderBy('id')->first();
     }
 
     /**

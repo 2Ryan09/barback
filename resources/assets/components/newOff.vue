@@ -3,17 +3,19 @@
 		<div class="form-group row">
 		  <label class="col-sm-2 col-form-label">BWS ID</label>
 		  <div class="col-sm-9">
-		    <input class="form-control" v-model="offering.product_id" placeholder="12345" required>
+		    <input class="form-control" v-model="offering.product_id" placeholder="9876" required>
 		  </div>
 		  <div class="col-sm-1">
 		    <button type="button" class="btn btn-primary" @click="getBWS">Lookup</button>
-		    <modal name="getBWSByName" height="500" width="1000">
-		    	<div style="padding: 20px;">
-		    		<bws-vuetable @clicked="getID"></bws-vuetable>
-		    	</div>
-            </modal>
 		  </div>
 		</div>
+
+	    <modal name="BWSLookup" height="500" width="1000">
+	    	<div style="padding: 20px;">
+	    		<bws-vuetable @clicked="getID"></bws-vuetable>
+	    	</div>
+        </modal>
+
 		<div class="form-group row">
 		  <label class="col-sm-2 col-form-label">Supplier ID</label>
 		  <div class="col-sm-9">
@@ -74,6 +76,7 @@
 		</div>
 	    <button class="btn btn-primary" type="submit">Create Offering!</button>
 	    <p>{{ offering }}</p>
+	    <p>{{ bws_name }}</p>
 	</form>
 </div>
 </template>
@@ -82,8 +85,8 @@
 export default {
   data() {
 	return {
-		name                : {},
-		supplier            : {},
+		name                : '',
+		supplier            : '',
 		offering: {
 		  product_id        : '',
 		  supplier_id       : '',
@@ -122,7 +125,50 @@ export default {
 		  });
 	},
 	getBWS() {
-		this.$modal.show('getBWSByName');
+		swal({
+		  title: 'Name of Bottle',
+		  input: 'text',
+		  inputAttributes: {
+		    autocapitalize: 'off'
+		  },
+		  showCancelButton: true,
+		  confirmButtonText: 'Look up',
+		  showLoaderOnConfirm: true,
+		  preConfirm: (name) => {
+		    return fetch(`/api/products/${name}`)
+		      .then(response => {
+		        if (!response.ok) {
+		          throw new Error(response.statusText)
+		        }
+		        return response.json()
+		      })
+		      .catch(error => {
+		        swal.showValidationError(
+		          `Sorry. No results.`
+		        )
+		      })
+		  },
+		  allowOutsideClick: () => !swal.isLoading()
+		}).then((result) => {
+		  if (result.value) {
+		  	swal({
+			  title: 'Is this your bottle?',
+			  text: result.value.name,
+			  imageUrl: result.value.img_url,
+			  imageHeight: 200,
+			  imageAlt: 'Custom image',
+			  animation: false,
+			  showCancelButton: true,
+			  confirmButtonText: 'Yes!',
+		      cancelButtonText: 'No (I tried)',
+			  reverseButtons: true
+			}).then((confirm) => {
+  				if (confirm.value) {
+  					this.offering.product_id = result.value.id;
+  				}
+		    })
+		  }
+		});
 	},
 	getSupplier() {
 		this.$modal.show('getSupplierByName');
