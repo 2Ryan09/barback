@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-	{{ env('APP_NAME') }} Inventory
+	{{ env('APP_NAME') }} Suppliers
 @endsection
 
 @section('content')

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Offering;
+use App\Product;
 use App\Http\Resources\Offering as OfferingResource;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
@@ -36,10 +37,7 @@ class OfferingController extends Controller
         Log::channel('offering')->info('Offering shown.', ['user' => Auth::user()]);
 
         // Get a single offering
-        $offering = Offering::findOrFail($id);
-
-        // Return the single offering as a resource
-        return new OfferingCollection($offering);
+        return Offering::findOrFail($id);
     }
 
     /**
@@ -50,6 +48,22 @@ class OfferingController extends Controller
     public function create()
     {
         return Offering::create($request->all());
+    }
+
+
+    /**
+     * Get the bottle by searching name
+     *
+     * @param String $name
+     * @return \Illuminate\Http\Response
+     **/
+    public function search($name)
+    {
+        $product = Product::where('name', 'LIKE', "%$name%")->first();
+
+        $offering = $product->offering;
+
+        return $product;
     }
 
     /**
