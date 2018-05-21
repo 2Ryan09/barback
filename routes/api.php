@@ -25,3 +25,5 @@ Route::resource('offerings', 'OfferingController');
 Route::resource('bottles', 'BottleController');
 
 Route::resource('locations', 'LocationController');
+
+Route::resource('suppliers', 'SupplierController');

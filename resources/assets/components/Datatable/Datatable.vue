@@ -9,7 +9,7 @@
       :css="css.table"
       :sort-order="sortOrder"
       :multi-sort="true"
-      detail-row-component="my-detail-row"
+      :detail-row-component="my-detail-row"
       :append-params="moreParams"
       @vuetable:cell-clicked="onCellClicked"
       @vuetable:pagination-data="onPaginationData"
@@ -53,6 +53,9 @@ export default {
       type: Array,
       required: true
     },
+    my_detail_row: {
+      type: String,
+    }
   },
   data () {
     return {
