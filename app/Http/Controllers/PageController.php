@@ -21,6 +21,16 @@ class PageController extends Controller
         return view('pages.inventory.inventory');
     }
 
+    public function supplier()
+    {
+        return view('pages.supplier');
+    }
+
+    public function suppliercreate()
+    {
+        return view('pages.newSupplier');
+    }
+
     public function invcreate()
     {
         return view('pages.inventory.create');

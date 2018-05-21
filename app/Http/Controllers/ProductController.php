@@ -34,7 +34,7 @@ class ProductController extends Controller
     public function show($id)
     {
         Log::channel('bws')->info('Products shown.', ['user' => Auth::user()]);
-
+      
         // Return and find single product
         return Product::findOrFail($id);
     }

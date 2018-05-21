@@ -12,11 +12,13 @@
             <li><a href="#">Non Alcoholics</a></li>
             <li><a href="#">Extraneous</a></li>
         </ul>
+        <li><a href="{{ route('supplier.overview') }}">Suppliers</a></li>
         <a href="#createMenu" data-toggle="collapse" aria-expanded="false">New</a>
         <ul class="collapse" id="createMenu">
             <li><a href="{{ route('bws.create') }}">New BWS</a></li>
             <li><a href="{{ route('offerings.create') }}">New Offering</a></li>
             <li><a href="{{ route('inventory.create') }}">New Inventory</a></li>
+            <li><a href="{{ route('supplier.create') }}">New Supplier</a></li>
         </ul>
     </ul>
   </div>

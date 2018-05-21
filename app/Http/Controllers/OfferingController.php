@@ -7,6 +7,8 @@ use App\Http\Requests;
 use App\Offering;
 use App\Http\Resources\Offering as OfferingResource;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Auth;
 
 class OfferingController extends Controller
 {

@@ -7,6 +7,8 @@ use App\Http\Requests;
 use App\Bottle;
 use App\Http\Resources\Bottle as BottleResource;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Auth;
 
 class BottleController extends Controller
 {
@@ -34,10 +36,7 @@ class BottleController extends Controller
         Log::channel('bottle')->info('Bottles shown.', ['user' => Auth::user()]);
 
         // Get a single bottle
-        $bottle = Bottle::findOrFail($id);
-
-        // Return the single bottle as a resource
-        return new BottleCollection($bottle);
+        return Bottle::findOrFail($id);
     }
 
     /**

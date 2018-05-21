@@ -6,7 +6,7 @@
 		    <input class="form-control" v-model="offering.product_id" placeholder="12345" required>
 		  </div>
 		  <div class="col-sm-1">
-		    <button type="button" class="btn btn-primary" @click="getBWS">Find</button>
+		    <button type="button" class="btn btn-primary" @click="getBWS">Lookup</button>
 		    <modal name="getBWSByName" height="500" width="1000">
 		    	<div style="padding: 20px;">
 		    		<bws-vuetable @clicked="getID"></bws-vuetable>
@@ -20,9 +20,11 @@
 		    <input class="form-control" v-model="offering.supplier_id" placeholder="12345" required>
 		  </div>
 		  <div class="col-sm-1">
-		    <button type="button" class="btn btn-primary" @click="getSupplier">Find</button>
+		    <button type="button" class="btn btn-primary" @click="getSupplier">Lookup</button>
 		    <modal name="getSupplierByName" height="500" width="1000">
-		    	😄
+		    	<div style="padding: 20px;">
+		    		<supplier-vuetable @clicked="getID"></supplier-vuetable>
+		    	</div>
             </modal>
 		  </div>
 		</div>
@@ -31,36 +33,45 @@
 		  <div class="col-sm-9">
 		    <div class="input-group-prepend">
               <div class="input-group-text">$</div>
-              <input class="form-control" v-model="offering.cost" placeholder="Down on the Farm">
+              <input class="form-control" v-model="offering.cost" placeholder="123.45">
 		  	</div>
           </div>
 		  <div class="col-sm-1">
 		    <button type="button" class="btn btn-primary" @click="getPricePerBottle">Calculate</button>
 		  </div>
 		</div>
-		    <modal name="BottleCostCalculator" height="auto" :scrollable="true">
-		      <div style="padding: 20px;">
-				<div class="form-group row">
-				  <label class="col-sm-9 col-form-label">Total Cost of Package</label>
-				  <div class="col-sm-3">
-				    <input class="form-control" v-model="calculator.total_cost">
-				  </div>
-				</div>
-				<div class="form-group row">
-				  <label class="col-sm-9 col-form-label">Number of Bottles in Package</label>
-				  <div class="col-sm-3">
-				    <input class="form-control" v-model="calculator.numBottles">
-				  </div>
-				</div>
-				<div class="form-group row">
-				  <label class="col-sm-9 col-form-label"><h3>Cost Per Bottle</h3></label>
-				  <div class="col-sm-3">
-					<h3>${{ calculator.tmp_cost = (calculator.total_cost / calculator.numBottles).toFixed(2) }}</h3>
-				  </div>
-				</div>
-			    <button class="btn btn-primary" @click="saveResult">Done</button>
+	    <modal name="BottleCostCalculator" height="auto" :scrollable="true">
+	      <div style="padding: 20px;">
+			<div class="form-group row">
+			  <label class="col-sm-9 col-form-label">Total Cost of Package</label>
+			  <div class="col-sm-3">
+			    <input class="form-control" v-model="calculator.total_cost">
 			  </div>
-		    </modal>
+			</div>
+			<div class="form-group row">
+			  <label class="col-sm-9 col-form-label">Number of Bottles in Package</label>
+			  <div class="col-sm-3">
+			    <input class="form-control" v-model="calculator.numBottles">
+			  </div>
+			</div>
+			<div class="form-group row">
+			  <label class="col-sm-9 col-form-label"><h3>Cost Per Bottle</h3></label>
+			  <div class="col-sm-3">
+				<h3>${{ calculator.tmp_cost = (calculator.total_cost / calculator.numBottles).toFixed(2) }}</h3>
+			  </div>
+			</div>
+		    <button class="btn btn-primary" @click="saveResult">Done</button>
+		  </div>
+	    </modal>
+	    <div class="form-group row">
+		  <label class="col-sm-2 col-form-label">Price Per Bottle</label>
+		  <div class="col-sm-9">
+		    <div class="input-group-prepend">
+              <div class="input-group-text">$</div>
+              <input class="form-control" v-model="offering.price" placeholder="123.45">
+		  	</div>
+		  </div>
+		</div>
 	    <button class="btn btn-primary" type="submit">Create Offering!</button>
 	    <p>{{ offering }}</p>
 	</form>
@@ -77,6 +88,7 @@ export default {
 		  product_id        : '',
 		  supplier_id       : '',
 	      cost     			: '',
+	      price             : ''
 	    },
 	    calculator: {
 	      total_cost        : '',
@@ -86,7 +98,7 @@ export default {
 	}
   },
   methods: {
-  	submitBottle() {
+  	submitOffer() {
 		axios.post('/api/offerings', this.offering)
 		  .then(function (response) {
 		  	swal(
