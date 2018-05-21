@@ -36,5 +36,3 @@ Route::get('/suppliers', 'PageController@supplier')->name('supplier.overview');
 Route::get('/suppliers/create', 'PageController@suppliercreate')->name('supplier.create');
 
 Auth::routes();
-
-Route::get('/dashboard', 'PageController@dashboard');

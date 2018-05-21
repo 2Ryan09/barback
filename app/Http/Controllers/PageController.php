@@ -55,11 +55,6 @@ class PageController extends Controller
     {
         return view('pages.offerings.create');
     }
-  
-    public function dashboard()
-    {
-        return view('pages.dashboard.dashboard');
-    }
 
     public function overview()
     {
