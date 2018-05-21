@@ -29,4 +29,5 @@ Route::resource('bottles', 'BottleController');
 Route::get('locations/{name}', 'ProductController@search')->where('name', '[A-Za-z]+');
 Route::resource('locations', 'LocationController');
 
+Route::get('suppliers/{name}', 'SupplierController@search')->where('name', '[A-Za-z]+');
 Route::resource('suppliers', 'SupplierController');

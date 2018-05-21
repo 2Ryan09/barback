@@ -53,6 +53,17 @@ class SupplierController extends Controller
     }
 
     /**
+     * Get the supplier by searching name
+     *
+     * @param String $name
+     * @return \Illuminate\Http\Response
+     **/
+    public function search($name)
+    {
+        return Supplier::where('name', 'LIKE', "%$name%")->orderBy('id')->first();
+    }
+
+    /**
      * Create new suppler entry
      *
      * @param Request $request

@@ -23,13 +23,15 @@
 		  </div>
 		  <div class="col-sm-1">
 		    <button type="button" class="btn btn-primary" @click="getSupplier">Lookup</button>
-		    <modal name="getSupplierByName" height="500" width="1000">
-		    	<div style="padding: 20px;">
-		    		<supplier-vuetable @clicked="getID"></supplier-vuetable>
-		    	</div>
-            </modal>
 		  </div>
 		</div>
+
+	    <modal name="getSupplierByName" height="500" width="1000">
+	    	<div style="padding: 20px;">
+	    		<supplier-vuetable @clicked="getID"></supplier-vuetable>
+	    	</div>
+        </modal>
+
 		<div class="form-group row">
 		  <label class="col-sm-2 col-form-label">Cost Per Bottle</label>
 		  <div class="col-sm-9">
@@ -160,18 +162,61 @@ export default {
 			  animation: false,
 			  showCancelButton: true,
 			  confirmButtonText: 'Yes!',
-		      cancelButtonText: 'No (I tried)',
+		      cancelButtonText: 'No (Manual Lookup)',
 			  reverseButtons: true
 			}).then((confirm) => {
   				if (confirm.value) {
   					this.offering.product_id = result.value.id;
+  				} else {
+  					this.$modal.show('BWSLookup')
   				}
 		    })
 		  }
 		});
 	},
 	getSupplier() {
-		this.$modal.show('getSupplierByName');
+		swal({
+		  title: 'Name of Supplier',
+		  input: 'text',
+		  inputAttributes: {
+		    autocapitalize: 'off'
+		  },
+		  showCancelButton: true,
+		  confirmButtonText: 'Look up',
+		  showLoaderOnConfirm: true,
+		  preConfirm: (name) => {
+		    return fetch(`/api/suppliers/${name}`)
+		      .then(response => {
+		        if (!response.ok) {
+		          throw new Error(response.statusText)
+		        }
+		        return response.json()
+		      })
+		      .catch(error => {
+		        swal.showValidationError(
+		          `${error}`
+		        )
+		      })
+		  },
+		  allowOutsideClick: () => !swal.isLoading()
+		}).then((result) => {
+		  if (result.value) {
+		  	swal({
+			  title: 'Is this your supplier?',
+			  text: result.value.name,
+			  showCancelButton: true,
+			  confirmButtonText: 'Yes!',
+		      cancelButtonText: 'No (Manual Lookup)',
+			  reverseButtons: true
+			}).then((confirm) => {
+  				if (confirm.value) {
+  					this.offering.supplier_id = result.value.id;
+  				} else {
+  					this.$modal.show('getSupplierByName')
+  				}
+		    })
+		  }
+		});
 	},
 	getPricePerBottle() {
 		this.$modal.show('BottleCostCalculator');
