@@ -18,9 +18,9 @@
           <a class="nav-link" href="/about">About</a>
         </li>
 
-        @can('view dashboard')
+        @can('view inventory')
           <li class="nav-item">
-            <a class="nav-link" href="/dashboard">Dashboard</a>
+            <a class="nav-link" href="/inventory">Inventory</a>
           </li>
         @endcan
 
@@ -39,7 +39,7 @@
         </li>
 
         <li>
-          <a class="navbar-link" href="{{ Auth::logout() }}"> Logout</a>
+          <a class="navbar-link" href="#"> Logout</a>
         </li>
 
         @else
