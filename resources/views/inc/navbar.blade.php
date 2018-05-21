@@ -39,7 +39,7 @@
         </li>
 
         <li>
-          <a class="navbar-link" href="#"> Logout</a>
+          <a class="navbar-link" href="{{ route('logout') }}"> Logout</a>
         </li>
 
         @else
