@@ -19,16 +19,9 @@ export default {
           dataClass: 'text-right'
         },
         {
-          name: 'name',
-          sortField: 'name',
-        },
-        {
-          title: 'Year',
-          name: 'release_date',
-          sortField: 'release_date',
-          titleClass: 'text-center',
-          dataClass: 'text-center',
-          callback: 'formatDate|YYYY'
+          name: 'offering_id',
+          title: 'Offering',
+          sortField: 'offering_id'
         },
         {
           name: 'location_id',
