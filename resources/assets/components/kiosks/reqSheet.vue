@@ -1,5 +1,5 @@
 <template>
-	<p>{{ location_id }}</p>
+	<kiosk-vuetable></kiosk-vuetable>
 </template>
 
 <script>
