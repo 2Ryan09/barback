@@ -71,9 +71,9 @@ class PageController extends Controller
         return view('pages.test');
     }
 
-    public function diningKiosk()
+    public function reqSheet()
     {
-        return view('pages.kiosks.dining');
+        return view('pages.kiosks.reqSheet');
     }
 
     public function kiosk()

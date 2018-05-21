@@ -31,7 +31,7 @@ export default {
 				});
 		},
 		chooseLocation(location) {
-			window.location.href = '/kiosk/reqSheet';
+			window.location.href = '/kiosk/reqSheet/' + location.id;
 		}
 	}
 }
