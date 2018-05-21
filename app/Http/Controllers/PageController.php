@@ -16,6 +16,16 @@ class PageController extends Controller
         return view('pages.about');
     }
 
+    public function admin()
+    {
+        return view('pages.admin.admin');
+    }
+
+    public function adminLocations()
+    {
+        return view('pages.admin.locations');
+    }
+
     public function inventory()
     {
         return view('pages.inventory.inventory');
@@ -44,11 +54,6 @@ class PageController extends Controller
     public function offcreate()
     {
         return view('pages.offerings.create');
-    }
-  
-    public function dashboard()
-    {
-        return view('pages.dashboard.dashboard');
     }
 
     public function overview()
