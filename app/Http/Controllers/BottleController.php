@@ -36,10 +36,7 @@ class BottleController extends Controller
         Log::channel('bottle')->info('Bottles shown.', ['user' => Auth::user()]);
 
         // Get a single bottle
-        $bottle = Bottle::findOrFail($id);
-
-        // Return the single bottle as a resource
-        return new BottleCollection($bottle);
+        return Bottle::findOrFail($id);
     }
 
     /**
