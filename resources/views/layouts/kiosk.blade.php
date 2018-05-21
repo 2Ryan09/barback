@@ -27,6 +27,12 @@
 
         </div>
 
+        <footer class="mastfoot mt-auto" style="position: fixed; bottom: 0; width: 100%; padding: 20px;">
+            <div class="footer py-3 text-right">
+                <a href="{{ route('inventory.home') }}">Exit</a>
+            </div>
+        </footer>
+
         <script src="{{ asset('js/app.js') }}"></script>
 
         @yield('scripts')

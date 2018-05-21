@@ -20,7 +20,7 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::get('/about', 'PageController@about');
 
-    Route::get('/kiosk', 'PageController@kiosk');
+    Route::get('/kiosk', 'PageController@kiosk')->name('kiosk.home');
     Route::get('/kiosk/dining', 'PageController@diningKiosk');
 
     Auth::routes();
