@@ -33,7 +33,7 @@
 		  <div class="col-sm-9">
 		    <div class="input-group-prepend">
               <div class="input-group-text">$</div>
-              <input class="form-control" v-model="offering.cost" placeholder="Down on the Farm">
+              <input class="form-control" v-model="offering.cost" placeholder="123.45">
 		  	</div>
           </div>
 		  <div class="col-sm-1">
@@ -66,7 +66,10 @@
 	    <div class="form-group row">
 		  <label class="col-sm-2 col-form-label">Price Per Bottle</label>
 		  <div class="col-sm-9">
-		    <input class="form-control" v-model="offering.price" placeholder="123.45" required>
+		    <div class="input-group-prepend">
+              <div class="input-group-text">$</div>
+              <input class="form-control" v-model="offering.price" placeholder="123.45">
+		  	</div>
 		  </div>
 		</div>
 	    <button class="btn btn-primary" type="submit">Create Offering!</button>
