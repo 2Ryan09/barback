@@ -153,7 +153,7 @@ export default {
 	      style             : '',
 	      upc               : ''
 	    },
-	    result              : {}
+	    result              : ''
 	}
   },
   methods: {
@@ -188,12 +188,36 @@ export default {
   			}
 		}
 
-		axios.get("'https://lcboapi.com/products?q=' + {{ product.name }}", config)
+		axios.get("https://lcboapi.com/products?q=" + this.product.name.replace(/ /g, "+"), config)
 		    .then(response => {
-      			result = response
+      			this.result = response
+      			dd(this.result);
     		})
 
-    	this.$modal.show('autofill');
+    	swal.mixin({
+		  input: 'text',
+		  confirmButtonText: 'Next &rarr;',
+		  showCancelButton: true,
+		  progressSteps: ['1', '2', '3']
+		}).queue([
+		  {
+		    title: this.result.value,
+		    text: 'Chaining swal2 modals is easy'
+		  },
+		  'Question 2',
+		  'Question 3'
+		]).then((result) => {
+		  if (result.value) {
+		    swal({
+		      title: 'All done!',
+		      html:
+		        'Your answers: <pre>' +
+		          JSON.stringify(result.value) +
+		        '</pre>',
+		      confirmButtonText: 'Lovely!'
+		    })
+		  }
+		})
 	}
   }
 }
