@@ -3,6 +3,7 @@
     <datatable
       api-url="/api/bottles"
       :fields="fields"
+      detail-row-component="inv_detail_row"
     ></datatable>
   </div>
 </template>
@@ -13,24 +14,17 @@ export default {
     return {
       fields: [
         {
-          name: 'id',
-          title: '#',
-          titleClass: 'text-right',
-          dataClass: 'text-right'
-        },
-        {
           name: 'offering_id',
           title: 'Offering',
           sortField: 'offering_id'
         },
         {
-          name: 'location_id',
-          title: 'Location',
-          sortField: 'location_id'
+          name: 'name',
+          sortField: 'name'
         },
         {
-          name: 'amount',
-          sortField: 'amount'
+          name: 'quantity',
+          sortField: 'quantity'
         },
         {
           name: '__component:custom-actions',
@@ -40,6 +34,10 @@ export default {
         }
       ]
     }
-  }  
+  },
+  mounted() {
+    this.getLocationID();
+    this.generateAPIUrl();
+  }
 }
 </script>
