@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Bottle;
+use App\Offering;
+use App\Product;
 use App\Http\Resources\Bottle as BottleResource;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
@@ -21,8 +23,36 @@ class BottleController extends Controller
     {
         Log::channel('bottle')->info('Bottles shown.', ['user' => Auth::user()]);
 
-        // Get articles
-        return Bottle::paginate(15);
+        $bottles = Bottle::all()->groupBy('offering_id');
+        $offering_ids = $bottles->keys();
+        $offerings = Offering::find($offering_ids);
+        $product_ids = $offerings->pluck('product_id');
+        $products = Product::find($product_ids);
+        $associative = collect();
+        foreach ($offering_ids as $offering_id) {
+            $associative->put($offering_id, $offerings->where('id', $offering_id)[$offering_id-1]->product_id);
+        }
+        $displayValues = collect();
+        foreach ($bottles as $collection){
+            $collectByLoc = $collection->groupBy('location_id');
+            $locations = collect();
+            foreach ($collectByLoc as $location) {
+                $locations->push([
+                    'location_id' => $location[0]['location_id'],
+                    'numberAtLocation' => $location->count(),
+                ]);
+            }
+            $offering_id = $collection[0]['offering_id'];
+            $product_id = $associative->get($collection[0]['offering_id']);
+            $displayValues->push([
+                'offering_id' => $offering_id,
+                'product_id' => $product_id,
+                'name' => $products->where('id', $product_id)[$offering_id-1]->name,
+                'quantity' => $collection->count(),
+                'location' => $locations,
+            ]);
+        }
+        return $displayValues;
     }
 
     /**

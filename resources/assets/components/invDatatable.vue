@@ -1,9 +1,6 @@
 <template>
   <div>
-    <datatable
-      api-url="/api/bottles"
-      :fields="fields"
-    ></datatable>
+    <p>{{ test }}</p>
   </div>
 </template>
 
@@ -11,6 +8,7 @@
 export default {
   data () {
     return {
+      test: '',
       fields: [
         {
           name: 'id',
@@ -40,6 +38,15 @@ export default {
         }
       ]
     }
-  }  
+  },
+  mounted() {
+    axios.get('/api/bottles')
+      .then((response) => {
+        this.test = response.data;
+      })
+      .catch((error) => {
+        swal(`${error}`)
+      });
+  }
 }
 </script>
