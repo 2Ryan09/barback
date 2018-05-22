@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-	New Bottle
+	New Supplier
 @endsection
 
 @section('content')
@@ -9,7 +9,7 @@
 @include('inc.inventory.sidebar')
 
 <div class="container" style="padding-top: 150px;">
-	<h1 style="font-family: 'Muli', serif; font-weight: normal;">Add New Bottle</h1>
-	<new-inv-form></new-inv-form>
+	<h1 style="font-family: 'Muli', serif; font-weight: normal;">Create New Supplier</h1>
+	<new-supplier-form></new-supplier-form>
 </div>
 @endsection

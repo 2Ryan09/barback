@@ -21,7 +21,7 @@ class CreateProductsTable extends Migration
             $table->string('unit_type', 128)->nullable();
             $table->mediumInteger('unit_volume')->nullable();
             $table->mediumInteger('alcohol_content')->nullable();
-            $table->string('sugar_content', 256)->nullable();
+            $table->integer('sugar_content')->nullable();
             $table->string('producer_name', 256)->nullable();
             $table->date('release_date')->nullable();
             $table->boolean('is_seasonal')->nullable();

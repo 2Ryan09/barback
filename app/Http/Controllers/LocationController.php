@@ -7,6 +7,8 @@ use App\Http\Requests;
 use App\Location;
 use App\Http\Resources\Location as LocationResource;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Auth;
 
 class LocationController extends Controller
 {
@@ -17,6 +19,8 @@ class LocationController extends Controller
      */
     public function index()
     {
+        Log::channel('location')->info('Locations shown.', ['user' => Auth::user()]);
+
         // Get articles
         return Location::paginate(15);
     }
@@ -29,6 +33,8 @@ class LocationController extends Controller
      */
     public function show($id)
     {
+        Log::channel('location')->info('Location shown.', ['user' => Auth::user(), 'id' => $id]);
+
         // Get a single location
         $location = Location::findOrFail($id);
 
@@ -47,13 +53,18 @@ class LocationController extends Controller
     }
 
     /**
-     * Create new location entry
+     * Create new offering entry
      *
      * @param Request $request
      * @return Response
      */
     public function store(Request $request)
     {
+        Log::channel('location')->info('Location created.', [
+            'location' => $request->all(),
+            'user' => Auth::user()
+        ]);
+
         return Location::create($request->all());
     }
 
@@ -92,9 +103,15 @@ class LocationController extends Controller
         $deleted = $location->delete();
 
         if ($deleted) {
+            Log::channel('location')->info('Location deleted.', [
+                'location' => $location,
+                'user' => Auth::user()
+            ]);
+
             return response()->json(['status' => 'success', 'message' => 'location_deleted']);
         } else {
-            return response()->json(['status' => 'error', 'message' => 'location_not_found', ], 422);
+            return response()->json(['status' => 'error',
+                'message' => 'location_not_found', ], 422);
         }
     }
 }

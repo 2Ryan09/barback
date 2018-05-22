@@ -1,7 +1,7 @@
 <template>
   <div>
     <datatable
-      api-url="/api/bottles"
+      api-url="/api/offerings"
       :fields="fields"
     ></datatable>
   </div>
@@ -19,18 +19,22 @@ export default {
           dataClass: 'text-right'
         },
         {
-          name: 'offering_id',
-          title: 'Offering',
-          sortField: 'offering_id'
+          name: 'product_id',
+          title: 'BWS ID',
+          sortField: 'name',
         },
         {
-          name: 'location_id',
-          title: 'Location',
-          sortField: 'location_id'
+          name: 'cost',
+          sortField: 'cost',
         },
         {
-          name: 'amount',
-          sortField: 'amount'
+          name: 'price',
+          sortField: 'price',
+        },
+        {
+          name: 'supplier_id',
+          title: 'Supplier ID',
+          sortField: 'supplier_id',
         },
         {
           name: '__component:custom-actions',

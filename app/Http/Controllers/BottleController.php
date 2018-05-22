@@ -7,6 +7,8 @@ use App\Http\Requests;
 use App\Bottle;
 use App\Http\Resources\Bottle as BottleResource;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Auth;
 
 class BottleController extends Controller
 {
@@ -17,6 +19,8 @@ class BottleController extends Controller
      */
     public function index()
     {
+        Log::channel('bottle')->info('Bottles shown.', ['user' => Auth::user()]);
+
         // Get articles
         return Bottle::paginate(15);
     }
@@ -29,11 +33,10 @@ class BottleController extends Controller
      */
     public function show($id)
     {
-        // Get a single bottle
-        $bottle = Bottle::findOrFail($id);
+        Log::channel('bottle')->info('Bottles shown.', ['user' => Auth::user()]);
 
-        // Return the single bottle as a resource
-        return new BottleCollection($bottle);
+        // Get a single bottle
+        return Bottle::findOrFail($id);
     }
 
     /**
@@ -47,6 +50,21 @@ class BottleController extends Controller
     }
 
     /**
+     * Get the bottle by searching name
+     *
+     * @param String $name
+     * @return \Illuminate\Http\Response
+     **/
+    public function search($name)
+    {
+        $bottle = Bottle::where('name', 'LIKE', "%$name%")->orderBy('id')->first();
+
+        $offering = $bottle->offering;
+
+        return $bottle;
+    }
+
+    /**
      * Create new bottle entry
      *
      * @param Request $request
@@ -54,6 +72,11 @@ class BottleController extends Controller
      */
     public function store(Request $request)
     {
+        Log::channel('bottle')->info('Bottle created.', [
+            'bottle' => $request->all(),
+            'user' => Auth::user()
+        ]);
+
         return Bottle::create($request->all());
     }
 
@@ -92,6 +115,11 @@ class BottleController extends Controller
         $deleted = $bottle->delete();
 
         if ($deleted) {
+            Log::channel('bottle')->info('Bottle deleted.', [
+                'bottle' => $bottle,
+                'user' => Auth::user()
+            ]);
+
             return response()->json(['status' => 'success', 'message' => 'bottle_deleted']);
         } else {
             return response()->json(['status' => 'error', 'message' => 'bottle_not_found', ], 422);

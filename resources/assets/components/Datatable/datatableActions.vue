@@ -6,7 +6,6 @@
       <modal name="edit" height="auto" :scrollable="true" style="padding: 50px;">
         <new-bws-form></new-bws-form>
       </modal>
-      </button>
       <button class="btn btn-sm" @click="deleteRow(rowData)">
         <i class="fa fa-trash-o"></i>
       </button>
@@ -44,7 +43,7 @@
             axios.delete('/api/products/' + String(data.id))
             .then(function (response) {
               swal(
-                'Good job!',
+                'Deleted!',
                 'Product deleted successfully!',
                 'success'
             ).then((result) => {

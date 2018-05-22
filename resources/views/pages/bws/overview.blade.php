@@ -9,8 +9,7 @@
 @include('inc.inventory.sidebar')
 
 <div style="padding: 10px; padding-top: 150px; overflow: auto;">
-    <inv-vuetable
-    	api-url="/api/products"
-    ></inv-vuetable>
+	<h1 style="font-family: 'Muli', serif; font-weight: normal;">Products</h1>
+    <bws-vuetable></bws-vuetable>
 </div>
 @endsection

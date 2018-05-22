@@ -4,14 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests;
-use App\Offering;
-use App\Product;
-use App\Http\Resources\Offering as OfferingResource;
+use App\Supplier;
+use App\Http\Resources\Supplier as SupplierResource;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
 
-class OfferingController extends Controller
+class SupplierController extends Controller
 {
     /**
      * Display a listing of the resource
@@ -20,10 +19,10 @@ class OfferingController extends Controller
      */
     public function index()
     {
-        Log::channel('offering')->info('Offerings shown.', ['user' => Auth::user()]);
+        Log::channel('supplier')->info('Suppliers shown.', ['user' => Auth::user()]);
 
         // Get articles
-        return Offering::paginate(15);
+        return Supplier::paginate(15);
     }
 
     /**
@@ -34,10 +33,13 @@ class OfferingController extends Controller
      */
     public function show($id)
     {
-        Log::channel('offering')->info('Offering shown.', ['user' => Auth::user()]);
+        Log::channel('supplier')->info('Suppliers shown.', ['user' => Auth::user()]);
 
-        // Get a single offering
-        return Offering::findOrFail($id);
+        // Get a single supplier
+        $supplier = Supplier::findOrFail($id);
+
+        // Return the single supplier as a resource
+        return new SupplierCollection($supplier);
     }
 
     /**
@@ -47,39 +49,34 @@ class OfferingController extends Controller
      */
     public function create()
     {
-        return Offering::create($request->all());
+        return Supplier::create($request->all());
     }
 
-
     /**
-     * Get the bottle by searching name
+     * Get the supplier by searching name
      *
      * @param String $name
      * @return \Illuminate\Http\Response
      **/
     public function search($name)
     {
-        $product = Product::where('name', 'LIKE', "%$name%")->first();
-
-        $offering = $product->offering;
-
-        return $product;
+        return Supplier::where('name', 'LIKE', "%$name%")->orderBy('id')->first();
     }
 
     /**
-     * Create new offering entry
+     * Create new suppler entry
      *
      * @param Request $request
      * @return Response
      */
     public function store(Request $request)
     {
-        Log::channel('offering')->info('Offering created.', [
-            'offering' => $request->all(),
+        Log::channel('supplier')->info('Supplier created.', [
+            'suppler' => $request->all(),
             'user' => Auth::user()
         ]);
 
-        return Offering::create($request->all());
+        return Supplier::create($request->all());
     }
 
     /**
@@ -113,19 +110,19 @@ class OfferingController extends Controller
      */
     public function destroy($id)
     {
-        $offering = Offering::find($id);
-        $deleted = $offering->delete();
+        $supplier = Supplier::find($id);
+        $deleted = $supplier->delete();
 
         if ($deleted) {
-            Log::channel('offering')->info('Offering deleted.', [
-                'offering' => $offering,
+            Log::channel('supplier')->info('Supplier deleted.', [
+                'supplier' => $supplier,
                 'user' => Auth::user()
             ]);
 
-            return response()->json(['status' => 'success', 'message' => 'offering_deleted']);
+            return response()->json(['status' => 'success', 'message' => 'supplier_deleted']);
         } else {
             return response()->json(['status' => 'error',
-                'message' => 'offering_not_found', ], 422);
+                'message' => 'supplier_not_found', ], 422);
         }
     }
 }
