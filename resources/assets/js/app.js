@@ -36,7 +36,6 @@ Vue.component('new-offer-form', require("../components/newOff.vue"));
 Vue.component('new-supplier-form', require("../components/newSupplier.vue"));
 
 Vue.component('kiosk-buttons', require("../components/kiosks/buttons.vue"));
-Vue.component('req-sheet', require("../components/kiosks/reqSheet.vue"));
 
 const app = new Vue({
     el: '#app'

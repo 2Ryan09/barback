@@ -1,9 +1,11 @@
 <template>
   <div>
     <datatable
-      api-url="/api/bottles/loc=" + location_id
+      :api-url="apiUrl"
       :fields="fields"
+      my_detail_row=""
     ></datatable>
+    <p>{{ test }}</p>
   </div>
 </template>
 
@@ -11,6 +13,8 @@
 export default {
   data () {
     return {
+      apiUrl            : '',
+      test: '',
       location_id       : '',
       fields: [
         {
@@ -33,22 +37,24 @@ export default {
           name: 'amount',
           sortField: 'amount'
         },
-        {
-          name: '__component:custom-actions',
-          title: 'Actions',
-          titleClass: 'text-center',
-          dataClass: 'text-center'
-        }
       ]
     }
   },
   mounted() {
     this.getLocationID();
+    this.generateAPIUrl();
   },
   methods: {
-      getLocationID() {
+    getLocationID() {
       var url = window.location.pathname.split("/");
       this.location_id = url[url.length - 1];
+    },
+    generateAPIUrl() {
+      this.apiUrl = "/api/bottles/loc=" + this.location_id;
+      axios.get("/api/bottles/loc=" + this.location_id)
+      .then((response) => {
+        this.test = response.data;
+      })
     }
   }
 }

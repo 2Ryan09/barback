@@ -23,10 +23,11 @@ Route::resource('products', 'ProductController');
 Route::get('offerings/{name}', 'OfferingController@search')->where('name', '[A-Za-z]+');
 Route::resource('offerings', 'OfferingController');
 
-Route::get('bottles/{name}', 'ProductController@search')->where('name', '[A-Za-z]+');
+Route::get('bottles/{name}', 'BottleController@search')->where('name', '[A-Za-z]+');
+Route::get('bottles/loc={id}', 'BottleController@byLoc');
 Route::resource('bottles', 'BottleController');
 
-Route::get('locations/{name}', 'ProductController@search')->where('name', '[A-Za-z]+');
+Route::get('locations/{name}', 'LocationController@search')->where('name', '[A-Za-z]+');
 Route::resource('locations', 'LocationController');
 
 Route::get('suppliers/{name}', 'SupplierController@search')->where('name', '[A-Za-z]+');
