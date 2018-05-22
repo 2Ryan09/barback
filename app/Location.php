@@ -4,10 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Kalnoy\Nestedset\NodeTrait;
 
 class Location extends Model
 {
     use SoftDeletes;
+    use NodeTrait;
     
     /**
      * The attributes that aren't mass assignable
@@ -24,9 +26,9 @@ class Location extends Model
     protected $dates = ['created_at', 'updated_at', 'deleted_at'];
 
     /**
-     * Get the bottles associated with this location
+     * Get the offering associated with this product
      **/
-    public function bottles()
+    public function offering()
     {
         return $this->hasMany('App\Bottle');
     }

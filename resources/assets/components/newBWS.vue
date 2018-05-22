@@ -153,7 +153,7 @@ export default {
 	      style             : '',
 	      upc               : ''
 	    },
-	    result              : {}
+	    result              : ''
 	}
   },
   methods: {
@@ -181,19 +181,54 @@ export default {
 		  });
 	},
 	queryLCBO() {
-        let config = {
+        var config = {
   			headers: {
     			Accept: 'application/json',
     			Authorization: 'Token MDowZWI0NTNmNC00NGJjLTExZTgtYjY4OS04ZmZmYjQyODM5NmU6M2tKTGFEOU1YR05mbkN5QXd2Z3FQQVo3anVsaHNPamtvbXhQ'
   			}
 		}
 
-		axios.get("'https://lcboapi.com/products?q=' + {{ product.name }}", config)
+		axios.get("https://lcboapi.com/products?q=" + this.product.name.replace(/ /g, "+"), config)
 		    .then(response => {
-      			result = response
+      			this.result = response.data
     		})
 
-    	this.$modal.show('autofill');
+    	swal({
+		  title: 'Search LCBO',
+		  input: 'text',
+		  inputAttributes: {
+		    autocapitalize: 'off'
+		  },
+		  showCancelButton: true,
+		  confirmButtonText: 'Look up',
+		  showLoaderOnConfirm: true,
+		  preConfirm: (query) => {
+		    return axios.get('https://lcboapi.com/products?q=jack', {
+		    	Accept: 'application/json',
+    			Authorization: 'Token MDowZWI0NTNmNC00NGJjLTExZTgtYjY4OS04ZmZmYjQyODM5NmU6M2tKTGFEOU1YR05mbkN5QXd2Z3FQQVo3anVsaHNPamtvbXhQ'
+		    })
+		      .then(response => {
+		        if (!response.ok) {
+		          throw new Error(response.statusText)
+		        }
+		        return response.json()
+		      })
+		      .catch(error => {
+		      	console.log(error);
+		        swal.showValidationError(
+		          error
+		        )
+		      })
+		  },
+		  allowOutsideClick: () => !swal.isLoading()
+		}).then((result) => {
+		  if (result.value) {
+		    swal({
+		      title: `${result.value.name}`,
+		      imageUrl: result.value.avatar_url
+		    })
+		  }
+		})
 	}
   }
 }
