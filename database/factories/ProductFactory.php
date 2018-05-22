@@ -20,6 +20,6 @@ $factory->define(App\Product::class, function (Faker $faker) {
         'img_url' => $faker->imageUrl($width = 640, $height = 480, 'cats'),
         'varietal' => $faker->word,
         'style' => $faker->sentence($nbWords = 4, $variableNbWords = true),
-        'upc' => $faker->randomNumber($nbDigits = NULL, $strict = false)
+        'upc' => $faker->randomNumber($nbDigits = null, $strict = false)
     ];
 });
