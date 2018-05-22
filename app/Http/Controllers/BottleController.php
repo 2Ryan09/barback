@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Pagination\Paginator;
 use App\Http\Requests;
 use App\Bottle;
 use App\Offering;
@@ -52,7 +53,7 @@ class BottleController extends Controller
                 'location' => $locations,
             ]);
         }
-        return $displayValues;
+        return new Paginator($displayValues, 15);
     }
 
     /**
