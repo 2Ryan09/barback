@@ -34,7 +34,7 @@ class BottleController extends Controller
             $associative->put($offering_id, $offerings->where('id', $offering_id)[$offering_id-1]->product_id);
         }
         $displayValues = collect();
-        foreach ($bottles as $collection){
+        foreach ($bottles as $collection) {
             $collectByLoc = $collection->groupBy('location_id');
             $locations = collect();
             foreach ($collectByLoc as $location) {
