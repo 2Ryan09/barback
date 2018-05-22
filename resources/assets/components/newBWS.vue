@@ -181,7 +181,7 @@ export default {
 		  });
 	},
 	queryLCBO() {
-        let config = {
+        var config = {
   			headers: {
     			Accept: 'application/json',
     			Authorization: 'Token MDowZWI0NTNmNC00NGJjLTExZTgtYjY4OS04ZmZmYjQyODM5NmU6M2tKTGFEOU1YR05mbkN5QXd2Z3FQQVo3anVsaHNPamtvbXhQ'
@@ -190,31 +190,42 @@ export default {
 
 		axios.get("https://lcboapi.com/products?q=" + this.product.name.replace(/ /g, "+"), config)
 		    .then(response => {
-      			this.result = response
-      			dd(this.result);
+      			this.result = response.data
     		})
 
-    	swal.mixin({
+    	swal({
+		  title: 'Search LCBO',
 		  input: 'text',
-		  confirmButtonText: 'Next &rarr;',
-		  showCancelButton: true,
-		  progressSteps: ['1', '2', '3']
-		}).queue([
-		  {
-		    title: this.result.value,
-		    text: 'Chaining swal2 modals is easy'
+		  inputAttributes: {
+		    autocapitalize: 'off'
 		  },
-		  'Question 2',
-		  'Question 3'
-		]).then((result) => {
+		  showCancelButton: true,
+		  confirmButtonText: 'Look up',
+		  showLoaderOnConfirm: true,
+		  preConfirm: (query) => {
+		    return axios.get('https://lcboapi.com/products?q=jack', {
+		    	Accept: 'application/json',
+    			Authorization: 'Token MDowZWI0NTNmNC00NGJjLTExZTgtYjY4OS04ZmZmYjQyODM5NmU6M2tKTGFEOU1YR05mbkN5QXd2Z3FQQVo3anVsaHNPamtvbXhQ'
+		    })
+		      .then(response => {
+		        if (!response.ok) {
+		          throw new Error(response.statusText)
+		        }
+		        return response.json()
+		      })
+		      .catch(error => {
+		      	console.log(error);
+		        swal.showValidationError(
+		          error
+		        )
+		      })
+		  },
+		  allowOutsideClick: () => !swal.isLoading()
+		}).then((result) => {
 		  if (result.value) {
 		    swal({
-		      title: 'All done!',
-		      html:
-		        'Your answers: <pre>' +
-		          JSON.stringify(result.value) +
-		        '</pre>',
-		      confirmButtonText: 'Lovely!'
+		      title: `${result.value.name}`,
+		      imageUrl: result.value.avatar_url
 		    })
 		  }
 		})
