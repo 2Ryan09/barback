@@ -18,11 +18,23 @@
           <a class="nav-link" href="/about">About</a>
         </li>
 
-        @can('view dashboard')
+        @can('view inventory')
           <li class="nav-item">
-            <a class="nav-link" href="/dashboard">Dashboard</a>
+            <a class="nav-link" href="/inventory">Inventory</a>
           </li>
         @endcan
+
+        @can('view admin')
+          <li class="nav-item">
+            <a class="nav-link" href="/admin">Admin</a>
+          </li>
+        @endcan
+
+        @auth
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('kiosk.home') }}">Kiosk</a>
+          </li>
+        @endauth
       </ul>
 
       <ul class="nav navbar-nav navbar-right" style="text-align: center;">
@@ -33,7 +45,7 @@
         </li>
 
         <li>
-          <a class="navbar-link" href="{{ Auth::logout() }}"> Logout</a>
+          <a class="navbar-link" href="{{ route('logout') }}"> Logout</a>
         </li>
 
         @else
