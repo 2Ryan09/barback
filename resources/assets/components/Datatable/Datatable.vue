@@ -9,7 +9,7 @@
       :css="css.table"
       :sort-order="sortOrder"
       :multi-sort="true"
-      :detail-row-component="my-detail-row"
+      :detail-row-component="my_detail_row"
       :append-params="moreParams"
       @vuetable:cell-clicked="onCellClicked"
       @vuetable:pagination-data="onPaginationData"

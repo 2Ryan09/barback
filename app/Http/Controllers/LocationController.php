@@ -22,7 +22,7 @@ class LocationController extends Controller
         Log::channel('location')->info('Locations shown.', ['user' => Auth::user()]);
 
         // Get articles
-        return Location::paginate(15);
+        return Location::all();
     }
 
     /**

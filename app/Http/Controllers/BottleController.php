@@ -65,6 +65,17 @@ class BottleController extends Controller
     }
 
     /**
+     * Get the bottles at a location
+     *
+     * @param String $name
+     * @return \Illuminate\Http\Response
+     **/
+    public function byLoc($id)
+    {
+        return Bottle::where('location_id', $id)->paginate(15);
+    }
+
+    /**
      * Create new bottle entry
      *
      * @param Request $request
