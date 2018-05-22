@@ -5,7 +5,6 @@
       :fields="fields"
       my_detail_row=""
     ></datatable>
-    <p>{{ test }}</p>
   </div>
 </template>
 
@@ -18,25 +17,24 @@ export default {
       location_id       : '',
       fields: [
         {
-          name: 'id',
-          title: '#',
-          titleClass: 'text-right',
-          dataClass: 'text-right'
-        },
-        {
           name: 'offering_id',
           title: 'Offering',
           sortField: 'offering_id'
         },
         {
-          name: 'location_id',
-          title: 'Location',
-          sortField: 'location_id'
+          name: 'name',
+          sortField: 'name'
         },
         {
-          name: 'amount',
-          sortField: 'amount'
+          name: 'quantity',
+          sortField: 'quantity'
         },
+        {
+          name: '__component:custom-actions',
+          title: 'Actions',
+          titleClass: 'text-center',
+          dataClass: 'text-center'
+        }
       ]
     }
   },
@@ -51,10 +49,6 @@ export default {
     },
     generateAPIUrl() {
       this.apiUrl = "/api/bottles/loc=" + this.location_id;
-      axios.get("/api/bottles/loc=" + this.location_id)
-      .then((response) => {
-        this.test = response.data;
-      })
     }
   }
 }
