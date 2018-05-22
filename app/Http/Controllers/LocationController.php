@@ -33,7 +33,7 @@ class LocationController extends Controller
      */
     public function show($id)
     {
-        Log::channel('location')->info('Locations shown.', ['user' => Auth::user()]);
+        Log::channel('location')->info('Location shown.', ['user' => Auth::user(), 'id' => $id]);
 
         // Get a single location
         $location = Location::findOrFail($id);
@@ -53,7 +53,7 @@ class LocationController extends Controller
     }
 
     /**
-     * Create new location entry
+     * Create new offering entry
      *
      * @param Request $request
      * @return Response
@@ -110,7 +110,8 @@ class LocationController extends Controller
 
             return response()->json(['status' => 'success', 'message' => 'location_deleted']);
         } else {
-            return response()->json(['status' => 'error', 'message' => 'location_not_found', ], 422);
+            return response()->json(['status' => 'error',
+                'message' => 'location_not_found', ], 422);
         }
     }
 }

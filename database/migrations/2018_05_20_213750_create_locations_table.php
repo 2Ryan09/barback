@@ -18,6 +18,7 @@ class CreateLocationsTable extends Migration
             $table->string('name', 128);
             $table->timestamps();
             $table->softDeletes();
+            $table->nestedSet();
         });
     }
 
