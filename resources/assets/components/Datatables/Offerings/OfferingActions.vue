@@ -10,6 +10,7 @@
     <modal name="edit" height="auto" :scrollable="true" style="padding: 50px;">
       <new-offer-form></new-offer-form>
     </modal>
+    <p>Hi!</p>
   </div>
 </template>
 

@@ -17,6 +17,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::get('bwsOfferings/{id}', 'ProductController@getOfferings');
 Route::get('products/{name}', 'ProductController@search')->where('name', '[A-Za-z]+');
 Route::resource('products', 'ProductController');
 

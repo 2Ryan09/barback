@@ -9,7 +9,7 @@
 
 <script>
 import OfferingActions from './OfferingActions'
-Vue.component('actions', OfferingActions)
+Vue.component('off-actions', OfferingActions)
 export default {
   data () {
     return {
@@ -39,7 +39,7 @@ export default {
           sortField: 'supplier_id',
         },
         {
-          name: '__component:actions',
+          name: '__component:off-actions',
           title: 'Actions',
           titleClass: 'text-center',
           dataClass: 'text-center'

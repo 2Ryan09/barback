@@ -122,4 +122,15 @@ class ProductController extends Controller
                 'message' => 'product_not_found', ], 422);
         }
     }
+
+    /**
+     * Get offerings associated with product
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function getOfferings($id)
+    {
+        $product = Product::find($id);
+        return $product->offering;
+    }
 }

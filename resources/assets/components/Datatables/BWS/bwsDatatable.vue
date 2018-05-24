@@ -10,7 +10,7 @@
 
 <script>
 import BWSActions from './BWSActions'
-Vue.component('actions', BWSActions)
+Vue.component('bws-actions', BWSActions)
 export default {
   data () {
     return {
@@ -42,7 +42,7 @@ export default {
           sortField: 'varietal'
         },
         {
-          name: '__component:actions',
+          name: '__component:bws-actions',
           title: 'Actions',
           titleClass: 'text-center',
           dataClass: 'text-center'
