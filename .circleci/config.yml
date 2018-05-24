@@ -1,7 +1,3 @@
-# PHP CircleCI 2.0 configuration file
-#
-# Check https://circleci.com/docs/2.0/language-php/ for more details
-#
 version: 2
 jobs:
   build:
@@ -11,33 +7,17 @@ jobs:
     steps:
       - checkout
 
-      #We are using Node JS 6 because that's the current version on our local vagrant/homestead machines
       - run:
-         name: Download NodeJS v6
-         command: curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+         name: Install NVM
+         command: curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
 
-      #sqlite needed for laravel database
-      #nodejs6 needed to run `npm run watch` later
       - run:
-         name: Install PHP mysql and nodejs 6
-         command: sudo apt-get install -y mysql-client nodejs
-
-
-      # Leave this for future use if php-zip is ever required
-      # If you remove the flag 'composer install --ignore-platform-reqs`
-      # composer will require php-zip to be installed. It appers that
-      # this isn't currently needed, so we are removing this from CircleCI
-      # to save 30 seconds of build time. The php-zip package isn't currently
-      # used by anything. If it ever does need to be used again, this can be
-      # uncommented.
-
-      #- run:
-      #   name: Install PHP libzip-dev
-      #   command: sudo apt-get install -y libzip-dev
-
-      #- run:
-      #   name: Install zip package for PHP
-      #   command: sudo docker-php-ext-install zip
+         name: Download NodeJS
+         command: nvm install node
+         
+      - run:
+         name: Install PHP mysql
+         command: sudo apt-get install -y mysql-client mysql-server
 
       - run:
          name: Setup Laravel testing environment variables for CircleCI test
