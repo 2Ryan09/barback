@@ -9,6 +9,8 @@
 </template>
 
 <script>
+import InventoryActions from './InventoryActions'
+Vue.component('inv-actions', InventoryActions)
 export default {
   data () {
     return {
@@ -27,7 +29,7 @@ export default {
           sortField: 'quantity'
         },
         {
-          name: '__component:custom-actions',
+          name: '__component:inv-actions',
           title: 'Actions',
           titleClass: 'text-center',
           dataClass: 'text-center'

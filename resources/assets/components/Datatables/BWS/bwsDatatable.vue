@@ -18,8 +18,8 @@ export default {
         {
           name: 'id',
           title: '#',
-          titleClass: 'text-right',
-          dataClass: 'text-right'
+          titleClass: 'text-center',
+          dataClass: 'text-center'
         },
         {
           name: 'name',

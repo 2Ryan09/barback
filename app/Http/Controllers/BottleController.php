@@ -49,6 +49,7 @@ class BottleController extends Controller
                 $locations->push([
                     'location_id' => $location[0]['location_id'],
                     'numberAtLocation' => $location->count(),
+                    'bottles' => $location
                 ]);
             }
             $offering_id = $collection[0]['offering_id'];
