@@ -1,14 +1,15 @@
   <template>
     <div class="custom-actions">
-      <button class="btn btn-sm" @click="$modal.show('edit')">
+      <button disabled class="btn btn-sm disabled" @click="editRow()">
         <i class="fa fa-pencil-square-o"></i>
       </button>
-      <modal name="edit" height="auto" :scrollable="true" style="padding: 50px;">
-        <new-bws-form></new-bws-form>
-      </modal>
       <button class="btn btn-sm" @click="deleteRow(rowData)">
         <i class="fa fa-trash-o"></i>
       </button>
+
+      <modal name="edit" height="auto" :scrollable="true" style="padding: 50px;">
+        <new-bws-form></new-bws-form>
+      </modal>
     </div>
   </template>
 
@@ -70,6 +71,9 @@
             )
           }
         })
+      },
+      editRow() {
+        this.$modal.show('edit');
       }
     }
   }

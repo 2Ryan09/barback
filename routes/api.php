@@ -20,6 +20,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('products/{name}', 'ProductController@search')->where('name', '[A-Za-z]+');
 Route::resource('products', 'ProductController');
 
+Route::get('offerBottles/{id}', 'OfferingController@getBottles');
 Route::get('offerings/{name}', 'OfferingController@search')->where('name', '[A-Za-z]+');
 Route::resource('offerings', 'OfferingController');
 

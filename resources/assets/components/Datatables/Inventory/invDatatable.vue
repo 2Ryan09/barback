@@ -35,9 +35,5 @@ export default {
       ]
     }
   },
-  mounted() {
-    this.getLocationID();
-    this.generateAPIUrl();
-  }
 }
 </script>
