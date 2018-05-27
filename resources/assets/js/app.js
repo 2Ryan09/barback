@@ -22,14 +22,14 @@ Vue.use(VueEvents)
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('datatable', require('../components/Datatable/Datatable.vue'));
-Vue.component('inv-vuetable', require("../components/invDatatable.vue"));
-Vue.component('bws-vuetable', require("../components/bwsDatatable.vue"));
-Vue.component('offerings-vuetable', require("../components/offDatatable.vue"));
-Vue.component('supplier-vuetable', require("../components/supplierDatatable.vue"));
+Vue.component('datatable', require('../components/Datatables/Datatable.vue'));
+Vue.component('inv-vuetable', require("../components/Datatables/Inventory/invDatatable.vue"));
+Vue.component('bws-vuetable', require("../components/Datatables/BWS/bwsDatatable.vue"));
+Vue.component('offerings-vuetable', require("../components/Datatables/Offerings/offDatatable.vue"));
+Vue.component('supplier-vuetable', require("../components/Datatables/Suppliers/supplierDatatable.vue"));
 Vue.component('kiosk-vuetable', require("../components/kiosks/kioskDatatable.vue"));
 
-Vue.component('inv-detail-row', require("../components/invDetailRow.vue"));
+Vue.component('invDetailRow', require("../components/Datatables/BWS/BWSDetails.vue"));
 
 Vue.component('new-bws-form', require("../components/newBWS.vue"));
 Vue.component('new-inv-form', require("../components/newInv.vue"));

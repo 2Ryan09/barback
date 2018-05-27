@@ -3,12 +3,15 @@
     <datatable
       api-url="/api/products"
       :fields="fields"
-      @clicked="passOnID"
+      :detailRowComponent='invDetailRow'
+      trackBy="offering_id"
     ></datatable>
   </div>
 </template>
 
 <script>
+import BWSActions from './BWSActions'
+Vue.component('bws-actions', BWSActions)
 export default {
   data () {
     return {
@@ -16,8 +19,8 @@ export default {
         {
           name: 'id',
           title: '#',
-          titleClass: 'text-right',
-          dataClass: 'text-right'
+          titleClass: 'text-center',
+          dataClass: 'text-center'
         },
         {
           name: 'name',
@@ -40,7 +43,7 @@ export default {
           sortField: 'varietal'
         },
         {
-          name: '__component:custom-actions',
+          name: '__component:bws-actions',
           title: 'Actions',
           titleClass: 'text-center',
           dataClass: 'text-center'

@@ -52,7 +52,7 @@ class OfferingController extends Controller
 
 
     /**
-     * Get the bottle by searching name
+     * Get the offering by searching name
      *
      * @param String $name
      * @return \Illuminate\Http\Response
@@ -127,5 +127,16 @@ class OfferingController extends Controller
             return response()->json(['status' => 'error',
                 'message' => 'offering_not_found', ], 422);
         }
+    }
+
+    /**
+     * Get bottles associated with offering
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function getBottles($id)
+    {
+        $offering = Offering::find($id);
+        return $offering->bottles;
     }
 }

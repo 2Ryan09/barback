@@ -104,3 +104,16 @@
    height: 40px;
    background-color: #F0F0F0;
 }
+
+.left-half {
+  float: left;
+  width: 50%;
+}
+.right-half {
+  float: left;
+  width: 50%;
+}
+
+.padding-20 {
+  padding: 20px;
+}
