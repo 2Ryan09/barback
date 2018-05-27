@@ -3,7 +3,6 @@
     <datatable
       api-url="/api/bottles"
       :fields="fields"
-      detail-row-component="inv_detail_row"
     ></datatable>
   </div>
 </template>

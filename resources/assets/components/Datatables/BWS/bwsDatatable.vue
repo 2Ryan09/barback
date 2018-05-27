@@ -3,8 +3,6 @@
     <datatable
       api-url="/api/products"
       :fields="fields"
-      :detailRowComponent='invDetailRow'
-      trackBy="offering_id"
     ></datatable>
   </div>
 </template>

@@ -112,17 +112,31 @@ export default {
     },
     onCellClicked (data, field, event) {
       console.log('cellClicked: ', field.name)
-      this.$refs.vuetable.toggleDetailRow(data.id)
       this.showDetailModal(data)
     },
     showDetailModal(data) {
-      var product = Object.values(data.product)[0]
-      var body = "Name:\t"+ product.name + "\nDescription:\t" + product.description + "\nRelease Date:" + product.release_date
+      try {
+        var product = Object.values(data.product)[0];
+      } catch(error) {
+        var product = data;
+      }
       swal({
         title: product.name,
-        text: body,
+        html: 
+          '<b>Name:</b><br>' + product.name + '<br>' +
+          '<b>Varietal:</b><br>' + product.varietal + '<br>' +
+          '<b>Description:</b><br>' + product.description + '<br>' +
+          '<b>Pairing:</b><br>' + product.pairing + '<br>' +
+          '<b>Release Date:</b><br>' + product.release_date + '<br>' +
+          '<b>Producer:</b><br>' + product.producer_name + '<br>' +
+          '<b>Origin:</b><br>' + product.origin + '<br>' +
+          '<b>Unit Type:</b><br>' + product.unit_type + '<br>' +
+          '<b>Unit Volume:</b><br>' + product.unit_volume + '<br>' +
+          '<b>Alcohol Content:</b><br>' + product.alcohol_content + '<br>' +
+          '<b>Sugar Content:</b><br>' + product.sugar_content + '<br>' +
+          '<b>Style:</b><br>' + product.style + '<br>' +
+          '<b>UPC:</b><br>' + product.upc + '<br>',
         imageUrl: product.img_url,
-        imageWidth: 400,
         imageHeight: 200,
         imageAlt: 'Custom image',
       })
