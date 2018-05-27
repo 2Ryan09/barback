@@ -29,7 +29,7 @@ Vue.component('offerings-vuetable', require("../components/Datatables/Offerings/
 Vue.component('supplier-vuetable', require("../components/Datatables/Suppliers/supplierDatatable.vue"));
 Vue.component('kiosk-vuetable', require("../components/kiosks/kioskDatatable.vue"));
 
-Vue.component('inv-detail-row', require("../components/invDetailRow.vue"));
+Vue.component('invDetailRow', require("../components/Datatables/BWS/BWSDetails.vue"));
 
 Vue.component('new-bws-form', require("../components/newBWS.vue"));
 Vue.component('new-inv-form', require("../components/newInv.vue"));

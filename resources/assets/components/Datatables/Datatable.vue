@@ -9,7 +9,8 @@
       :css="css.table"
       :sort-order="sortOrder"
       :multi-sort="true"
-      :detail-row-component="my_detail_row"
+      :detail-row-component="detailRowComponent"
+      track-by="offering_id"
       :append-params="moreParams"
       @vuetable:cell-clicked="onCellClicked"
       @vuetable:pagination-data="onPaginationData"
@@ -49,10 +50,12 @@ export default {
       type: Array,
       required: true
     },
-    my_detail_row: {
-      type: String,
+    trackBy: {
+      type: String
     },
-    
+    detailRowComponent: {
+      type: String
+    }
   },
   data () {
     return {
@@ -110,7 +113,20 @@ export default {
     onCellClicked (data, field, event) {
       console.log('cellClicked: ', field.name)
       this.$refs.vuetable.toggleDetailRow(data.id)
+      this.showDetailModal(data)
     },
+    showDetailModal(data) {
+      var product = Object.values(data.product)[0]
+      var body = "Name:\t"+ product.name + "\nDescription:\t" + product.description + "\nRelease Date:" + product.release_date
+      swal({
+        title: product.name,
+        text: body,
+        imageUrl: product.img_url,
+        imageWidth: 400,
+        imageHeight: 200,
+        imageAlt: 'Custom image',
+      })
+    }
   },
   events: {
     'filter-set' (filterText) {
