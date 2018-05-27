@@ -4,7 +4,8 @@
       :api-url="apiUrl"
       :fields="fields"
       :row-class="onRowClass"
-      my_detail_row=""
+      trackBy="offering_id"
+      detailRowComponent=""
     ></datatable>
   </div>
 </template>
@@ -34,12 +35,6 @@ export default {
           name: 'quantity',
           sortField: 'quantity'
         },
-        {
-          name: '__component:kiosk-actions',
-          title: 'Actions',
-          titleClass: 'text-center',
-          dataClass: 'text-center'
-        }
       ]
     }
   },

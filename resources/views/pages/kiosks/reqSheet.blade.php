@@ -5,6 +5,7 @@
 @endsection
 
 @section('content')
-	<h1 style="font-size: 56pt;">Requisition Sheet</h1>
-	<kiosk-vuetable></kiosk-vuetable>
+	<h1 style="font-size: 56pt;">Request Sheet</h1>
+
+	<req-sheet></req-sheet>
 @endsection

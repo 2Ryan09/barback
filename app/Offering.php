@@ -46,4 +46,12 @@ class Offering extends Model
     {
         return $this->hasMany('App\Bottle');
     }
+
+    /**
+     * Get the requisitions associated with this offering
+     **/
+    public function requisitions()
+    {
+        return $this->belongsToMany('App\Requisition');
+    }
 }

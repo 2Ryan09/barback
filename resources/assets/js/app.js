@@ -15,6 +15,8 @@ import vmodal from 'vue-js-modal'
 Vue.use(vmodal)
 import VueEvents from 'vue-events'
 Vue.use(VueEvents)
+import keyboard from 'vue-keyboard';
+Vue.component('keyboard', keyboard);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -37,6 +39,7 @@ Vue.component('new-offer-form', require("../components/newOff.vue"));
 Vue.component('new-supplier-form', require("../components/newSupplier.vue"));
 
 Vue.component('kiosk-buttons', require("../components/kiosks/buttons.vue"));
+Vue.component('req-sheet', require("../components/kiosks/reqSheet.vue"));
 
 const app = new Vue({
     el: '#app'

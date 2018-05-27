@@ -1,6 +1,6 @@
 <template>
 <div>
-  <button type="button" class="btn btn-sm" data-toggle="modal" data-target="#showBottles">
+  <button type="button" class="btn btn-sm" data-toggle="modal" :rowData="rowData" data-target="#showBottles">
     <i class="fa fa-th-list"></i>
   </button>
 
@@ -14,7 +14,7 @@
           </button>
         </div>
         <div class="modal-body">
-          <div v-for="(bottle, index) in rowData.location[0].bottles" style="min-height: 200px;">
+          <div v-for="(bottle, index) in rowData.location" style="min-height: 200px;">
             <div class="container-fluid" style="min-height: 100px; outline: 1px solid black; padding: 10px;">
               <div class="left-half" style="text-align: left;">
                 <h1>Bottle {{ index + 1 }}</h1>

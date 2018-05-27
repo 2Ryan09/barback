@@ -115,7 +115,30 @@ class BottleController extends Controller
     public function byLoc($id)
     {
         $bottles = Bottle::all()->where('location_id', $id)->groupBy('offering_id');
-        return $this->datatable($bottles);
+        $offering_ids = $bottles->keys();
+        $offerings = Offering::find($offering_ids);
+        $product_ids = $offerings->pluck('product_id');
+        $products = Product::find($product_ids);
+        $associative = collect();
+        foreach ($offering_ids as $offering_id) {
+            $associative->put($offering_id, $offerings->where('id', $offering_id)->pop()->product_id);
+        }
+        $displayValues = collect();
+        foreach ($bottles as $collection) {
+            $collectByLoc = $collection->groupBy('location_id');
+            $offering_id = $collection[0]['offering_id'];
+            $product_id = $associative->get($collection[0]['offering_id']);
+            $displayValues->push([
+                'offering_id' => $offering_id,
+                'offering' => $offerings->where('id', $offering_id),
+                'product_id' => $product_id,
+                'product' => $products->where('id', $product_id),
+                'name' => $products->where('id', $product_id)->pop()->name,
+                'quantity' => $collection->count(),
+                'location' => $collection,
+            ]);
+        }
+        return new Paginator($displayValues, 15);
     }
 
     /**

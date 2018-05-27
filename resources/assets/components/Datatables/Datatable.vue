@@ -10,7 +10,7 @@
       :sort-order="sortOrder"
       :multi-sort="true"
       :detail-row-component="detailRowComponent"
-      track-by="offering_id"
+      :track-by="trackBy"
       :append-params="moreParams"
       @vuetable:cell-clicked="onCellClicked"
       @vuetable:pagination-data="onPaginationData"
