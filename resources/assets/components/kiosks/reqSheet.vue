@@ -12,8 +12,8 @@
 			  </div>
 			</div>
 		</div>
-		<button class="btn btn-lg btn-secondary" type="button" @click="addInput">Add Request</button>
-	    <button class="btn btn-lg btn-primary" type="submit">Submit Requesition Sheet!</button>
+		<button class="btn btn-lg btn-secondary" type="button" style="height: 150px; width: 300px; font-size: 150%; position: fixed; bottom: 20px; left: 20px;" @click="addInput">Add Request</button>
+	    <button class="btn btn-lg btn-primary" type="submit" style="height: 150px; width: 300px; font-size: 150%; position: fixed; bottom: 20px; right: 20px;">Submit Requesition Sheet!</button>
 
 	    <modal name="keyboard" height=auto>
 			<div class="container-fluid" style="position: center;">
