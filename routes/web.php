@@ -21,7 +21,8 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('/about', 'PageController@about');
 
     Route::get('/kiosk', 'PageController@kiosk')->name('kiosk.home');
-    Route::get('/kiosk/reqSheet/{id}', 'PageController@reqSheet');
+    Route::get('/kiosk/inventory/{id}', 'PageController@kioskInventory')->name('kiosk.inventory');
+    Route::get('/kiosk/reqSheet/{id}', 'PageController@reqSheet')->name('kiosk.reqSheet');
 
     Auth::routes();
     Route::get('auth/logout', 'Auth\LoginController@logout')->name('logout');

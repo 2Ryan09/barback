@@ -18,7 +18,7 @@ export default {
       fields: [
         {
           name: 'offering_id',
-          title: 'Offering',
+          title: 'Offering ID',
           sortField: 'offering_id'
         },
         {
