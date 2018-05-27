@@ -132,7 +132,7 @@ export default {
           '<b>Origin:</b><br>' + product.origin + '<br>' +
           '<b>Unit Type:</b><br>' + product.unit_type + '<br>' +
           '<b>Unit Volume:</b><br>' + product.unit_volume + '<br>' +
-          '<b>Alcohol Content:</b><br>' + product.alcohol_content + '<br>' +
+          '<b>Alcohol Content:</b><br>' + product.alcohol_content / 100 + '%<br>' +
           '<b>Sugar Content:</b><br>' + product.sugar_content + '<br>' +
           '<b>Style:</b><br>' + product.style + '<br>' +
           '<b>UPC:</b><br>' + product.upc + '<br>',
