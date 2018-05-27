@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="padding-bottom: 50px;">
     <filter-bar></filter-bar>
     <vuetable ref="vuetable"
       :api-url="apiUrl"
@@ -32,11 +32,7 @@ import moment from 'moment'
 import Vuetable from 'vuetable-2/src/components/Vuetable'
 import VuetablePagination from 'vuetable-2/src/components/VuetablePagination'
 import VuetablePaginationInfo from 'vuetable-2/src/components/VuetablePaginationInfo'
-import CustomActions from './datatableActions'
-import DetailRow from './datatableDetailRow'
 import FilterBar from './datatableSearch'
-Vue.component('custom-actions', CustomActions)
-Vue.component('my-detail-row', DetailRow)
 Vue.component('filter-bar', FilterBar)
 export default {
   components: {
@@ -55,7 +51,8 @@ export default {
     },
     my_detail_row: {
       type: String,
-    }
+    },
+    
   },
   data () {
     return {
@@ -130,40 +127,39 @@ export default {
 }
 </script>
 <style>
-.pagination {
-  margin: 0;
-  float: right;
-}
-.pagination a.page {
-  border: 1px solid lightgray;
-  border-radius: 3px;
-  padding: 5px 10px;
-  margin-right: 2px;
-}
-.pagination a.page.active {
-  color: white;
-  background-color: #337ab7;
-  border: 1px solid lightgray;
-  border-radius: 3px;
-  padding: 5px 10px;
-  margin-right: 2px;
-}
-.pagination a.btn-nav {
-  border: 1px solid lightgray;
-  border-radius: 3px;
-  padding: 5px 7px;
-  margin-right: 2px;
-}
-.pagination a.btn-nav.disabled {
-  color: lightgray;
-  border: 1px solid lightgray;
-  border-radius: 3px;
-  padding: 5px 7px;
-  margin-right: 2px;
-  cursor: not-allowed;
-}
-.pagination-info {
-  float: left;
-}
-
+  .pagination {
+    margin: 0;
+    float: right;
+  }
+  .pagination a.page {
+    border: 1px solid lightgray;
+    border-radius: 3px;
+    padding: 5px 10px;
+    margin-right: 2px;
+  }
+  .pagination a.page.active {
+    color: white;
+    background-color: #337ab7;
+    border: 1px solid lightgray;
+    border-radius: 3px;
+    padding: 5px 10px;
+    margin-right: 2px;
+  }
+  .pagination a.btn-nav {
+    border: 1px solid lightgray;
+    border-radius: 3px;
+    padding: 5px 7px;
+    margin-right: 2px;
+  }
+  .pagination a.btn-nav.disabled {
+    color: lightgray;
+    border: 1px solid lightgray;
+    border-radius: 3px;
+    padding: 5px 7px;
+    margin-right: 2px;
+    cursor: not-allowed;
+  }
+  .pagination-info {
+    float: left;
+  }
 </style>

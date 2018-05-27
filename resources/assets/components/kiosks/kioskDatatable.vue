@@ -3,12 +3,15 @@
     <datatable
       :api-url="apiUrl"
       :fields="fields"
+      :row-class="onRowClass"
       my_detail_row=""
     ></datatable>
   </div>
 </template>
 
 <script>
+import KioskActions from './KioskActions'
+Vue.component('kiosk-actions', KioskActions)
 export default {
   data () {
     return {
@@ -23,14 +26,16 @@ export default {
         },
         {
           name: 'name',
-          sortField: 'name'
+          sortField: 'name',
+          titleClass: 'text-left',
+          dataClass: 'text-left'
         },
         {
           name: 'quantity',
           sortField: 'quantity'
         },
         {
-          name: '__component:custom-actions',
+          name: '__component:kiosk-actions',
           title: 'Actions',
           titleClass: 'text-center',
           dataClass: 'text-center'
@@ -49,6 +54,9 @@ export default {
     },
     generateAPIUrl() {
       this.apiUrl = "/api/bottles/loc=" + this.location_id;
+    },
+    onRowClass() {
+      return 'padding-20';
     }
   }
 }
