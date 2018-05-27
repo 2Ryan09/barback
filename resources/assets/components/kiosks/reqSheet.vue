@@ -2,11 +2,11 @@
 	<form style="padding: 20px; padding-bottom: 50px;" v-on:submit.prevent="submitRequest">
 		<div class="form" v-for="(request, index) in requests">
 			<div class="form-group row">
-			  <label class="col-sm col-form-label"><h3>Name: {{ name }}</h3></label>
+			  <label class="col-sm col-form-label"><h3>Name: </h3>{{ name[index] }}</label>
 			  <div class="col-sm">
-			    <button type="button" class="btn btn-lg btn-primary" @click="getOffering(index)">Change</button>
+			    <button type="button" class="btn btn-lg btn-primary" @click="getBWS(index)">Change</button>
 			  </div>
-			  	<label class="col-sm col-form-label"><h3>Quantity: {{ requests[index].quantity }}</h3></label>
+			  	<label class="col-sm col-form-label"><h3>Quantity: </h3>{{ requests[index].quantity }}</label>
 		      <div class="col-sm">
 		    	<button type="button" class="btn btn-lg btn-primary" @click="getQuantity(index)">Change</button>
 			  </div>
@@ -34,12 +34,6 @@
 			    </div>
 			</div>
 	    </modal>
-
-	    <modal name="offerings" height=auto>
-	    	:D
-	    </modal>
-
-	    <p>{{ requests }}</p>
 	</form>
 </div>
 </template>
@@ -49,7 +43,7 @@ export default {
   data() {
 	return {
   		requests      : [],
-  		name          : '',
+  		name          : [],
 		next          : 1,
 		relay         : '',
 		relayTwo      : '',
@@ -77,7 +71,83 @@ export default {
   	getOffering(index) {
   		this.relayTwo = index;
   		this.$modal.show('offerings');
-  	}
+  	},
+  	submitRequest() {
+  		if (this.requests.length === 0) {
+  			swal({
+			  type: 'error',
+			  title: 'Oops...',
+			  text: 'Nothing to submit!',
+			})
+  		} else {
+			axios.post('/api/requests', this.requests)
+			  .then(function (response) {
+			  	swal(
+	  				'Good job!',
+	  				'Product added successfully!',
+	  				'success'
+				).then((result) => {
+					if(result.value) {
+						location.reload();
+					}
+				})
+			  })
+			  .catch(function (error) {
+			  	swal({
+	  				type: 'error',
+	  				title: 'Oops...',
+	  				text: 'Something went wrong!',
+	  				footer: 'Did you fill out all the required fields?'
+				})
+			    console.log(error);
+			  });
+  		}
+  	},
+	getBWS(index) {
+		swal({
+		  title: 'Name of Bottle',
+		  input: 'text',
+		  inputAttributes: {
+		    autocapitalize: 'off'
+		  },
+		  showCancelButton: true,
+		  confirmButtonText: 'Look up',
+		  showLoaderOnConfirm: true,
+		  preConfirm: (name) => {
+		    return fetch(`/api/products/${name}`)
+		      .then(response => {
+		        if (!response.ok) {
+		          throw new Error(response.statusText)
+		        }
+		        return response.json()
+		      })
+		      .catch(error => {
+		        swal.showValidationError(
+		          `Sorry. No results.`
+		        )
+		      })
+		  },
+		  allowOutsideClick: () => !swal.isLoading()
+		}).then((result) => {
+		  if (result.value) {
+		  	swal({
+			  title: 'Is this your bottle?',
+			  text: result.value.name,
+			  imageUrl: result.value.img_url,
+			  imageHeight: 200,
+			  imageAlt: 'Custom image',
+			  animation: false,
+			  showCancelButton: true,
+			  confirmButtonText: 'Yes!',
+		      cancelButtonText: 'No (Manual Lookup)',
+			  reverseButtons: true
+			}).then((confirm) => {
+				this.name.push([index => result.value.name]);
+				this.requests[index].offering_id = result.value.offering.id;
+		    })
+		  }
+		});
+	},
   }
 }
 </script>
