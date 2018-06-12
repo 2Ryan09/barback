@@ -122,6 +122,7 @@ export default {
       }
       swal({
         title: product.name,
+        width: 800,
         html: 
           '<b>Name:</b><br>' + product.name + '<br>' +
           '<b>Varietal:</b><br>' + product.varietal + '<br>' +

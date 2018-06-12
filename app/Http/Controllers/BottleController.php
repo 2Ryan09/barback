@@ -129,13 +129,13 @@ class BottleController extends Controller
             $offering_id = $collection[0]['offering_id'];
             $product_id = $associative->get($collection[0]['offering_id']);
             $displayValues->push([
-                'offering_id' => $offering_id,
-                'offering' => $offerings->where('id', $offering_id),
-                'product_id' => $product_id,
-                'product' => $products->where('id', $product_id),
-                'name' => $products->where('id', $product_id)->pop()->name,
-                'quantity' => $collection->count(),
-                'location' => $collection,
+                'offering_id'   => $offering_id,
+                'offering'      => $offerings->where('id', $offering_id),
+                'product_id'    => $product_id,
+                'product'       => $products->where('id', $product_id),
+                'name'          => $products->where('id', $product_id)->pop()->name,
+                'quantity'      => $collection->count(),
+                'location'      => $collection
             ]);
         }
         return new Paginator($displayValues, 15);
