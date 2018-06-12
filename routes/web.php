@@ -11,11 +11,10 @@
 |
 */
 
-Route::get('send_test_email', function(){
+Route::get('send_test_email', function () {
     Log::channel('bottle')->info('Hi! :D');
 
-    Mail::raw('Sending emails with Mailgun and Laravel is easy!', function($message)
-    {
+    Mail::raw('Sending emails with Mailgun and Laravel is easy!', function ($message) {
         $message->to('ryanwaldhe@gmail.com');
     });
 });
