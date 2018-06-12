@@ -154,6 +154,8 @@ class BottleController extends Controller
             'user' => Auth::user()
         ]);
 
+        Mail::to(App\User::find(1))->send(new NewOffering());
+
         return Bottle::create($request->all());
     }
 
