@@ -2,6 +2,7 @@
 
 namespace App\Mail;
 
+use App\Offering;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
@@ -11,14 +12,16 @@ class NewOffering extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public $offering;
+
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(Offering $offering)
     {
-        //
+        $this->offering = $offering;
     }
 
     /**
@@ -28,6 +31,6 @@ class NewOffering extends Mailable
      */
     public function build()
     {
-        return $this->view('pages.welcome');
+        return $this->view('mail.newOffering');
     }
 }

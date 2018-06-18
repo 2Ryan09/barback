@@ -12,6 +12,8 @@ use App\Http\Resources\Bottle as BottleResource;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+
 
 class BottleController extends Controller
 {
@@ -154,7 +156,12 @@ class BottleController extends Controller
             'user' => Auth::user()
         ]);
 
-        Mail::to(App\User::find(1))->send(new NewOffering());
+        Mail::raw('Hi! :D', function($message)
+        {
+            $message->subject('Here we go!');
+            $message->from('postmaster@barback.ryan.waldhe.im', 'Barback');
+            $message->to('ryanwaldhe@gmail.com');
+        });
 
         return Bottle::create($request->all());
     }

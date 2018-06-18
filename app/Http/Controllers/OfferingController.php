@@ -10,6 +10,8 @@ use App\Http\Resources\Offering as OfferingResource;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+
 
 class OfferingController extends Controller
 {
@@ -78,6 +80,10 @@ class OfferingController extends Controller
             'offering' => $request->all(),
             'user' => Auth::user()
         ]);
+
+        $offering = Product::show($request->id);
+
+        Mail::to(User::find(1))->send(new NewOffering($offering);
 
         return Offering::create($request->all());
     }
