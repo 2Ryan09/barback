@@ -11,8 +11,8 @@
 </template>
 
 <script>
-import KioskActions from './KioskActions'
-Vue.component('kiosk-actions', KioskActions)
+import ReqSheetActions from './ReqSheetActions'
+Vue.component('req-sheet-actions', ReqSheetActions)
 export default {
   data () {
     return {
@@ -32,9 +32,14 @@ export default {
           dataClass: 'text-left'
         },
         {
-          name: 'quantity',
-          sortField: 'quantity'
+          name: 'par',
+          sortField: 'par'
         },
+        {
+          name: '__component:req-sheet-actions',
+          title: 'Request',
+          titleClass: 'text-center',
+        }
       ]
     }
   },

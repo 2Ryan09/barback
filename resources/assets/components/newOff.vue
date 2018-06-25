@@ -80,7 +80,6 @@
 		</div>
 	    <button class="btn btn-primary" type="submit">Create Offering!</button>
 	    <p>{{ offering }}</p>
-	    <p>{{ bws_name }}</p>
 	</form>
 </div>
 </template>

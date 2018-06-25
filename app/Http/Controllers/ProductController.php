@@ -47,7 +47,9 @@ class ProductController extends Controller
      **/
     public function search($name)
     {
-        return Product::where('name', 'LIKE', "%$name%")->orderBy('id')->first();
+        $product = Product::where('name', 'LIKE', "%$name%")->orderBy('id')->first();
+        $product->offering = $product->offering;
+        return $product;
     }
 
     /**
@@ -121,5 +123,16 @@ class ProductController extends Controller
             return response()->json(['status' => 'error',
                 'message' => 'product_not_found', ], 422);
         }
+    }
+
+    /**
+     * Get offerings associated with product
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function getOfferings($id)
+    {
+        $product = Product::find($id);
+        return $product->offering;
     }
 }

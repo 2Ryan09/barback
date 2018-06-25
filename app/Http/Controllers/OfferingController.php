@@ -10,6 +10,7 @@ use App\Http\Resources\Offering as OfferingResource;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class OfferingController extends Controller
 {
@@ -52,7 +53,7 @@ class OfferingController extends Controller
 
 
     /**
-     * Get the bottle by searching name
+     * Get the offering by searching name
      *
      * @param String $name
      * @return \Illuminate\Http\Response
@@ -78,6 +79,14 @@ class OfferingController extends Controller
             'offering' => $request->all(),
             'user' => Auth::user()
         ]);
+
+        $ch =  curl_init();
+        curl_setopt($ch, CURLOPT_URL, route('products.show', ['id' => $request->product_id]));
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        $offering = curl_exec($ch);
+        curl_close($ch);
+
+        Mail::to(User::find(1))->send(new NewOffering($offering));
 
         return Offering::create($request->all());
     }
@@ -127,5 +136,16 @@ class OfferingController extends Controller
             return response()->json(['status' => 'error',
                 'message' => 'offering_not_found', ], 422);
         }
+    }
+
+    /**
+     * Get bottles associated with offering
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function getBottles($id)
+    {
+        $offering = Offering::find($id);
+        return $offering->bottles;
     }
 }
