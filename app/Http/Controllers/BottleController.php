@@ -14,7 +14,6 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 
-
 class BottleController extends Controller
 {
     /**
@@ -156,8 +155,7 @@ class BottleController extends Controller
             'user' => Auth::user()
         ]);
 
-        Mail::raw('Hi! :D', function($message)
-        {
+        Mail::raw('Hi! :D', function ($message) {
             $message->subject('Here we go!');
             $message->from('postmaster@barback.ryan.waldhe.im', 'Barback');
             $message->to('ryanwaldhe@gmail.com');
