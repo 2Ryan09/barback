@@ -11,6 +11,17 @@
 |
 */
 
+<<<<<<< HEAD
+=======
+Route::get('send_test_email', function () {
+    Log::channel('bottle')->info('Hi! :D');
+
+    Mail::raw('Sending emails with Mailgun and Laravel is easy!', function ($message) {
+        $message->to('ryanwaldhe@gmail.com');
+    });
+});
+
+>>>>>>> 19933c83c93c226467037ad4c5e59825f7b50f5b
 Route::group(['middleware' => 'web'], function () {
     Route::get('/', 'PageController@welcome');
 
