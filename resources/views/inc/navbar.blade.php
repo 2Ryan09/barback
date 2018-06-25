@@ -19,8 +19,30 @@
         </li>
 
         @can('view inventory')
-          <li class="nav-item">
-            <a class="nav-link" href="/inventory">Inventory</a>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Inventory
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="{{ route('inventory.home') }}">Bottles</a>
+              <a class="dropdown-item" href="{{ route('inventory.offerings') }}">Offerings</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="{{ route('bws.overview') }}">BWS</a>
+            </div>
+          </li>
+        @endcan
+
+        @can('create inventory')
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              New
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="{{ route('inventory.create') }}">Bottle</a>
+              <a class="dropdown-item" href="{{ route('offerings.create') }}">Offering</a>
+              <a class="dropdown-item" href="{{ route('bws.create') }}">Product</a>
+              <a class="dropdown-item" href="{{ route('supplier.create') }}">Supplier</a>
+            </div>
           </li>
         @endcan
 
