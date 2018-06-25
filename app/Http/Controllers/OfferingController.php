@@ -81,9 +81,13 @@ class OfferingController extends Controller
             'user' => Auth::user()
         ]);
 
-        $offering = Product::show($request->id);
+        $ch =  curl_init();
+        curl_setopt($ch, CURLOPT_URL, route('products.show', ['id' => $request->product_id]));
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        $offering = curl_exec($ch);
+        curl_close($ch);
 
-        Mail::to(User::find(1))->send(new NewOffering($offering);
+        Mail::to(User::find(1))->send(new NewOffering($offering));
 
         return Offering::create($request->all());
     }
