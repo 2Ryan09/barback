@@ -3,12 +3,13 @@
     <datatable
       api-url="/api/bottles"
       :fields="fields"
-      detail-row-component="inv_detail_row"
     ></datatable>
   </div>
 </template>
 
 <script>
+import InventoryActions from './InventoryActions'
+Vue.component('inv-actions', InventoryActions)
 export default {
   data () {
     return {
@@ -27,7 +28,7 @@ export default {
           sortField: 'quantity'
         },
         {
-          name: '__component:custom-actions',
+          name: '__component:inv-actions',
           title: 'Actions',
           titleClass: 'text-center',
           dataClass: 'text-center'
@@ -35,9 +36,5 @@ export default {
       ]
     }
   },
-  mounted() {
-    this.getLocationID();
-    this.generateAPIUrl();
-  }
 }
 </script>

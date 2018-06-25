@@ -12,6 +12,7 @@ use App\Http\Resources\Bottle as BottleResource;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class BottleController extends Controller
 {
@@ -25,35 +26,7 @@ class BottleController extends Controller
         Log::channel('bottle')->info('Bottles shown.', ['user' => Auth::user()]);
 
         $bottles = Bottle::all()->groupBy('offering_id');
-        $offering_ids = $bottles->keys();
-        $offerings = Offering::find($offering_ids);
-        $product_ids = $offerings->pluck('product_id');
-        $products = Product::find($product_ids);
-        $associative = collect();
-        foreach ($offering_ids as $offering_id) {
-            $associative->put($offering_id, $offerings->where('id', $offering_id)[$offering_id-1]->product_id);
-        }
-        $displayValues = collect();
-        foreach ($bottles as $collection) {
-            $collectByLoc = $collection->groupBy('location_id');
-            $locations = collect();
-            foreach ($collectByLoc as $location) {
-                $locations->push([
-                    'location_id' => $location[0]['location_id'],
-                    'numberAtLocation' => $location->count(),
-                ]);
-            }
-            $offering_id = $collection[0]['offering_id'];
-            $product_id = $associative->get($collection[0]['offering_id']);
-            $displayValues->push([
-                'offering_id' => $offering_id,
-                'product_id' => $product_id,
-                'name' => $products->where('id', $product_id)[$offering_id-1]->name,
-                'quantity' => $collection->count(),
-                'location' => $locations,
-            ]);
-        }
-        return new Paginator($displayValues, 15);
+        return $this->datatable($bottles);
     }
 
     /**
@@ -77,13 +50,16 @@ class BottleController extends Controller
                 $locations->push([
                     'location_id' => $location[0]['location_id'],
                     'numberAtLocation' => $location->count(),
+                    'bottles' => $location
                 ]);
             }
             $offering_id = $collection[0]['offering_id'];
             $product_id = $associative->get($collection[0]['offering_id']);
             $displayValues->push([
                 'offering_id' => $offering_id,
+                'offering' => $offerings->where('id', $offering_id),
                 'product_id' => $product_id,
+                'product' => $products->where('id', $product_id),
                 'name' => $products->where('id', $product_id)->pop()->name,
                 'quantity' => $collection->count(),
                 'location' => $locations,
@@ -140,7 +116,30 @@ class BottleController extends Controller
     public function byLoc($id)
     {
         $bottles = Bottle::all()->where('location_id', $id)->groupBy('offering_id');
-        return $this->datatable($bottles);
+        $offering_ids = $bottles->keys();
+        $offerings = Offering::find($offering_ids);
+        $product_ids = $offerings->pluck('product_id');
+        $products = Product::find($product_ids);
+        $associative = collect();
+        foreach ($offering_ids as $offering_id) {
+            $associative->put($offering_id, $offerings->where('id', $offering_id)->pop()->product_id);
+        }
+        $displayValues = collect();
+        foreach ($bottles as $collection) {
+            $collectByLoc = $collection->groupBy('location_id');
+            $offering_id = $collection[0]['offering_id'];
+            $product_id = $associative->get($collection[0]['offering_id']);
+            $displayValues->push([
+                'offering_id'   => $offering_id,
+                'offering'      => $offerings->where('id', $offering_id),
+                'product_id'    => $product_id,
+                'product'       => $products->where('id', $product_id),
+                'name'          => $products->where('id', $product_id)->pop()->name,
+                'quantity'      => $collection->count(),
+                'location'      => $collection
+            ]);
+        }
+        return new Paginator($displayValues, 15);
     }
 
     /**
@@ -155,6 +154,12 @@ class BottleController extends Controller
             'bottle' => $request->all(),
             'user' => Auth::user()
         ]);
+
+        Mail::raw('Hi! :D', function ($message) {
+            $message->subject('Here we go!');
+            $message->from('postmaster@barback.ryan.waldhe.im', 'Barback');
+            $message->to('ryanwaldhe@gmail.com');
+        });
 
         return Bottle::create($request->all());
     }

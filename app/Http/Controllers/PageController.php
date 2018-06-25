@@ -80,4 +80,9 @@ class PageController extends Controller
     {
         return view('pages.kiosks.kiosk');
     }
+
+    public function kioskInventory()
+    {
+        return view('pages.kiosks.inventory');
+    }
 }
